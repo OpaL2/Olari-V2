@@ -40,8 +40,8 @@ export function wp_required() {
 
 export const less = build_less('src/less/**/*.less', 'build/css/');
 
-export const js = build_js('./src/js/app.jsx', './build/js');
-export const js_production = build_js('src/js/app.jsx', 'build/js/');
+export const js = build_js('./src/js/app.js', './build/js');
+export const js_production = build_js('src/js/app.js', 'build/js/');
 
 export function templates() {
   return gulp.src(['src/templates/**/*.php', '!src/templates/functions.php'])
@@ -77,7 +77,7 @@ export function inject() {
         return '<?php wp_register_script("' + 'olariv2-' + file.relative.replace(/\.[^/.]+$/, "") + '", get_template_directory_uri() . "/js/' + file.relative + '", array(), 1.0, true);' + "\n" + 'wp_enqueue_script("olariv2-' + file.relative.replace(/\.[^/.]+$/, "") + '" ); ?>' ;
       }
       if(filepath.slice(-4) === '.css') {
-        return '<?php wp_enqueue_style("' + 'olariv2-'+ file.relative.replace(/\.[^/.]+$/, "") + '", get_template_directory_uri() . "/css/' + file.relative + '"); ?>';
+        return '<?php wp_enqueue_style("' + 'olariv2-'+ file.relative.replace(/\.[^/.]+$/, "") + '", get_template_directory_uri() . "/css/' + file.relative + '", false, "1.0" ,"all"); ?>';
       }
       return inject.transform.apply(inject.transform, arguments);
     }

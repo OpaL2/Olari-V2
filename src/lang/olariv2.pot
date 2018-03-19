@@ -43,3 +43,7 @@ msgstr ""
 #: src/widgets/calendar-and-events.php:44
 msgid "Event post category:"
 msgstr ""
+
+#: src/widgets/handout.php:7
+msgid "Olari-v2 Handout"
+msgstr ""

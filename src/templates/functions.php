@@ -23,7 +23,7 @@ function olariv2_wigdets_init() {
       'name' => __('Toolbar items', 'olariv2'),
       'id' => 'primary',
       'description' => __('Widget area for toolbar items', 'olariv2'),
-      'before_widget' => '<div id="%1$s" class="primary-widget">',
+      'before_widget' => '<div id="%1$s" class="primary-widget m-toolbar-page">',
       'after_widget' => '</div>',
       'before_title' => '<h3 class="primary-widget-title" >',
       'after_title' => '</h3>' 

@@ -21,7 +21,10 @@
           </a>
         <?php endif; ?></h1>
     </div>
-    <?php wp_nav_menu('primary'); ?>
+    <div id="primary-nav m-toolbar-page-4" class="primary-nav m-toolbar-page">
+      <?php wp_nav_menu('primary'); ?>
+    </div>
   </header>
 
+  <?php get_template_part('partials/toolbar', 'mobile'); ?>
   <?php get_sidebar('primary'); ?>
