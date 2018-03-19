@@ -21,7 +21,7 @@
           </a>
         <?php endif; ?></h1>
     </div>
-    <div id="primary-nav m-toolbar-page-4" class="primary-nav m-toolbar-page">
+    <div id="m-toolbar-page-4" class="primary-nav m-toolbar-page">
       <?php wp_nav_menu('primary'); ?>
     </div>
   </header>

@@ -1,9 +1,9 @@
 
 <div class="m-toolbar">
-  <button id="handout m-toolbar-button-1" class="m-toolbar-button">handout</button>
-  <button id="calendar m-toolbar-button-2" class="m-toolbar-button">calendar</button>
-  <button id="contact-info m-toolbar-button-3" class="m-toolbar-button">contact</button>
-  <button id="menu m-toolbar-button-4" class="m-toolbar-button">menu</button>
+  <button id="m-toolbar-button-1" class="m-toolbar-button">handout</button>
+  <button id="m-toolbar-button-2" class="m-toolbar-button">calendar</button>
+  <button id="m-toolbar-button-3" class="m-toolbar-button">contact</button>
+  <button id="m-toolbar-button-4" class="m-toolbar-button">menu</button>
 </div>
 
 <?php
@@ -17,3 +17,7 @@
       'after_title' => '</h3>'
     ));
 ?>
+
+<div class="m-toolbar-page" id="m-toolbar-page-2">
+  Second toolbar item
+</div>
