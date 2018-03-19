@@ -47,3 +47,7 @@ msgstr ""
 #: src/widgets/handout.php:7
 msgid "Olari-v2 Handout"
 msgstr ""
+
+#: src/widgets/handout.php:21
+msgid "Post category to display:"
+msgstr ""

@@ -10,15 +10,18 @@ class olariv2_Handout extends WP_Widget {
 
   public function widget( $args, $instance ) {
 
-    
 
   }
 
   public function form( $instance ) {
 
     ?>
-
-
+    <p>
+      <label for="<?php echo esc_attr( $this->get_field_id( 'category' )); ?>">
+        <?php esc_attr_e( 'Post category to display:', 'olariv2') ?>
+      </label>
+      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'category' )); ?>" name="<?php echo esc_attr( $this->get_field_name( 'category' )); ?>" type="text" value="<?php ?>" >
+    </p>
     <?php
 
   }
