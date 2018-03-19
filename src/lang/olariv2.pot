@@ -28,3 +28,18 @@ msgstr ""
 #: src/templates/functions.php:25
 msgid "Widget area for toolbar items"
 msgstr ""
+
+#: src/widgets/calendar-and-events.php:24
+msgid "Calendar"
+msgstr ""
+
+#: src/widgets/calendar-and-events.php:33, src/widgets/calendar-and-events.php:34
+msgstr ""
+
+#: src/widgets/calendar-and-events.php:38
+msgid "Calendar url:"
+msgstr ""
+
+#: src/widgets/calendar-and-events.php:44
+msgid "Event post category:"
+msgstr ""
