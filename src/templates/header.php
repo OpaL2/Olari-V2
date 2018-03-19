@@ -23,3 +23,5 @@
     </div>
     <?php wp_nav_menu('primary'); ?>
   </header>
+
+  <?php get_sidebar('primary'); ?>

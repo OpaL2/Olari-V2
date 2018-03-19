@@ -12,6 +12,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import gless from 'gulp-less';
 import ginject from 'gulp-inject';
 import livereload from 'gulp-livereload';
+import concat from 'gulp-concat';
 
 import gwppot from 'gulp-wp-pot';
 import gpotomo from 'gulp-po2mo';
@@ -49,7 +50,7 @@ export function templates() {
 }
 
 export function wppot() {
-  return gulp.src('src/templates/**/*.php')
+  return gulp.src(['src/templates/**/*.php', 'src/widgets/**/*.php'])
     .pipe(gwppot({package: 'olariv2'}))
     .pipe(gulp.dest('src/lang/olariv2.pot'))
     .pipe(livereload());
@@ -63,7 +64,7 @@ export function watch() {
   gulp.watch(['src/templates/**/*.php', '!src/templates/functions.php'], gulp.parallel(templates, wppot));
   gulp.watch('src/wp-required/style.css', wp_required);
   gulp.watch('src/img/**/*.{png,svg,jpeg,jpg}', img);
-  gulp.watch('src/templates/functions.php', gulp.parallel(inject, wppot));
+  gulp.watch(['src/templates/functions.php', 'src/widgets/**/*.php'], gulp.parallel(inject, wppot));
 }
 
 export function inject() {
@@ -81,6 +82,8 @@ export function inject() {
       return inject.transform.apply(inject.transform, arguments);
     }
   }))
+  .pipe(gulp.src(['src/widgets/**/*.php']))
+  .pipe(concat('functions.php'))
   .pipe(gulp.dest('build/'))
   .pipe(livereload());
 }

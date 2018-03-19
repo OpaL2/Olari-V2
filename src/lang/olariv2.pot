@@ -20,3 +20,11 @@ msgstr ""
 #: src/templates/functions.php:13
 msgid "Hilighted"
 msgstr ""
+
+#: src/templates/functions.php:23
+msgid "Toolbar items"
+msgstr ""
+
+#: src/templates/functions.php:25
+msgid "Widget area for toolbar items"
+msgstr ""
