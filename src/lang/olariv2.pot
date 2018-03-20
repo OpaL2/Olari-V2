@@ -72,6 +72,10 @@ msgstr ""
 msgid "Post category to display:"
 msgstr ""
 
+#: src/templates/partials/front-page-branding.php:8
+msgid "Show more"
+msgstr ""
+
 #: src/templates/partials/theloop-excerpt.php:15, src/templates/partials/theloop.php:15
 msgid "Sorry, no posts matched your criteria."
 msgstr ""

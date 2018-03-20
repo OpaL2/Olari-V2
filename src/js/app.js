@@ -19,9 +19,28 @@ function mapMobileToolbar() {
   });
 }
 
+function mapShowMore() {
+  return _.map($('button#show-more'), (btn) => {
+    $(btn).click( () => {
+      window.scrollTo(0, sticky);
+    });
+  });
+}
+
+var sticky = $('#navbar').offset().top;
+
+window.onscroll = () => {
+  if (window.pageYOffset >= sticky) {
+    $('#navbar').addClass('sticky');
+    $('main').addClass('sticky-content');
+  }
+  else {
+    $('#navbar').removeClass('sticky');
+    $('main').removeClass('sticky-content');
+  }
+}
 
 $(document).ready( () => {
   mapMobileToolbar();
+  mapShowMore();
 });
-
-
