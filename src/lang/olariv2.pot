@@ -18,30 +18,34 @@ msgid "Primary"
 msgstr ""
 
 #: src/templates/functions.php:13
-msgid "Hilighted"
+msgid "Hilighted on mobile"
 msgstr ""
 
-#: src/templates/functions.php:23
+#: src/templates/functions.php:14
+msgid "Hilighted on desktop"
+msgstr ""
+
+#: src/templates/functions.php:24
 msgid "Toolbar items"
 msgstr ""
 
-#: src/templates/functions.php:25
+#: src/templates/functions.php:26
 msgid "Widget area for toolbar items"
 msgstr ""
 
-#: src/templates/functions.php:37
+#: src/templates/functions.php:38
 msgid "Theme settings"
 msgstr ""
 
-#: src/templates/functions.php:41
+#: src/templates/functions.php:42
 msgid "Front page branding"
 msgstr ""
 
-#: src/templates/functions.php:42
+#: src/templates/functions.php:43
 msgid "Settings for front page branding"
 msgstr ""
 
-#: src/templates/functions.php:54
+#: src/templates/functions.php:55
 msgid "Front page branding image"
 msgstr ""
 

@@ -10,7 +10,8 @@ function olariv2_setup() {
 
   register_nav_menus(array(
     'primary' => esc_html__('Primary', 'olariv2'),
-    'hiligths' => esc_html__('Hilighted', 'olariv2')
+    'hiligths_mobile' => esc_html__('Hilighted on mobile', 'olariv2'),
+    'hiligths_desktop' => esc_html__('Hilighted on desktop', 'olariv2')
   ));
 }
 endif;
@@ -33,26 +34,26 @@ add_action('widgets_init', 'olariv2_wigdets_init');
 
 function olariv2_customize_register($wp_customize) {
 
-  $wp_customize->add_panel('theme', array(
+  $wp_customize->add_panel('olariv2_theme', array(
     'title' => __('Theme settings', 'olariv2'),
     'priority' => 10
   ));
-  $wp_customize->add_section('front_page_branding', array(
+  $wp_customize->add_section('olariv2_front_page_branding', array(
     'title' => __('Front page branding', 'olariv2'),
     'description' => __('Settings for front page branding', 'olariv2'),
     'priority' => 160,
-    'panel' => 'theme',
+    'panel' => 'olariv2_theme',
     'capability' => 'edit_theme_options'
   ));
 
   $wp_customize->add_setting('front_page_img', array(
     'default' => '',
-    'section' => 'front_page_branding'
+    'section' => 'olariv2_front_page_branding'
   ));
 
   $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'front_page_img', array(
     'label' => __('Front page branding image', 'olariv2'),
-    'section' => 'front_page_branding',
+    'section' => 'olariv2_front_page_branding',
     'mime_type' => 'image'
   )));
 }

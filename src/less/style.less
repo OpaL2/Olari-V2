@@ -1,29 +1,95 @@
-body {
-  padding: 0;
-}
+@import "node_modules/normalize.less/normalize.less";
 
 .m-toolbar{
   text-align: center;
   position: fixed;
-  bottom: 0.5em;
-  margin: auto;
-  max-width: 80%;
+  bottom: 3%;
+  margin: 0 5%;
+  width: 90%;
   display: block;
+  height: 7%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .m-toolbar-button,
-.m-toolbar-button-nav{
-  padding: 10px;
+.m-toolbar-button-nav {
   margin: 0;
   width: 25%;
+  height: 100%;
   float: left;
   display: block;
+  border-style: none;
+  border-top: 1px solid black;
+  background-color: #FFF;
+}
+
+.active {
+  background-color: #a0a0a0;
+  border-top: 2px solid #a0a0a0;
 }
 
 .m-toolbar-page {
   display: none;
   position: fixed;
-  top: 5px;
-  z-index: 999;
-  background-color: #000000;
+  top: 3%;
+  margin: 0 5%;
+  padding: 1 rem;
+  width: 90%;
+  height: 87%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.site-branding {
+  position: -webkit-sticky;
+  position: sticky;
+  display: block;
+  top: 0;
+  width: auto%;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.site-logo {
+  width: 100%;
+}
+
+.site-logo img {
+  padding: 0 1%;
+  width: 98%;
+}
+
+.m-front-page-branding ul {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.m-front-page-branding li a {
+  display: block;
+  width: 90%;
+  text-align: center;
+  padding: 10px;
+  background-color: #FFF;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.m-front-page-branding li a:hover {
+  background-color: #a0a0a0;
+}
+
+.m-front-page-branding li {
+  width: 100%;
+}
+
+.l-front-page-branding {
+  display: none;
+}
+
+.loop {
+  margin-bottom: 50%;
 }
