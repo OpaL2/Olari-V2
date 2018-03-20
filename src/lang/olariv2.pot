@@ -29,6 +29,22 @@ msgstr ""
 msgid "Widget area for toolbar items"
 msgstr ""
 
+#: src/templates/functions.php:37
+msgid "Theme settings"
+msgstr ""
+
+#: src/templates/functions.php:41
+msgid "Front page branding"
+msgstr ""
+
+#: src/templates/functions.php:42
+msgid "Settings for front page branding"
+msgstr ""
+
+#: src/templates/functions.php:54
+msgid "Front page branding image"
+msgstr ""
+
 #: src/widgets/calendar-and-events.php:24
 msgid "Calendar"
 msgstr ""
@@ -50,4 +66,16 @@ msgstr ""
 
 #: src/widgets/handout.php:21
 msgid "Post category to display:"
+msgstr ""
+
+#: src/templates/partials/theloop-excerpt.php:15, src/templates/partials/theloop.php:15
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: src/templates/partials/toolbar-mobile.php:2
+msgid "&laquo;"
+msgstr ""
+
+#: src/templates/partials/toolbar-mobile.php:3
+msgid "&raquo;"
 msgstr ""

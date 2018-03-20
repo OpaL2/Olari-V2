@@ -14,17 +14,24 @@
   <header>
     <div class="site-branding">
       <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
-        <?php if($pagename): ?>
+        <?php if(is_page()): ?>
           /
-          <a href="<?php echo esc_url( get_permalink() ); ?>" rel="$pagename" >
+          <a href="<?php echo esc_url( get_permalink() ); ?>">
             <?php echo esc_html($pagename); ?>
+          </a>
+        <?php elseif (is_single()): ?>
+          /
+          <a href="<?php echo esc_url( get_post_permalink() ); ?>">
+            <?php single_post_title(); ?>
           </a>
         <?php endif; ?></h1>
     </div>
-    <div id="m-toolbar-page-4" class="primary-nav m-toolbar-page">
+    <div id="m-toolbar-page-menu" class="primary-nav m-toolbar-page">
       <?php wp_nav_menu('primary'); ?>
     </div>
   </header>
+  <?php get_sidebar('primary'); ?>
 
   <?php get_template_part('partials/toolbar', 'mobile'); ?>
-  <?php get_sidebar('primary'); ?>
+
+  <main>

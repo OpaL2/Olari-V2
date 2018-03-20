@@ -31,6 +31,33 @@ function olariv2_wigdets_init() {
 }
 add_action('widgets_init', 'olariv2_wigdets_init');
 
+function olariv2_customize_register($wp_customize) {
+
+  $wp_customize->add_panel('theme', array(
+    'title' => __('Theme settings', 'olariv2'),
+    'priority' => 10
+  ));
+  $wp_customize->add_section('front_page_branding', array(
+    'title' => __('Front page branding', 'olariv2'),
+    'description' => __('Settings for front page branding', 'olariv2'),
+    'priority' => 160,
+    'panel' => 'theme',
+    'capability' => 'edit_theme_options'
+  ));
+
+  $wp_customize->add_setting('front_page_img', array(
+    'default' => '',
+    'section' => 'front_page_branding'
+  ));
+
+  $wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'front_page_img', array(
+    'label' => __('Front page branding image', 'olariv2'),
+    'section' => 'front_page_branding',
+    'mime_type' => 'image'
+  )));
+}
+add_action('customize_register', 'olariv2_customize_register');
+
 /*
 This function is machine generated, please do not modify
 */

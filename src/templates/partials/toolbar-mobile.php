@@ -1,23 +1,20 @@
+<?php 
+  $prev_link = get_previous_posts_link(__('&laquo;', 'olariv2'));
+  $next_link = get_next_posts_link(__('&raquo;', 'olariv2'));
 
-<div class="m-toolbar">
-  <button id="m-toolbar-button-1" class="m-toolbar-button">handout</button>
-  <button id="m-toolbar-button-2" class="m-toolbar-button">calendar</button>
-  <button id="m-toolbar-button-3" class="m-toolbar-button">contact</button>
-  <button id="m-toolbar-button-4" class="m-toolbar-button">menu</button>
-</div>
-
-<?php
-  the_widget(
-    'olariv2_Handout',
-    array(),
-    array(
-      'before_widget' => '<div id="m-toolbar-page-1" class="m-toolbar-page">',
-      'after_widget' => '</div>',
-      'before_title' => '<h3 class="m-toolbar-title">',
-      'after_title' => '</h3>'
-    ));
 ?>
 
-<div class="m-toolbar-page" id="m-toolbar-page-2">
-  Second toolbar item
+<?php if (is_front_page()): ?>
+<div class="m-toolbar">
+  <button id="m-toolbar-button-handout" class="m-toolbar-button">handout</button>
+  <button id="m-toolbar-button-calendar" class="m-toolbar-button">calendar</button>
+  <button id="m-toolbar-button-contact" class="m-toolbar-button">contact</button>
+  <button id="m-toolbar-button-menu" class="m-toolbar-button">menu</button>
 </div>
+<?php elseif (is_single() || is_page()): ?>
+  <div class="m-toolbar">
+    <?php echo $prev_link ;?>
+    <button id="m-toolbar-button-menu" class="m-toolbar-button">menu</button>
+    <?php echo $next_link; ?>
+  </div>
+<?php endif; ?>

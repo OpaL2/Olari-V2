@@ -9,7 +9,7 @@ function mapMobileToolbar() {
       $('.m-toolbar-page').hide().removeClass("active");
       $(btn).toggleClass("active");
       if($(btn).hasClass("active")){
-        $('#m-toolbar-page-' + btn.id.substr(-1)).show().addClass("active");
+        $('#m-toolbar-page-' + btn.id.split("-").pop()).show().addClass("active");
       }
     });
   });

@@ -4,9 +4,10 @@ get_header();
 
 ?>
 
-<main>
-<div id="react-main" />
-</main>
+
+<div id="react-main"></div>
+<?php get_template_part('partials/theloop'); ?>
+
 <?php
 
 get_footer();

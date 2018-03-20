@@ -106,7 +106,7 @@ function build_js(startPath, targetDirectory) {
       .on('error', (err) => {
         console.log(err);
       })
-      .pipe(source('app.js'))
+      .pipe(source('index.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write())
@@ -123,7 +123,7 @@ function build_js_production(startPath, targetDirectory) {
       .on('error', (err) => {
         console.log(err);
       })
-      .pipe(source('app.js'))
+      .pipe(source('index.js'))
       .pipe(buffer())
       .pipe(uglify())
       .pipe(gulp.dest(targetDirectory));
