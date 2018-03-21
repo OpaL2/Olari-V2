@@ -5,6 +5,10 @@ html {
   height: 100%;
 }
 
+.front-page-content-wrapper {
+  min-height: 100%;
+}
+
 .m-toolbar{
   text-align: center;
   position: fixed;
@@ -40,7 +44,6 @@ html {
   position: fixed;
   top: 3%;
   margin: 0 5%;
-  padding: 1 rem;
   width: 90%;
   height: 87%;
   border-left: 1px solid black;
@@ -81,25 +84,40 @@ html {
 }
 
 .m-front-page-branding ul {
-  width: 100%
+  width: 100%;
   display: block;
   padding: 0;
   margin: 0;
 }
 
-.m-front-page-branding li a,
-button.m-front-page-branding {
+.m-front-page-branding ul li {
+  padding: 0;
+  margin: 0;
+  width: 100%;
   display: block;
-  width: 90%;
+  height: 7%;
+}
+
+.m-front-page-branding ul li a,
+button.m-front-page-branding,
+.m-full-button {
+  display: block;
   text-align: center;
-  padding: 10px;
+  padding: 0.5rem0;
+  width: 90%;
   background-color: #FFF;
   margin: 0 auto;
   border: 1px solid black;
 }
 
-button#show-more {
-  width: 97%;
+.m-full-button {
+  margin-bottom: 20%;
+}
+
+button.m-front-page-branding {
+  position: absolute;
+  top: 80%;
+  left: 5%;
 }
 
 .m-front-page-branding li a:hover,
@@ -107,14 +125,10 @@ button#show-more:hover {
   background-color: #a0a0a0;
 }
 
-.m-front-page-branding li {
-  width: 100%;
-}
-
 .l-front-page-branding {
   display: none;
 }
 
 .loop {
-  margin-bottom: 50%;
+  margin-bottom: 1rem;
 }

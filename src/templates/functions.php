@@ -24,7 +24,7 @@ function olariv2_wigdets_init() {
       'name' => __('Toolbar items', 'olariv2'),
       'id' => 'primary',
       'description' => __('Widget area for toolbar items', 'olariv2'),
-      'before_widget' => '<div id="%1$s" class="primary-widget m-toolbar-page">',
+      'before_widget' => '<div id="%1$s" class="primary-widget">',
       'after_widget' => '</div>',
       'before_title' => '<h3 class="primary-widget-title" >',
       'after_title' => '</h3>' 
@@ -38,10 +38,11 @@ function olariv2_customize_register($wp_customize) {
     'title' => __('Theme settings', 'olariv2'),
     'priority' => 10
   ));
+
   $wp_customize->add_section('olariv2_front_page_branding', array(
     'title' => __('Front page branding', 'olariv2'),
     'description' => __('Settings for front page branding', 'olariv2'),
-    'priority' => 160,
+    'priority' => 10,
     'panel' => 'olariv2_theme',
     'capability' => 'edit_theme_options'
   ));
@@ -56,6 +57,34 @@ function olariv2_customize_register($wp_customize) {
     'section' => 'olariv2_front_page_branding',
     'mime_type' => 'image'
   )));
+
+  $wp_customize->add_section('olariv2_toolbar_widgets', array(
+    'title' => __('Toolbar widget settings', 'olariv2'),
+    'description' => __('Settings for widgets in toolbar items', 'olariv2'),
+    'pirority' => 20,
+    'panel' => 'olariv2_theme',
+    'capability' => 'edit_theme_options'
+  ));
+
+  $wp_customize->add_setting('handout_widget_category', array(
+    'default' => '',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+
+
+  $wp_customize->add_control('handout_widget_category', array(
+    'label' => __('Handout Widget Post Category', 'olariv2'),
+    'description' => __('Controls which post category is used in handout widget', 'olariv2'),
+    'type' => 'select',
+    'section' => 'olariv2_toolbar_widgets',
+    'choices' => array_reduce(get_terms(array('taxonomy' => 'category')),
+      function ($carry,$term) {
+        $carry[$term->term_id] = $term->name;
+        return $carry;
+      },
+      array())
+  ));
 }
 add_action('customize_register', 'olariv2_customize_register');
 

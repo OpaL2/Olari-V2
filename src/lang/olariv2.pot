@@ -37,23 +37,39 @@ msgstr ""
 msgid "Theme settings"
 msgstr ""
 
-#: src/templates/functions.php:42
+#: src/templates/functions.php:43
 msgid "Front page branding"
 msgstr ""
 
-#: src/templates/functions.php:43
+#: src/templates/functions.php:44
 msgid "Settings for front page branding"
 msgstr ""
 
-#: src/templates/functions.php:55
+#: src/templates/functions.php:56
 msgid "Front page branding image"
+msgstr ""
+
+#: src/templates/functions.php:62
+msgid "Toolbar widget settings"
+msgstr ""
+
+#: src/templates/functions.php:63
+msgid "Settings for widgets in toolbar items"
+msgstr ""
+
+#: src/templates/functions.php:77
+msgid "Handout Widget Post Category"
+msgstr ""
+
+#: src/templates/functions.php:78
+msgid "Controls which post category is used in handout widget"
 msgstr ""
 
 #: src/widgets/calendar-and-events.php:24
 msgid "Calendar"
 msgstr ""
 
-#: src/widgets/calendar-and-events.php:33, src/widgets/calendar-and-events.php:34
+#: src/widgets/calendar-and-events.php:33, src/widgets/calendar-and-events.php:34, src/widgets/handout.php:34
 msgstr ""
 
 #: src/widgets/calendar-and-events.php:38
@@ -68,7 +84,10 @@ msgstr ""
 msgid "Olari-v2 Handout"
 msgstr ""
 
-#: src/widgets/handout.php:21
+#: src/widgets/handout.php:22
+msgstr ""
+
+#: src/widgets/handout.php:39
 msgid "Post category to display:"
 msgstr ""
 

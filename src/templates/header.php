@@ -11,7 +11,10 @@
 </head>
 <body <?php body_class(); ?> >
 <!-- begin:body -->
-  <?php if(is_front_page()): get_template_part('partials/front-page', 'branding'); endif;?>
+  <?php if(is_front_page()): get_template_part('partials/front-page', 'branding');?>
+    <div class="front-page-content-wrapper">
+  <?php endif; ?>
+  
   <header id="navbar" class="site-branding">
       <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
         <?php if(is_page()): ?>
@@ -27,9 +30,10 @@
         <?php endif; ?></h1>
 
     <div id="m-toolbar-page-menu" class="primary-nav m-toolbar-page">
-      <?php wp_nav_menu('primary'); ?>
+      <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
     </div>
   </header>
+  
   <?php get_sidebar('primary'); ?>
 
   <?php get_template_part('partials/toolbar', 'mobile'); ?>

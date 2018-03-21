@@ -2,7 +2,7 @@
   <?php
   the_widget(
     'olariv2_Handout',
-    array(),
+    array('category' => get_theme_mod('handout_widget_category')),
     array(
       'before_widget' => '<div id="m-toolbar-page-handout" class="m-toolbar-page">',
       'after_widget' => '</div>',
