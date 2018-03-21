@@ -19,14 +19,6 @@ function mapMobileToolbar() {
   });
 }
 
-function mapShowMore() {
-  return _.map($('button#show-more'), (btn) => {
-    $(btn).click( () => {
-      window.scrollTo(0, sticky);
-    });
-  });
-}
-
 var sticky = $('#navbar').offset().top;
 
 window.onscroll = () => {

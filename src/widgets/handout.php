@@ -11,6 +11,10 @@ class olariv2_Handout extends WP_Widget {
   public function widget( $args, $instance ) {
 
     echo ($args['before_widget']);
+    ?>
+    <div class="handout-widget-content"> 
+
+    <?php
 
     $loop = new WP_Query(array(
       'cat' => $instance['category'],
@@ -19,12 +23,18 @@ class olariv2_Handout extends WP_Widget {
 
     while ( $loop->have_posts() ) : $loop->the_post();
       global $post;?>
-      <a href="<?php the_permalink(); ?>"><h3><?php esc_html_e(the_title()); ?></h3></a>
       
+      <div class="handout-widget-item">
+        <a href="<?php the_permalink(); ?>"><h3 class="handout-widget-item-title"><?php esc_html_e(the_title()); ?></h3></a>
+        <p>
+          <?php esc_html_e(the_excerpt()); ?>
+        </p>
 
-    <?php endwhile; 
+      </div>
+    <?php endwhile; ?>
 
-
+  </div>
+  <?php
 
     echo ($args['after_widget']);
   }

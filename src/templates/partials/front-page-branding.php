@@ -5,7 +5,7 @@
     <?php wp_nav_menu(array('theme_location' => 'hilights_mobile')); ?>
   </div>
 
-  <button id="show-more" class="m-front-page-branding"><?php echo __("Show more", 'olariv2') ?> </button>
+  <a id="show-more" class="m-front-page-branding" href="#front-page-content"><?php echo __("Show more", 'olariv2') ?> </a>
 
   <div class="l-front-page-branding">
     <?php wp_nav_menu(array('theme_location' => 'hiligths_desktop')); ?>

@@ -13,96 +13,136 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/templates/functions.php:12
+#: build/functions.php:12
 msgid "Primary"
 msgstr ""
 
-#: src/templates/functions.php:13
+#: build/functions.php:13
 msgid "Hilighted on mobile"
 msgstr ""
 
-#: src/templates/functions.php:14
+#: build/functions.php:14
 msgid "Hilighted on desktop"
 msgstr ""
 
-#: src/templates/functions.php:24
+#: build/functions.php:24
 msgid "Toolbar items"
 msgstr ""
 
-#: src/templates/functions.php:26
+#: build/functions.php:26
 msgid "Widget area for toolbar items"
 msgstr ""
 
-#: src/templates/functions.php:38
+#: build/functions.php:38
 msgid "Theme settings"
 msgstr ""
 
-#: src/templates/functions.php:43
+#: build/functions.php:43
 msgid "Front page branding"
 msgstr ""
 
-#: src/templates/functions.php:44
+#: build/functions.php:44
 msgid "Settings for front page branding"
 msgstr ""
 
-#: src/templates/functions.php:56
+#: build/functions.php:56
 msgid "Front page branding image"
 msgstr ""
 
-#: src/templates/functions.php:62
+#: build/functions.php:67
+msgid "Front page post category"
+msgstr ""
+
+#: build/functions.php:68
+msgid "Controls which post category is used in front page"
+msgstr ""
+
+#: build/functions.php:80
 msgid "Toolbar widget settings"
 msgstr ""
 
-#: src/templates/functions.php:63
+#: build/functions.php:81
 msgid "Settings for widgets in toolbar items"
 msgstr ""
 
-#: src/templates/functions.php:77
+#: build/functions.php:95
 msgid "Handout Widget Post Category"
 msgstr ""
 
-#: src/templates/functions.php:78
+#: build/functions.php:96
 msgid "Controls which post category is used in handout widget"
 msgstr ""
 
-#: src/widgets/calendar-and-events.php:24
+#: build/functions.php:162
 msgid "Calendar"
 msgstr ""
 
-#: src/widgets/calendar-and-events.php:33, src/widgets/calendar-and-events.php:34, src/widgets/handout.php:34
+#: build/functions.php:171, build/functions.php:172, build/functions.php:243, build/functions.php:244, build/functions.php:245, build/functions.php:246, build/functions.php:344
 msgstr ""
 
-#: src/widgets/calendar-and-events.php:38
+#: build/functions.php:176
 msgid "Calendar url:"
 msgstr ""
 
-#: src/widgets/calendar-and-events.php:44
+#: build/functions.php:182
 msgid "Event post category:"
 msgstr ""
 
-#: src/widgets/handout.php:7
+#: build/functions.php:222, build/functions.php:228, build/functions.php:231, build/functions.php:233, build/functions.php:250, build/functions.php:253, build/functions.php:253, build/functions.php:257, build/functions.php:260, build/functions.php:260, build/functions.php:264, build/functions.php:267, build/functions.php:267, build/functions.php:272, build/functions.php:275, build/functions.php:275, build/functions.php:328, build/functions.php:330
+msgstr ""
+
+#: build/functions.php:251
+msgid "Email address: "
+msgstr ""
+
+#: build/functions.php:253
+msgid "$email"
+msgstr ""
+
+#: build/functions.php:258
+msgid "Telephone:"
+msgstr ""
+
+#: build/functions.php:260
+msgid "$telephone"
+msgstr ""
+
+#: build/functions.php:265
+msgid "Address:"
+msgstr ""
+
+#: build/functions.php:267
+msgid "$address"
+msgstr ""
+
+#: build/functions.php:273
+msgid "Url to maps service:"
+msgstr ""
+
+#: build/functions.php:275
+msgid "$maps_url"
+msgstr ""
+
+#: build/functions.php:307
 msgid "Olari-v2 Handout"
 msgstr ""
 
-#: src/widgets/handout.php:22
-msgstr ""
-
-#: src/widgets/handout.php:39
+#: build/functions.php:349
 msgid "Post category to display:"
 msgstr ""
 
-#: src/templates/partials/front-page-branding.php:8
+#: build/partials/front-page-branding.php:8
 msgid "Show more"
 msgstr ""
 
-#: src/templates/partials/theloop-excerpt.php:15, src/templates/partials/theloop.php:15
+#: build/partials/theloop-excerpt.php:15, build/partials/theloop-front-page.php:22, build/partials/theloop.php:15
 msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
-#: src/templates/partials/toolbar-mobile.php:2
+#: build/partials/toolbar-mobile.php:2
 msgid "&laquo;"
 msgstr ""
 
-#: src/templates/partials/toolbar-mobile.php:3
+#: build/partials/toolbar-mobile.php:3
 msgid "&raquo;"
 msgstr ""

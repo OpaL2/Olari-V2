@@ -50,7 +50,7 @@ export function templates() {
 }
 
 export function wppot() {
-  return gulp.src(['src/templates/**/*.php', 'src/widgets/**/*.php'])
+  return gulp.src('build/**/*.php')
     .pipe(gwppot({package: 'olariv2'}))
     .pipe(gulp.dest('src/lang/olariv2.pot'))
     .pipe(livereload());
@@ -61,10 +61,10 @@ export function watch() {
   gulp.watch('src/js/**/*.{js,jsx}', gulp.series(js, inject));
   gulp.watch('src/less/**/*.less', gulp.series(less, inject));
   gulp.watch('src/lang/**/*.po', lang);
-  gulp.watch(['src/templates/**/*.php', '!src/templates/functions.php'], gulp.parallel(templates, wppot));
+  gulp.watch(['src/templates/**/*.php', '!src/templates/functions.php'], gulp.series(templates, wppot));
   gulp.watch('src/wp-required/style.css', wp_required);
   gulp.watch('src/img/**/*.{png,svg,jpeg,jpg}', img);
-  gulp.watch(['src/templates/functions.php', 'src/widgets/**/*.php'], gulp.parallel(inject, wppot));
+  gulp.watch(['src/templates/functions.php', 'src/widgets/**/*.php'], gulp.series(inject, wppot));
 }
 
 export function inject() {
@@ -90,8 +90,9 @@ export function inject() {
 
 export const build = gulp.series(
   clean,
-  gulp.parallel(js, less, wp_required, lang, templates, wppot, img),
-  inject
+  gulp.parallel(js, less, wp_required, lang, templates, img),
+  inject,
+  wppot
 );
 
 export const build_and_watch = gulp.series(build, watch);

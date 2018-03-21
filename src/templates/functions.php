@@ -58,6 +58,24 @@ function olariv2_customize_register($wp_customize) {
     'mime_type' => 'image'
   )));
 
+ $wp_customize->add_setting('front_page_post_category', array(
+    'default' => '',
+    'section' => 'olariv2_front_page_branding'
+  ));
+
+  $wp_customize->add_control('front_page_post_category', array(
+    'label' => __('Front page post category', 'olariv2'),
+    'description' => __('Controls which post category is used in front page', 'olariv2'),
+    'type' => 'select',
+    'section' => 'olariv2_front_page_branding',
+    'choices' => array_reduce(get_terms(array('taxonomy' => 'category')),
+      function ($carry,$term) {
+        $carry[$term->term_id] = $term->name;
+        return $carry;
+      },
+      array())
+  ));
+
   $wp_customize->add_section('olariv2_toolbar_widgets', array(
     'title' => __('Toolbar widget settings', 'olariv2'),
     'description' => __('Settings for widgets in toolbar items', 'olariv2'),

@@ -12,11 +12,11 @@
 <body <?php body_class(); ?> >
 <!-- begin:body -->
   <?php if(is_front_page()): get_template_part('partials/front-page', 'branding');?>
-    <div class="front-page-content-wrapper">
+    <div id="front-page-content" class="front-page-content-wrapper">
   <?php endif; ?>
   
   <header id="navbar" class="site-branding">
-      <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
+      <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) . '#front-page-content' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
         <?php if(is_page()): ?>
           /
           <a href="<?php echo esc_url( get_permalink() ); ?>">
