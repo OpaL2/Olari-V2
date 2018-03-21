@@ -40,8 +40,8 @@ function olariv2_customize_register($wp_customize) {
   ));
 
   $wp_customize->add_section('olariv2_front_page_branding', array(
-    'title' => __('Front page branding', 'olariv2'),
-    'description' => __('Settings for front page branding', 'olariv2'),
+    'title' => __('Front page', 'olariv2'),
+    'description' => __('Settings for front page', 'olariv2'),
     'priority' => 10,
     'panel' => 'olariv2_theme',
     'capability' => 'edit_theme_options'
@@ -77,7 +77,7 @@ function olariv2_customize_register($wp_customize) {
   ));
 
   $wp_customize->add_section('olariv2_toolbar_widgets', array(
-    'title' => __('Toolbar widget settings', 'olariv2'),
+    'title' => __('Toolbar widgets', 'olariv2'),
     'description' => __('Settings for widgets in toolbar items', 'olariv2'),
     'pirority' => 20,
     'panel' => 'olariv2_theme',
@@ -88,8 +88,6 @@ function olariv2_customize_register($wp_customize) {
     'default' => '',
     'section' => 'olariv2_toolbar_widgets'
   ));
-
-
 
   $wp_customize->add_control('handout_widget_category', array(
     'label' => __('Handout Widget Post Category', 'olariv2'),
@@ -103,6 +101,55 @@ function olariv2_customize_register($wp_customize) {
       },
       array())
   ));
+
+  $wp_customize->add_setting('contact_info_widget_email', array(
+    'default' => '',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_control('contact_info_widget_email', array(
+    'label' => __('Contact widget email address:', 'olariv2'),
+    'description' => __('Email address which is displayed in main contact widget', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_setting('contact_info_widget_telephone', array(
+    'default' => '',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_control('contact_info_widget_telephone', array(
+    'label' => __('Contact widget phone number:', 'olariv2'),
+    'description' => __('Phone number which is displayed in main contact widget', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_setting('contact_info_widget_address', array(
+    'default' => '',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_control('contact_info_widget_address', array(
+    'label' => __('Contact widget address:', 'olariv2'),
+    'description' => __('Address which is displayed in main contact widget', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_setting('contact_info_widget_maps_url', array(
+    'default' => '',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_control('contact_info_widget_maps_url', array(
+    'label' => __('Location services url:', 'olariv2'),
+    'description' => __('Location services url which is used with main contact widget adress', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
 }
 add_action('customize_register', 'olariv2_customize_register');
 

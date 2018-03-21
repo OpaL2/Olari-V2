@@ -38,11 +38,11 @@ msgid "Theme settings"
 msgstr ""
 
 #: build/functions.php:43
-msgid "Front page branding"
+msgid "Front page"
 msgstr ""
 
 #: build/functions.php:44
-msgid "Settings for front page branding"
+msgid "Settings for front page"
 msgstr ""
 
 #: build/functions.php:56
@@ -58,76 +58,108 @@ msgid "Controls which post category is used in front page"
 msgstr ""
 
 #: build/functions.php:80
-msgid "Toolbar widget settings"
+msgid "Toolbar widgets"
 msgstr ""
 
 #: build/functions.php:81
 msgid "Settings for widgets in toolbar items"
 msgstr ""
 
-#: build/functions.php:95
+#: build/functions.php:93
 msgid "Handout Widget Post Category"
 msgstr ""
 
-#: build/functions.php:96
+#: build/functions.php:94
 msgid "Controls which post category is used in handout widget"
 msgstr ""
 
-#: build/functions.php:162
+#: build/functions.php:111
+msgid "Contact widget email address:"
+msgstr ""
+
+#: build/functions.php:112
+msgid "Email address which is displayed in main contact widget"
+msgstr ""
+
+#: build/functions.php:123
+msgid "Contact widget phone number:"
+msgstr ""
+
+#: build/functions.php:124
+msgid "Phone number which is displayed in main contact widget"
+msgstr ""
+
+#: build/functions.php:135
+msgid "Contact widget address:"
+msgstr ""
+
+#: build/functions.php:136
+msgid "Address which is displayed in main contact widget"
+msgstr ""
+
+#: build/functions.php:147
+msgid "Location services url:"
+msgstr ""
+
+#: build/functions.php:148
+msgid "Location services url which is used with main contact widget adress"
+msgstr ""
+
+#: build/functions.php:209
 msgid "Calendar"
 msgstr ""
 
-#: build/functions.php:171, build/functions.php:172, build/functions.php:243, build/functions.php:244, build/functions.php:245, build/functions.php:246, build/functions.php:344
+#: build/functions.php:218, build/functions.php:219, build/functions.php:290, build/functions.php:291, build/functions.php:292, build/functions.php:293, build/functions.php:391
 msgstr ""
 
-#: build/functions.php:176
+#: build/functions.php:223
 msgid "Calendar url:"
 msgstr ""
 
-#: build/functions.php:182
+#: build/functions.php:229
 msgid "Event post category:"
 msgstr ""
 
-#: build/functions.php:222, build/functions.php:228, build/functions.php:231, build/functions.php:233, build/functions.php:250, build/functions.php:253, build/functions.php:253, build/functions.php:257, build/functions.php:260, build/functions.php:260, build/functions.php:264, build/functions.php:267, build/functions.php:267, build/functions.php:272, build/functions.php:275, build/functions.php:275, build/functions.php:328, build/functions.php:330
+#: build/functions.php:269, build/functions.php:275, build/functions.php:278, build/functions.php:280, build/functions.php:297, build/functions.php:300, build/functions.php:300, build/functions.php:304, build/functions.php:307, build/functions.php:307, build/functions.php:311, build/functions.php:314, build/functions.php:314, build/functions.php:319, build/functions.php:322, build/functions.php:322, build/functions.php:375, build/functions.php:377
 msgstr ""
 
-#: build/functions.php:251
+#: build/functions.php:298
 msgid "Email address: "
 msgstr ""
 
-#: build/functions.php:253
+#: build/functions.php:300
 msgid "$email"
 msgstr ""
 
-#: build/functions.php:258
+#: build/functions.php:305
 msgid "Telephone:"
 msgstr ""
 
-#: build/functions.php:260
+#: build/functions.php:307
 msgid "$telephone"
 msgstr ""
 
-#: build/functions.php:265
+#: build/functions.php:312
 msgid "Address:"
 msgstr ""
 
-#: build/functions.php:267
+#: build/functions.php:314
 msgid "$address"
 msgstr ""
 
-#: build/functions.php:273
+#: build/functions.php:320
 msgid "Url to maps service:"
 msgstr ""
 
-#: build/functions.php:275
+#: build/functions.php:322
 msgid "$maps_url"
 msgstr ""
 
-#: build/functions.php:307
+#: build/functions.php:354
 msgid "Olari-v2 Handout"
 msgstr ""
 
-#: build/functions.php:349
+#: build/functions.php:396
 msgid "Post category to display:"
 msgstr ""
 
