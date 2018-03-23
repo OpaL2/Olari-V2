@@ -38,7 +38,7 @@ export function wp_required() {
     .pipe(livereload());
 }
 
-export const less = build_less('src/less/**/*.less', 'build/css/');
+export const less = build_less(['src/less/**/*.less','!src/less/partials/**/*.less'], 'build/css/');
 
 export const js = build_js('./src/js/app.js', './build/js');
 export const js_production = build_js('src/js/app.js', 'build/js/');
