@@ -1,12 +1,12 @@
 <?php
 
+/**
+* @package olariv2
+*/
+
 get_header();
 
-?>
-
-<?php get_template_part('partials/theloop'); ?>
-
-<?php
+get_template_part('partials/theloop', 'excrept');
 
 get_footer();
 

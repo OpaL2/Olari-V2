@@ -1,3 +1,11 @@
+<?php 
+/**
+* @package olariv2
+*/
+
+ ?>
+
+
 <header id="front-page-branding" class="front-page-branding">
   <div class="site-logo"><img src="<?php echo wp_get_attachment_url(get_theme_mod( 'front_page_img')); ?>"></div>
 
