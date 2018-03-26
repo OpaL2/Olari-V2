@@ -12,25 +12,21 @@ html {
 .m-toolbar{
   text-align: center;
   position: fixed;
-  bottom: 3%;
-  margin: 0 5%;
-  width: 90%;
+  bottom: 0;
+  right: 0;
+  margin: 0 0.2rem;
   display: block;
-  height: 7%;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  z-index: 9;
+  width: 25%;
 }
 
 .m-toolbar-button,
 .m-toolbar-button-nav {
-  margin: 0;
-  width: 25%;
-  height: 100%;
+  margin: 0.2rem;
+  border-radius: 5px;
   float: left;
   display: block;
-  border-style: none;
-  border-top: 1px solid black;
+  border: 1px solid black;
   background-color: #FFF;
 }
 
@@ -59,14 +55,22 @@ html {
   margin: 0;
 }
 
-.sticky {
+.sticky-navbar {
   position: fixed;
   top: 0;
 }
 
-.sticky-content {
-  padding-top: 4rem;
+.sticky-footer {
+  position: fixed;
+  bottom: 0;
 }
+
+.site-footer {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
 
 .front-page-branding {
   margin: 0 auto;
@@ -119,6 +123,9 @@ html {
 
 .l-front-page-branding {
   display: none;
+}
+
+.site-footer {
 }
 
 .loop {

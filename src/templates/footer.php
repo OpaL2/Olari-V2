@@ -6,7 +6,7 @@
 
   </main>
 
-  <footer class="site-footer">
+  <footer id="footer" class="site-footer">
     <div id="to-top-btn"><a href="#navbar"> <?php _e('To top', 'olariv2') ?></a> </div>
     <?php the_widget(
       'olariv2_Social_Media',
