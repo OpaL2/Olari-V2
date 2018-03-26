@@ -17,18 +17,7 @@
   
   <header id="navbar" class="site-branding">
       <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) . '#front-page-content' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
-        <?php if(is_page()): ?>
-          /
-          <a href="<?php echo esc_url( get_permalink() ); ?>">
-            <?php echo esc_html($pagename); ?>
-          </a>
-        <?php elseif (is_single()): ?>
-          /
-          <a href="<?php echo esc_url( get_post_permalink() ); ?>">
-            <?php single_post_title(); ?>
-          </a>
-        <?php endif; ?></h1>
-
+      </h1>
     <div id="m-toolbar-page-menu" class="primary-nav m-toolbar-page">
       <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
     </div>
@@ -38,4 +27,4 @@
 
   <?php get_template_part('partials/toolbar', 'mobile'); ?>
 
-  <main class="content">
+  <main id="content" class="">
