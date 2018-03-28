@@ -26,47 +26,79 @@ html {
 
 .m-toolbar{
   text-align: center;
-  position: fixed;
-  bottom: 0;
-  right: 0;
   margin: 0;
   display: block;
-  z-index: 999;
   width: 100%;
   height: 2rem;
-  background-color: red;
-  z-index: 999;
+  background-color: white;
+  border-bottom: 1px solid black;
 }
 
 .m-toolbar-button,
 .m-toolbar-button-nav {
-  margin: 0 5%;
+  margin: 0 auto;
   border-radius: 5px;
-  width: 15%;
+  width: 25%;
   float: left;
   display: block;
-  color: red;
   border: none;
   height: 100%;
 }
 
 .m-toolbar-page {
   display: none;
-  position: fixed;
+  position: absolute;
   width: 100%;
-  background-color: red;
-  z-index: 998;
+  background-color: white;
+  border-bottom: 1px solid black;
+  margin-bottom: 2rem;
+}
+
+.active {
+  overflow-y: auto;
+
 }
 
 .site-branding {
   width: 100%;
-  background-color: orange;
+  padding: 0px;
+  margin: 0px;
+  background-color: white;
 }
+
+.site-title {
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  margin: 0;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+
+.site-title a {
+  font: sans-serif;
+  color: orange;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+}
+
+.site-title a:hover {
+}
+
+.site-title a:active {
+  color: white;
+  background-color: orange;
+  border-radius: 5px;
+}
+
 .site-branding:before,
 .site-branding:after {
   content: "";
   display: table;
   clear: both;
+}
+
+.site-navigation {
+  display: none;
 }
 
 .sticky-navbar {
@@ -76,18 +108,15 @@ html {
 
 .site-footer {
   margin: 0;
-  background-color: orange;
+  background-color: white;
   width: 100%;
-  z-index: -1;
+  border-top: 1px solid black;
 }
 
 .sticky-footer {
   position: fixed;
   bottom: 0;
 }
-
-
-
 
 .front-page-branding {
   margin: 0 auto;

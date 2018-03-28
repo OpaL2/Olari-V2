@@ -18,13 +18,15 @@
   <header id="navbar" class="site-branding">
       <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) . '#front-page-content' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
       </h1>
-    <div id="m-toolbar-page-menu" class="primary-nav m-toolbar-page">
-      <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
-    </div>
+      <?php get_template_part('partials/toolbar', 'mobile'); ?>
+      <div id="m-toolbar-page-menu" class="m-toolbar-page site-navigation">
+        <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
+        <?php get_search_form(); ?>
+      </div>
   </header>
-  
+
   <?php get_sidebar('primary'); ?>
 
-  <?php get_template_part('partials/toolbar', 'mobile'); ?>
+
 
   <main id="content" class="">

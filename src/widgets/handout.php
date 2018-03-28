@@ -18,7 +18,7 @@ class olariv2_Handout extends WP_Widget {
 
     $loop = new WP_Query(array(
       'cat' => $instance['category'],
-      'posts_per_page' => 10
+      'posts_per_page' => 5
     ));
 
     while ( $loop->have_posts() ) : $loop->the_post();
@@ -26,12 +26,10 @@ class olariv2_Handout extends WP_Widget {
       
       <div class="handout-widget-item">
         <a href="<?php the_permalink(); ?>"><h3 class="handout-widget-item-title"><?php esc_html_e(the_title()); ?></h3></a>
-        <p>
-          <?php esc_html_e(the_excerpt()); ?>
-        </p>
-
       </div>
     <?php endwhile; ?>
+
+    <a href="<?php echo esc_url( get_category_link($instance['category'])); ?>" ><?php _e('Show more...', 'olariv2'); ?></a>
 
   </div>
   <?php

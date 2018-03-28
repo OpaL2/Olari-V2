@@ -22,34 +22,29 @@ import _ from 'lodash';
 function mapMobileToolbar() {
   return _.map($('.m-toolbar-button'), (btn) => {
     $(btn).unbind('click.olariv2');
-    $(btn).bind('click.olariv2', () => {
+
       var $btn = $(btn);
       var $page = $('#m-toolbar-page-' + btn.id.split("-").pop())
-      var $activePages = $('.m-toolbar-page.active');
       var $btns = $('.m-toolbar-button');
-      var height = $('#mobile-toolbar').height();
-      var hideHeight = height - $page.height();
 
-      if($btn.hasClass('active')) {
-        $page.animate({bottom: hideHeight}, 500, () => {
-          $page.hide().removeClass('active');
-          $btn.removeClass('active');
-        });
+    $btn.bind('click.olariv2', () => {
+      var $activePages = $('.m-toolbar-page.active');
+
+      if($btn.hasClass('active-btn')) {
+        $page.slideUp(100);
+        $btn.addClass('active-btn');
       }
 
       else if ($activePages.length !== 0) {
-        $activePages.animate({bottom: hideHeight}, 0, () => {
-          $activePages.hide().removeClass('active');
-          $btns.removeClass('active');
-          $btn.addClass('active')
-          $page.show().css('bottom', hideHeight).addClass('active').animate({bottom: height}, 500);
-        });
+        $activePages.slideUp(100);
+        $btns.removeClass('active-btn');
+        $btn.addClass('active-btn');
+        $page.addClass('active').slideDown(500);
       }
 
       else {
-        $btn.addClass('active')
-        $page.show().css('bottom', hideHeight).addClass('active').animate({bottom: height}, 500);
-
+        $btn.addClass('active-btn')
+        $page.addClass('active').slideDown(500);
       }
     });
   });
@@ -59,17 +54,18 @@ var sticky_navbar = $('#navbar').offset().top;
 
 $(window).bind("load", () => {
   var $header = $('#navbar'),
-    headerHeight = $header.height(),
-    headerTop = $header.position().top,
+    headerHeight = 0,
+    headerTop = 0,
     $footer = $('#footer'),
-    footerHeight = $footer.height(),
-    footerTop = $footer.position().top,
+    footerHeight = 0,
+    footerTop = 0,
     $content = $('#content'),
     $toolbar = $("#mobile-toolbar"),
-    toolbarHeight = $toolbar.height(),
-    toolbarTop = $toolbar.position().top;
+    toolbarHeight = 0,
+    toolbarTop = 0;
 
     scale();
+    mapMobileToolbar();
 
     function position() {
 
@@ -82,9 +78,9 @@ $(window).bind("load", () => {
         $content.css('padding-top', 0);
       }
 
-      if($(window).scrollTop() + $(window).height() >= footerTop + footerHeight+ toolbarHeight) {
+      if($(window).scrollTop() + $(window).height() >= footerTop + footerHeight) {
         $footer.addClass('sticky-footer');
-        $content.css('padding-bottom', footerHeight + toolbarHeight);
+        $content.css('padding-bottom', footerHeight);
       }
       else {
         $footer.removeClass('sticky-footer');
@@ -94,7 +90,8 @@ $(window).bind("load", () => {
     }
 
     function scale() {
-      mapMobileToolbar();
+
+      
 
       $header.removeClass('sticky-navbar');
       $content.css('padding-top',0);
@@ -107,8 +104,6 @@ $(window).bind("load", () => {
       footerTop = $footer.position().top;
       toolbarHeight = $toolbar.height();
       toolbarTop = $toolbar.position().top;
-
-      $footer.css('margin-bottom', toolbarHeight);
 
       position();
     }
