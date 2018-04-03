@@ -150,6 +150,49 @@ function olariv2_customize_register($wp_customize) {
     'section' => 'olariv2_toolbar_widgets'
   ));
 
+  $wp_customize->add_section('olariv2_social_media_widget', array(
+    'title' => __('Social media links', 'olariv2'),
+    'description' => __('Urls for links in social media', 'olariv2'),
+    'priority' => 30,
+    'panel' => 'olariv2_theme',
+    'capability' => 'edit_theme_options'
+  ));
+
+  $wp_customize->add_setting('social_media_instagram', array(
+    'default' => '',
+    'section' => 'olariv2_social_media_widget'
+  ));
+
+  $wp_customize->add_control('social_media_instagram', array(
+    'label' => __('Instagram account url', 'olariv2'),
+    'description' =>__('', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_social_media_widget'
+  ));
+
+  $wp_customize->add_setting('social_media_facebook', array(
+    'default' => '',
+    'section' => 'olariv2_social_media_widget'
+  ));
+
+  $wp_customize->add_control('social_media_facebook', array(
+    'label' => __('Facebook account url', 'olariv2'),
+    'description' =>__('', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_social_media_widget'
+  ));
+
+    $wp_customize->add_setting('social_media_twitter', array(
+    'default' => '',
+    'section' => 'olariv2_social_media_widget'
+  ));
+
+  $wp_customize->add_control('social_media_twitter', array(
+    'label' => __('Twitter account url', 'olariv2'),
+    'description' =>__('', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_social_media_widget'
+  ));
 }
 add_action('customize_register', 'olariv2_customize_register');
 

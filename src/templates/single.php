@@ -21,10 +21,31 @@ get_header();
 
 
 
-  <?php endwhile; else : ?>
+  <?php endwhile; ?>
+
+  <div id="post-pagination" class="pagination-links">
+
+  <?php
+    the_posts_pagination( array(
+      'prev_text' => esc_html__( 'Previous page', 'olariv2'),
+      'next_text' => esc_html__( 'Next page', 'olariv2'),
+      'before_page_number' => '<span class="meta-nav screen-reader-text">' .
+      esc_html__('Page', 'olariv2') . '</span>'
+    ));
+  ?>
+
+  </div>
+
+
+  <?php else : ?>
     <p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'olariv2' ); ?></p>
   <?php endif; ?>
 </div>
+
+<?php 
+
+
+?>
 
 
 

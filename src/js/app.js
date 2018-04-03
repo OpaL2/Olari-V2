@@ -32,7 +32,7 @@ function mapMobileToolbar() {
 
       if($btn.hasClass('active-btn')) {
         $page.slideUp(100);
-        $btn.addClass('active-btn');
+        $btn.removeClass('active-btn');
       }
 
       else if ($activePages.length !== 0) {
