@@ -39,6 +39,10 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.5",
+    "@fortawesome/fontawesome-free-brands": "^5.0.9",
+    "@fortawesome/fontawesome-free-regular": "^5.0.9",
+    "@fortawesome/fontawesome-free-solid": "^5.0.9",
     "npm": "^5.7.1"
   }
 }

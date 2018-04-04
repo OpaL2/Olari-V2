@@ -14,19 +14,19 @@ class olariv2_Contact_Info extends WP_Widget {
     <div class="contact-info-widget-content">
       
       <a href="<?php echo ('mailto:' . esc_attr($instance['email']));?>" id="contact-info-widget-email" class="contanct-info-widget-item">
-        <img src="" id="contact-info-widget-email-img" class="contact-info-widget-img">
+        <span id="contact-info-widget-email-img" class="contact-info-widget-img"><i class="far fa-envelope"></i></span>
         <h3 class="contact-info-widget-item-title">
           <?php esc_html_e($instance['email']) ?>
         </h3>
       </a>
 
       <a href="<?php echo ('tel:' . esc_attr($instance['telephone'])); ?>" id="contact-info-widget-tel" class="contanct-info-widget-item">
-        <img src="" id="contact-info-widget-tel-img" class="contact-info-widget-img">
+        <span id="contact-info-widget-tel-img" class="contact-info-widget-img"><i class="fas fa-phone"></i></span>
         <h3 class="contact-info-widget-item-title"><?php esc_html_e($instance['telephone']) ?></h3>
       </a>
 
       <a href="<?php esc_attr_e($instance['maps_url'])?>" id="contact-info-widget-addr" class="contanct-info-widget-item">
-        <img src="" id="contact-info-widget-addr-img" class="contact-info-widget-img">
+        <span id="contact-info-widget-addr-img" class="contact-info-widget-img"><i class="fas fa-map-marker-alt"></i></span>
         <h3 class="contact-info-widget-item-title"><?php esc_html_e($instance['address']) ?></h3>
       </a>
 

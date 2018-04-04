@@ -3,21 +3,7 @@
 import $ from 'jquery';
 import _ from 'lodash';
 
-// function mapMobileToolbar() {
-//   return _.map($('.m-toolbar-button'), (btn) => {
-//     $(btn).click( () => {
-//       $('.m-toolbar-page').hide().removeClass("active");
-//       if($(btn).hasClass("active")){
-//         $(btn).removeClass("active")
-//       }
-//       else {
-//         $('#m-toolbar-page-' + btn.id.split("-").pop()).show().addClass("active").animate({top: '0'});
-//         $('.m-toolbar-button').removeClass("active");
-//         $(btn).addClass("active");
-//       }
-//     });
-//   });
-// }
+import './icons';
 
 function mapMobileToolbar() {
   return _.map($('.m-toolbar-button'), (btn) => {

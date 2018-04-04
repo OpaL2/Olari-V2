@@ -7,7 +7,7 @@
   </main>
 
   <footer id="footer" class="site-footer">
-    <div id="to-top-btn"><a href="#content"> <?php _e('To top', 'olariv2') ?></a> </div>
+    <div id="to-top-btn"><a href="<?php if(is_front_page()): echo '#front-page-content'; else: echo '#content'; endif;?>"> <i class="fas fa-angle-up"></i></a> </div>
     <?php the_widget(
       'olariv2_Social_Media',
       array(

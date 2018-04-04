@@ -14,13 +14,25 @@ class olariv2_Social_Media extends WP_Widget {
 
     <div class="social-media-widget-content">
       <div id="social-media-widget-instagram" class="social-media-widget-item">
-        <a href="<?php echo esc_url($instance['instagram']); ?>"><img src="" id="social-media-widget-instagram-img" class="social-media-widget-img">Instagram</a>
+        <span id="social-media-widget-instagram-img" class="social-media-widget-img">
+          <a href="<?php echo esc_url($instance['instagram']); ?>">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </span>
       </div>
       <div id="social-media-widget-facebook" class="social-media-widget-item">
-        <a href="<?php echo esc_url($instance['facebook']); ?>"><img src="" id="social-media-widget-facebook-img" class="social-media-widget-img">Facebook</a>
+        <span id="social-media-widget-facebook-img" class="social-media-widget-img">
+          <a href="<?php echo esc_url($instance['facebook']); ?>">
+           <i class="fab fa-facebook"></i>
+          </a>
+        </span>
       </div>
       <div id="social-media-widget-twitter" class="social-media-widget-item">
-        <a href="<?php echo esc_url($instance['twitter']); ?>"><img src="" id="social-media-widget-twitter-img" class="social-media-widget-img">Twitter
+        <span id="social-media-widget-twitter-img" class="social-media-widget-img">
+          <a href="<?php echo esc_url($instance['twitter']); ?>">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </span>
     </div>
 
     <?php

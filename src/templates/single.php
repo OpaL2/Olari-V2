@@ -27,8 +27,8 @@ get_header();
 
   <?php
     the_posts_pagination( array(
-      'prev_text' => esc_html__( 'Previous page', 'olariv2'),
-      'next_text' => esc_html__( 'Next page', 'olariv2'),
+      'prev_text' => '<span class="post-nav-arrow"><i class="fas fa-angle-left"></i></span>',
+      'next_text' => '<span class="post-nav-arrow"><i class="fas fa-angle-right></i></span>',
       'before_page_number' => '<span class="meta-nav screen-reader-text">' .
       esc_html__('Page', 'olariv2') . '</span>'
     ));

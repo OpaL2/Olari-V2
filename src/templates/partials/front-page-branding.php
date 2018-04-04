@@ -13,7 +13,7 @@
     <?php wp_nav_menu(array('theme_location' => 'hilights_mobile')); ?>
   </div>
 
-  <a id="show-more" class="m-front-page-branding" href="#front-page-content"><?php echo __("Show more", 'olariv2') ?> </a>
+  <a id="show-more" class="m-front-page-branding" href="#front-page-content"><i class="fas fa-angle-down"></i> </a>
 
   <div class="l-front-page-branding">
     <?php wp_nav_menu(array('theme_location' => 'hiligths_desktop')); ?>

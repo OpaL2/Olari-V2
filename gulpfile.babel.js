@@ -100,12 +100,13 @@ export default build_and_watch;
 
 
 function build_js(startPath, targetDirectory) {
-  return function build_js() {
+  return function build_js(done) {
     return browserify({entries: startPath, extensions:['.jsx', '.js'], debug: true})
       .transform(babelify, {presets: ['env', 'react'], sourceMaps: true})
       .bundle()
       .on('error', (err) => {
         console.log(err);
+        done();
       })
       .pipe(source('index.js'))
       .pipe(buffer())
