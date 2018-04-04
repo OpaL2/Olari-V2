@@ -9,7 +9,7 @@ import buffer from 'vinyl-buffer';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import sourcemaps from 'gulp-sourcemaps';
-import gless from 'gulp-less';
+import gsass from 'gulp-sass';
 import ginject from 'gulp-inject';
 import livereload from 'gulp-livereload';
 import concat from 'gulp-concat';
@@ -19,47 +19,47 @@ import gpotomo from 'gulp-po2mo';
 
 export const clean = () => del(['build/**/*']);
 
-export function img() {
+function img() {
   return gulp.src('src/img/**/*.{png,svg,jpeg,jpg}')
     .pipe(gulp.dest('build/images/'))
     .pipe(livereload());
 }
 
-export function lang() {
+function lang() {
   return gulp.src('src/lang/**/*.po')
     .pipe(gpotomo())
     .pipe(gulp.dest('build/languages'))
     .pipe(livereload());
 }
 
-export function wp_required() {
+function wp_required() {
   return gulp.src('src/wp-required/style.css')
     .pipe(gulp.dest('build/'))
     .pipe(livereload());
 }
 
-export const less = build_less(['src/less/**/*.less','!src/less/partials/**/*.less'], 'build/css/');
+const sass = build_sass(['src/style/**/*.scss'], 'build/css/');
 
-export const js = build_js('./src/js/app.js', './build/js');
-export const js_production = build_js('src/js/app.js', 'build/js/');
+const js = build_js('./src/js/app.js', './build/js');
+const js_production = build_js_production('src/js/app.js', 'build/js/');
 
-export function templates() {
+function templates() {
   return gulp.src(['src/templates/**/*.php', '!src/templates/functions.php'])
     .pipe(gulp.dest('build/'))
     .pipe(livereload());
 }
 
-export function wppot() {
+function wppot() {
   return gulp.src('build/**/*.php')
     .pipe(gwppot({package: 'olariv2'}))
     .pipe(gulp.dest('src/lang/olariv2.pot'))
     .pipe(livereload());
 }
 
-export function watch() {
+function watch() {
   livereload.listen()
   gulp.watch('src/js/**/*.{js,jsx}', gulp.series(js, inject));
-  gulp.watch('src/less/**/*.less', gulp.series(less, inject));
+  gulp.watch('src/style/**/*.scss', gulp.series(sass, inject));
   gulp.watch('src/lang/**/*.po', lang);
   gulp.watch(['src/templates/**/*.php', '!src/templates/functions.php'], gulp.series(templates, wppot));
   gulp.watch('src/wp-required/style.css', wp_required);
@@ -67,7 +67,7 @@ export function watch() {
   gulp.watch(['src/templates/functions.php', 'src/widgets/**/*.php'], gulp.series(inject, wppot));
 }
 
-export function inject() {
+function inject() {
   var target = gulp.src('src/templates/functions.php');
   var sources = gulp.src(['build/js/**/*.js', 'build/css/**/*.css'], {read: false});
 
@@ -88,15 +88,23 @@ export function inject() {
   .pipe(livereload());
 }
 
-export const build = gulp.series(
+const build_dev = gulp.series(
   clean,
-  gulp.parallel(js, less, wp_required, lang, templates, img),
+  gulp.parallel(js, sass, wp_required, lang, templates, img),
   inject,
   wppot
 );
 
-export const build_and_watch = gulp.series(build, watch);
-export default build_and_watch;
+export default build_dev;
+
+const build = gulp.series(
+  clean,
+  gulp.parallel(js_production, sass, wp_required, lang, templates, img),
+  inject
+);
+
+const build_and_watch = gulp.series(build_dev, watch);
+export {build_and_watch as dev};
 
 
 function build_js(startPath, targetDirectory) {
@@ -132,11 +140,11 @@ function build_js_production(startPath, targetDirectory) {
   }
 }
 
-function build_less(sourceDirectory, targetDirectory) {
-  return function build_less() {
+function build_sass(sourceDirectory, targetDirectory) {
+  return function build_sass(done) {
     return gulp.src(sourceDirectory)
       .pipe(sourcemaps.init())
-      .pipe(gless())
+      .pipe(gsass().on('error', (err) => {console.log(err); done();}))
       .pipe(gcs())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(targetDirectory));
