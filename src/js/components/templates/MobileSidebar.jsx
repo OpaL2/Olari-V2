@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import SearchForm from 'components/templates/SearchForm';
+
 class MobileSidebar extends React.Component {
 
   constructor(props) {
@@ -84,7 +86,16 @@ class MobileSidebar extends React.Component {
       ,document.getElementById('react-navigation'))
       }
 
+      <MobileMenu
+        visible={this.state.visibleMenu}
+        menus={this.props.data.menus}
+        menuLocations={this.props.data.menuLocations}
+        menuName="primary"
+      />
 
+      <SearchForm
+        siteAddress={this.props.data.settings.siteAddress}
+      />
 
       </React.Fragment>
     );
@@ -96,4 +107,8 @@ const NavToggler = (props) => {
   return(
       <button onClick={props.action} className={props.isActive ? "btn btn-secondary active" : "btn btn-secondary"}>{props.children}</button>
   ); 
+}
+
+const MobileMenu = (props) => {
+  return props.visible ? <p>Hello</p> : null
 }
