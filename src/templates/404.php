@@ -8,7 +8,6 @@ get_header();
 
 ?>
 
-
 <div id="404" class="error">
   <span>Error 404</span> <?php _e('Page you requested could not be found', 'olariv2') ?>
 </div>
