@@ -19,10 +19,7 @@
 
 
   </header>
-  
-  <div id="react-sidebar"> </div>
 
+    <div id="react-sidebar"> </div>
 
-
-
-  <main id="content" class="">
+    <main id="content" class="container">

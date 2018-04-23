@@ -66,22 +66,23 @@ class MobileSidebar extends React.Component {
   render() {
     return(
       <React.Fragment>
-      {ReactDOM.createPortal(
-        <div className="mobile-toolbar">
-          <NavToggler action={this.toggleHandout}>
+        {ReactDOM.createPortal(
+        <div className="btn-group btn-group-lg" role="group">
+          <NavToggler action={this.toggleHandout} isActive={this.state.visibleHandout}>
             <i className="fas fa-info" />
           </NavToggler>
-          <NavToggler action={this.toggleCalendar}>
+          <NavToggler action={this.toggleCalendar} isActive={this.state.visibleCalendar}>
             <i className="far fa-calendar-alt" />
           </NavToggler>
-          <NavToggler action={this.toggleContact}>
+          <NavToggler action={this.toggleContact} isActive={this.state.visibleContact}>
             <i className="fas fa-address-book" />
           </NavToggler>
-          <NavToggler action={this.toggleMenu}>
+          <NavToggler action={this.toggleMenu} isActive={this.state.visibleMenu}>
             <i className="fas fa-bars" />
           </NavToggler>
         </div>
-      ,document.getElementById('react-navigation'))}
+      ,document.getElementById('react-navigation'))
+      }
 
 
 
@@ -93,8 +94,6 @@ export default MobileSidebar;
 
 const NavToggler = (props) => {
   return(
-    <div className="mobile-toolbar-item">
-      <button onClick={props.action}>{props.children}</button>
-    </div>
+      <button onClick={props.action} className={props.isActive ? "btn btn-secondary active" : "btn btn-secondary"}>{props.children}</button>
   ); 
 }
