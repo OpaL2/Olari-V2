@@ -11,7 +11,6 @@
 </head>
 <body <?php body_class(); ?> >
 <!-- begin:body -->
-  
   <header class="navbar">
       <h1 class="navbar-brand"><a href="<?php echo esc_url( home_url( '/' ) . '#front-page-content' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
       </h1>
@@ -20,9 +19,10 @@
 
 
   </header>
+  
+  <div id="react-sidebar"> </div>
 
-  <?php get_sidebar('primary'); ?>
 
 
 
-  <main id="content" class="container">
+  <main id="content" class="">

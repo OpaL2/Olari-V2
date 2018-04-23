@@ -121,3 +121,4 @@ GitHub.sublime-settings
 wordpress/*
 build/*
 src/lang/*.pot
+env/*

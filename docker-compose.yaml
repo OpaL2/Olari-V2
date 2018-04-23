@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  olariv2-wp:
+    image: wordpress
+    ports:
+      - "127.0.0.1:8000:80"
+    environment:
+      WORDPRESS_DB_PASSWORD: qwerty
+      WORDPRESS_DEBUG: 'true'
+      WORDPRESS_DB_HOST: "olariv2-wpdb:3306"
+    volumes:
+      - ./build:/var/www/html/wp-content/themes/olariv2
+      - ./env/plugins:/var/www/html/wp-content/plugins
+      - ./env/media:/var/www/html/wp-content/uploads
+    depends_on:
+      - olariv2-wpdb
+
+  olariv2-wpdb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+    volumes:
+      - ./env/olariv2-wpdb-data:/var/lib/mysql
+

@@ -13,15 +13,15 @@ class DataStore {
     this.error = null;
 
     this.bindListeners({
-      handleSettingsFetch: DataActions.fetchSettings,
-      handleSettingsUpdate: DataActions.updateSettings,
-      handleMenusFetch: DataActions.fetchMenus,
-      handleMenusUpdate: DataActions.updateMenus,
-      handleMenuItemsUpdate: DataActions.UpdateMenuItems,
-      handleMenuLocationsFetch: DataActions.fetchMenuLocations,
-      handleMenuLocationsUpdate: DataActions.updateMenuLocations,
-      handleHandoutPostFetch: DataActions.fetchHandoutPosts,
-      handleHandoutPostUpdate: DataActions.updateHandoutPosts
+      handleSettingsFetch: DataActions.FETCH_SETTINGS,
+      handleSettingsUpdate: DataActions.UPDATE_SETTINGS,
+      handleMenusFetch: DataActions.FETCH_MENUS,
+      handleMenusUpdate: DataActions.UPDATE_MENUS,
+      handleMenuItemsUpdate: DataActions.UPDATE_MENU_ITEMS,
+      handleMenuLocationsFetch: DataActions.FETCH_MENU_LOCATIONS,
+      handleMenuLocationsUpdate: DataActions.UPDATE_MENU_LOCATIONS,
+      handleHandoutPostFetch: DataActions.FETCH_HANDOUT_POSTS,
+      handleHandoutPostUpdate: DataActions.UPDATE_HANDOUT_POSTS
     });
   }
 
@@ -30,7 +30,7 @@ class DataStore {
   }
 
   handleSettingsUpdate(settings) {
-    this.setting = settings;
+    this.settings = settings;
   }
 
   handleMenusFetch() {

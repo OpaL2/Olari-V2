@@ -49,6 +49,11 @@ function templates() {
     .pipe(livereload());
 }
 
+function includes() {
+  return gulp.src('src/includes/**/*.php')
+    .pipe(gulp.dest('build/includes/'));
+}
+
 function wppot() {
   return gulp.src('build/**/*.php')
     .pipe(gwppot({package: 'olariv2'}))
@@ -65,11 +70,12 @@ function watch() {
   gulp.watch('src/wp-required/style.css', wp_required);
   gulp.watch('src/img/**/*.{png,svg,jpeg,jpg}', img);
   gulp.watch(['src/templates/functions.php', 'src/widgets/**/*.php'], gulp.series(inject, wppot));
+  gulp.watch(['src/includes/**/*.php'], gulp.series(includes, wppot));
 }
 
 function inject() {
   var target = gulp.src('src/templates/functions.php');
-  var sources = gulp.src(['build/js/**/*.js', 'build/css/**/*.css'], {read: false});
+  var sources = gulp.src(['build/js/**/*.js', 'build/css/**/*.css', 'build/customizer/**/*.php'], {read: false});
 
   return target.pipe(ginject(sources ,{
     transform: function (filepath, file){
@@ -79,18 +85,17 @@ function inject() {
       if(filepath.slice(-4) === '.css') {
         return '<?php wp_enqueue_style("' + 'olariv2-'+ file.relative.replace(/\.[^/.]+$/, "") + '", get_template_directory_uri() . "/css/' + file.relative + '", false, "1.0" ,"all"); ?>';
       }
+
       return inject.transform.apply(inject.transform, arguments);
     }
   }))
-  .pipe(gulp.src(['src/widgets/**/*.php']))
-  .pipe(concat('functions.php'))
   .pipe(gulp.dest('build/'))
   .pipe(livereload());
 }
 
 const build_dev = gulp.series(
   clean,
-  gulp.parallel(js, sass, wp_required, lang, templates, img),
+  gulp.parallel(js, sass, wp_required, lang, templates, img, includes),
   inject,
   wppot
 );
@@ -109,7 +114,8 @@ export {build_and_watch as dev};
 
 function build_js(startPath, targetDirectory) {
   return function build_js(done) {
-    return browserify({entries: startPath, extensions:['.jsx', '.js'], debug: true})
+    return browserify({entries: startPath, extensions:['.jsx', '.js'], debug: true,
+      paths: ['node_modules/', 'src/js/']})
       .transform(babelify, {presets: ['env', 'react'], sourceMaps: true})
       .bundle()
       .on('error', (err) => {

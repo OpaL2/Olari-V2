@@ -2,19 +2,51 @@ import React from 'react';
 
 import Media from 'react-media';
 
-class ReactSidebar extends React.Component {
+import SidebarContainer from 'components/containers/SidebarContainer';
+import MobileSidebar from 'components/templates/MobileSidebar';
 
-render() {
+const ReactSidebar = () => {
   return(
-    <Media query="(min-width: 992px)">
+    <Media query="(min-width: 576px)">
       {largeScreen => largeScreen
-        ? <p>We Are on Large Screen </p>
-        : <p>We are on small screen </p>
+        ? 
+          <Media query="(min-width: 992px)">
+            {desktopScreen => desktopScreen
+              ?
+                <SidebarContainer
+                  render= { container => (
+                    <DesktopSidebar data={container} />
+                  )}
+                />
+              :
+                <SidebarContainer
+                  render = { container => (
+                    <TabletSidebar data = {container} />
+                  )}
+                />
+            }
+          </Media>
+        : 
+          <SidebarContainer
+            render={ container => (
+              <MobileSidebar data={container} />
+            )} 
+          />
       }
     </Media>
   );
 }
 
+export default ReactSidebar;
+
+const DesktopSidebar = (props) => {
+  return(
+    <p>Desktop sidebar</p>
+  );
 }
 
-export default ReactSidebar;
+const TabletSidebar = (props) => {
+  return (
+    <p>Tablet Sidebar</p>
+  );
+}
