@@ -10,7 +10,7 @@ const ReactSidebar = () => {
     <Media query="(min-width: 576px)">
       {largeScreen => largeScreen
         ? 
-          <Media query="(min-width: 992px)">
+          <Media query="(min-width: 1200px)">
             {desktopScreen => desktopScreen
               ?
                 <SidebarContainer

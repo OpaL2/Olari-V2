@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import SearchForm from 'components/templates/SearchForm';
 
+import _ from 'lodash/collection';
+
 class MobileSidebar extends React.Component {
 
   constructor(props) {
@@ -69,7 +71,7 @@ class MobileSidebar extends React.Component {
     return(
       <React.Fragment>
         {ReactDOM.createPortal(
-        <div className="btn-group btn-group-lg" role="group">
+        <div className="btn-group btn-group-lg w-100" role="group">
           <NavToggler action={this.toggleHandout} isActive={this.state.visibleHandout}>
             <i className="fas fa-info" />
           </NavToggler>
@@ -85,18 +87,25 @@ class MobileSidebar extends React.Component {
         </div>
       ,document.getElementById('react-navigation'))
       }
-
-      <MobileMenu
-        visible={this.state.visibleMenu}
-        menus={this.props.data.menus}
-        menuLocations={this.props.data.menuLocations}
-        menuName="primary"
-      />
-
-      <SearchForm
-        siteAddress={this.props.data.settings.siteAddress}
-      />
-
+      <div className="container">
+        <MobileMenuRender
+          visible={this.state.visibleMenu}
+          menus={this.props.data.menus}
+          menuLocations={this.props.data.menuLocations}
+          menuName="primary"
+        />
+        <ContactInfoRender
+          visible={this.state.visibleContact}
+          content={this.props.data.settings}
+        />
+        <HandoutRender
+          visible={this.state.visibleHandout}
+          posts={this.props.data.handoutPosts}
+        />
+        <CalendarRender
+          visible={this.state.visibleCalendar}
+        />
+      </div>
       </React.Fragment>
     );
   }
@@ -105,10 +114,74 @@ export default MobileSidebar;
 
 const NavToggler = (props) => {
   return(
-      <button onClick={props.action} className={props.isActive ? "btn btn-secondary active" : "btn btn-secondary"}>{props.children}</button>
+      <button onClick={props.action} className={props.isActive ? "btn btn-outline-secondary active w-25" : "btn btn-outline-secondary w-25"}>{props.children}</button>
   ); 
 }
 
-const MobileMenu = (props) => {
-  return props.visible ? <p>Hello</p> : null
+const MobileMenuRender = (props) => {
+  if(!props.visible) return null;
+  const location = props.menuLocations ? props.menuLocations[props.menuName] : null;
+  const ID = location ? location.ID : null;
+  const menu = ID && props.menus ? _.find(props.menus, {ID: ID}) : null;
+  const items = menu ? menu.items : null;
+  return items ? <HorizontalMenuRender items={items} /> : null;
 }
+
+const HorizontalMenuRender = (props) => {
+  const Content = props.items.map((item) => {
+    return(
+      <a key={item.id} className="nav-link" href={item.url}><i className="fas fa-angle-double-right"/> {item.title}</a>
+    );
+  });
+  return (
+    <div className="card">
+      <nav className="nav flex-column">
+        {Content}
+      </nav>
+      <div class="card-body">
+        <SearchForm/>
+      </div>
+    </div>
+  );
+}
+
+const ContactInfoRender = (props) => {
+  if(!props.visible) return null;
+  const contactInfo = props.content ? props.content.contactInfo : null;
+  return contactInfo ? (
+    <div className="card">
+      <nav className="nav flex-column">
+        {contactInfo.email ? (<a className="nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
+        {contactInfo.phone ? (<a className="nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
+        {contactInfo.address ? (<a className="nav-link" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
+      </nav>
+    </div>
+    ) : null;
+}
+
+const HandoutRender = (props) => {
+  if(!props.visible) return null;
+  return props.posts ? (
+    <div className="card">
+      <nav className="nav flex-column">
+      {props.posts.map((post) => {
+        return(
+          <a className="nav-link" href={post.link}><i className="fas fa-angle-double-right"/> {post.title.rendered}</a>
+        );
+      })}
+      </nav>
+    </div>
+    ) : null;
+}
+
+const CalendarRender = (props) => {
+  if(!props.visible) return null;
+  return (
+    <div className="card">
+      <span>Calendar event list will be inserted here</span>
+    </div>
+  );
+}
+
+
+

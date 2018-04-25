@@ -12,10 +12,10 @@
 <body <?php body_class(); ?> >
 <!-- begin:body -->
   <header class="navbar">
-      <h1 class="navbar-brand"><a href="<?php echo esc_url( home_url( '/' ) . '#front-page-content' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
+      <h1 class="navbar-brand"><a href="<?php echo esc_url( home_url( '/' )); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
       </h1>
 
-      <div id="react-navigation"></div>
+      <div id="react-navigation" class="w-100"></div>
 
 
   </header>
