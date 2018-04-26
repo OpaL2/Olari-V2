@@ -11,15 +11,15 @@
 </head>
 <body <?php body_class(); ?> >
 <!-- begin:body -->
-  <header class="navbar">
-      <h1 class="navbar-brand"><a href="<?php echo esc_url( home_url( '/' )); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> 
-      </h1>
-
-      <div id="react-navigation" class="w-100"></div>
-
-
+  <header class="">
+    <nav id="main-navigation" class="navbar navbar-expand">
+      <h1 class=""><a href="<?php echo esc_url( home_url( '/' )); ?>" rel="home" class="navbar-brand"><?php bloginfo( 'name' ); ?></a></h1>
+    </nav>
   </header>
 
-    <div id="react-sidebar"> </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div id="react-sidebar" class="col-12 col-sm-2 order-sm-12"></div>
 
-    <main id="content" class="container">
+        <main id="content" class="col-12 col-sm-10">
+          <div id="react-tablet-root"></div>

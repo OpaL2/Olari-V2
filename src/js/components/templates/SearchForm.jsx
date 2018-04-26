@@ -5,16 +5,9 @@ class SearchForm extends React.Component {
   render() {
     return(
 
-<form role="search" method="get" className="form" action={this.props.siteAddress}>
-    <div className="form-group">
-    <label htmlFor="search">
-        <span className="sr-only">Search</span>
-    </label>
-        <input id="search" type="search" className="form-control"
-            name="s" />
-    </div>
-    <input type="submit" className="btn btn-primary"
-        value="submit" />
+<form role="search" method="get" className="form-inline" action={this.props.siteAddress}>
+    <input id="search" type="search" className="form-control" name="s" />
+    <button type="submit" className="btn btn-outline-primary"> <i className="fas fa-search" /></button>
 </form>
 
     );

@@ -4,6 +4,7 @@ import Media from 'react-media';
 
 import SidebarContainer from 'components/containers/SidebarContainer';
 import MobileSidebar from 'components/templates/MobileSidebar';
+import TabletSidebar from 'components/templates/TabletSidebar';
 
 const ReactSidebar = () => {
   return(
@@ -42,11 +43,5 @@ export default ReactSidebar;
 const DesktopSidebar = (props) => {
   return(
     <p>Desktop sidebar</p>
-  );
-}
-
-const TabletSidebar = (props) => {
-  return (
-    <p>Tablet Sidebar</p>
   );
 }

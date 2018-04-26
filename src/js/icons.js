@@ -7,6 +7,7 @@ import faAddressBook from '@fortawesome/fontawesome-free-solid/faAddressBook';
 import faCalendarAlt from '@fortawesome/fontawesome-free-regular/faCalendarAlt';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 import faInfo from '@fortawesome/fontawesome-free-solid/faInfo';
+import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
 
 //Arrow icons
 import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
@@ -30,6 +31,7 @@ fontawesome.library.add(
   faCalendarAlt,
   faBars,
   faInfo,
+  faSearch,
   faAngleLeft,
   faAngleRight,
   faAngleDown,

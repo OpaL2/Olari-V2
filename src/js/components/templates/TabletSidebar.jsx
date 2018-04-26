@@ -5,27 +5,28 @@ import SearchForm from 'components/templates/SearchForm';
 
 import _ from 'lodash/collection';
 
-class MobileSidebar extends React.Component {
+class TabletSidebar extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      visibleMenu: false,
+      visibleSearch: false,
       visibleCalendar: false,
       visibleHandout: false,
       visibleContact: false
     }
 
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.toggleSearch = this.toggleSearch.bind(this);
     this.toggleCalendar = this.toggleCalendar.bind(this);
     this.toggleHandout = this.toggleHandout.bind(this);
     this.toggleContact = this.toggleContact.bind(this);
   }
 
-  toggleMenu() {
+  toggleSearch() {
     this.setState((prev, props) => {
       return {
-        visibleMenu: !prev.visibleMenu,
+        visibleSearch: !prev.visibleSearch,
         visibleCalendar: false,
         visibleHandout: false,
         visibleContact: false
@@ -36,7 +37,7 @@ class MobileSidebar extends React.Component {
   toggleCalendar() {
     this.setState((prev, props) => {
       return {
-        visibleMenu: false,
+        visibleSearch: false,
         visibleCalendar: !prev.visibleCalendar,
         visibleHandout: false,
         visibleContact: false
@@ -48,7 +49,7 @@ class MobileSidebar extends React.Component {
   toggleHandout() {
     this.setState((prev, props) => {
       return {
-        visibleMenu: false,
+        visibleSearch: false,
         visibleCalendar: false,
         visibleHandout: !prev.visibleHandout,
         visibleContact: false
@@ -59,7 +60,7 @@ class MobileSidebar extends React.Component {
   toggleContact() {
     this.setState((prev, props) => {
       return {
-        visibleMenu: false,
+        visibleSearch: false,
         visibleCalendar: false,
         visibleHandout: false,
         visibleContact: !prev.visibleContact
@@ -70,7 +71,18 @@ class MobileSidebar extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <div className="btn-group btn-group-lg w-100" role="group">
+        {
+          ReactDOM.createPortal(
+            <div className="navbar-nav">
+              <TabletMenuRender
+                menus={this.props.data.menus}
+                menuLocations={this.props.data.menuLocations}
+                menuName="primary"
+              />
+            </div>
+          , document.getElementById('main-navigation'))
+        }
+        <div className="btn-group-vertical btn-group-lg" role="group">
           <NavToggler action={this.toggleHandout} isActive={this.state.visibleHandout}>
             <i className="fas fa-info" />
           </NavToggler>
@@ -80,18 +92,14 @@ class MobileSidebar extends React.Component {
           <NavToggler action={this.toggleContact} isActive={this.state.visibleContact}>
             <i className="fas fa-address-book" />
           </NavToggler>
-          <NavToggler action={this.toggleMenu} isActive={this.state.visibleMenu}>
-            <i className="fas fa-bars" />
+          <NavToggler action={this.toggleSearch} isActive={this.state.visibleSearch}>
+            <i className="fas fa-search" />
           </NavToggler>
         </div>
-
-        <MobileMenuRender
-          visible={this.state.visibleMenu}
-          menus={this.props.data.menus}
-          menuLocations={this.props.data.menuLocations}
-          menuName="primary"
-        />
-        <ContactInfoRender
+        {
+          ReactDOM.createPortal(
+            <React.Fragment>
+            <ContactInfoRender
           visible={this.state.visibleContact}
           content={this.props.data.settings}
         />
@@ -102,40 +110,45 @@ class MobileSidebar extends React.Component {
         <CalendarRender
           visible={this.state.visibleCalendar}
         />
+        <SearchRender
+          visible={this.state.visibleSearch}
+        />
+            </React.Fragment>
+          , document.getElementById('react-tablet-root'))
+        }
+
       </React.Fragment>
     );
   }
 }
-export default MobileSidebar;
+
+export default TabletSidebar;
 
 const NavToggler = (props) => {
   return(
-      <button onClick={props.action} className={props.isActive ? "btn btn-outline-secondary active w-25" : "btn btn-outline-secondary w-25"}>{props.children}</button>
+      <button onClick={props.action} className={props.isActive ? "btn btn-outline-secondary active" : "btn btn-outline-secondary"}>{props.children}</button>
   ); 
 }
 
-const MobileMenuRender = (props) => {
-  if(!props.visible) return null;
+
+const TabletMenuRender = (props) => {
   const location = props.menuLocations ? props.menuLocations[props.menuName] : null;
   const ID = location ? location.ID : null;
   const menu = ID && props.menus ? _.find(props.menus, {ID: ID}) : null;
   const items = menu ? menu.items : null;
-  return items ? <VerticalMenuRender items={items} /> : null;
+  return items ? <NavbarMenuRender items={items} /> : null;
 }
 
-const VerticalMenuRender = (props) => {
+const NavbarMenuRender = (props) => {
   const Content = props.items.map((item) => {
     return(
-      <a key={item.id} className="nav-item nav-link" href={item.url}> {item.title} <i className="fas fa-angle-double-right"/></a>
+      <a key={item.id} className="nav-item nav-link" href={item.url}>{item.title}</a>
     );
   });
-  return (
-      <nav className="nav flex-column">
-        {Content}
-        <span className="nav-item">
-          <SearchForm/>
-        </span>
-      </nav>
+  return(
+    <React.Fragment>
+      {Content}
+    </React.Fragment>
   );
 }
 
@@ -143,24 +156,29 @@ const ContactInfoRender = (props) => {
   if(!props.visible) return null;
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
-      <nav className="nav flex-column">
+    <div className="card">
+      <nav className="nav flex-column card-body">
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
         {contactInfo.address ? (<a className="nav-item nav-link" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
       </nav>
+    </div>
     ) : null;
 }
 
 const HandoutRender = (props) => {
   if(!props.visible) return null;
   return props.posts ? (
-      <nav className="nav flex-column">
+    <div className="card">
       {props.posts.map((post) => {
         return(
-          <a key={post.id} className="nav-item nav-link" href={post.link}> {post.title.rendered} <i className="fas fa-angle-double-right"/></a>
+          <div key={post.id} className="card-body">
+            <a className="h5 card-title card-link" href={post.link}>{post.title.rendered}</a>
+            <p className="card-text" dangerouslySetInnerHTML={{__html:post.excerpt.rendered}} />
+          </div>
         );
       })}
-      </nav>
+    </div>
     ) : null;
 }
 
@@ -173,5 +191,11 @@ const CalendarRender = (props) => {
   );
 }
 
-
-
+const SearchRender = (props) => {
+  if(!props.visible) return null;
+  return (
+  <div className="float-right">
+    <SearchForm />
+  </div>
+  );
+}
