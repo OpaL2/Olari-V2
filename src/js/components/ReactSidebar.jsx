@@ -5,13 +5,14 @@ import Media from 'react-media';
 import SidebarContainer from 'components/containers/SidebarContainer';
 import MobileSidebar from 'components/templates/MobileSidebar';
 import TabletSidebar from 'components/templates/TabletSidebar';
+import DesktopSidebar from 'components/templates/DesktopSidebar';
 
 const ReactSidebar = () => {
   return(
     <Media query="(min-width: 576px)">
       {largeScreen => largeScreen
         ? 
-          <Media query="(min-width: 1200px)">
+          <Media query="(min-width: 768px)">
             {desktopScreen => desktopScreen
               ?
                 <SidebarContainer
@@ -39,9 +40,3 @@ const ReactSidebar = () => {
 }
 
 export default ReactSidebar;
-
-const DesktopSidebar = (props) => {
-  return(
-    <p>Desktop sidebar</p>
-  );
-}

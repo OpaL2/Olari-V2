@@ -5,6 +5,7 @@
  ?>
 
       </main>
+      <div id="react-sidebar" class="col-12 col-sm-2 col-md-6 col-lg-4 col-xl-3"></div>
     </div>
   </div>
 

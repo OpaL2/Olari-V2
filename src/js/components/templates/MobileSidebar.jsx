@@ -68,7 +68,7 @@ class MobileSidebar extends React.Component {
   }
 
   render() {
-    return(
+    return ReactDOM.createPortal(
       <React.Fragment>
         <div className="btn-group btn-group-lg w-100" role="group">
           <NavToggler action={this.toggleHandout} isActive={this.state.visibleHandout}>
@@ -103,7 +103,7 @@ class MobileSidebar extends React.Component {
           visible={this.state.visibleCalendar}
         />
       </React.Fragment>
-    );
+      , document.getElementById('react-tablet-root'));
   }
 }
 export default MobileSidebar;
