@@ -174,7 +174,7 @@ const HandoutRender = (props) => {
         return(
           <div key={post.id} className="card-body">
             <a className="h5 card-title card-link" href={post.link}>{post.title.rendered}</a>
-            <p className="card-text" dangerouslySetInnerHTML={{__html:post.excerpt.rendered}} />
+            <p className="card-text" dangerouslySetInnerHTML={{__html:post.content.rendered}} />
           </div>
         );
       })}

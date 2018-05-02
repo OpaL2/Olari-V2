@@ -17,26 +17,14 @@ class DesktopSidebar extends React.Component {
     return(
       <React.Fragment>
         {ReactDOM.createPortal(
-          <React.Fragment>
             <DesktopMenuRender
               menuLocations={this.props.data.menuLocations}
               menus={this.props.data.menus}
               menuName="primary"
             />
-            <Media query="(min-width: 992px)">
-              {large => large ? (
-                <SearchForm />
-                ): null}
-            </Media>
-        </React.Fragment>
           ,document.getElementById('main-navigation'))}
-          <Media query="(min-width: 992px)">
-            {large => large ? (
-              null
-              ) : (
-                <SearchForm />
-              )}
-            </Media>
+        <SearchForm />
+
           
           <CalendarRender
 
@@ -78,7 +66,7 @@ const NavbarMenuRender = (props) => {
 const ContactInfoRender = (props) => {
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
-    <div className="card">
+    <div className="card mt-3">
       <nav className="nav flex-column card-body">
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
@@ -90,12 +78,12 @@ const ContactInfoRender = (props) => {
 
 const HandoutRender = (props) => {
   return props.posts ? (
-    <div className="card">
+    <div className="card mt-3">
       {props.posts.map((post) => {
         return(
           <div key={post.id} className="card-body">
             <a className="h5 card-title card-link" href={post.link}>{post.title.rendered}</a>
-            <p className="card-text" dangerouslySetInnerHTML={{__html:post.excerpt.rendered}} />
+            <p className="card-text" dangerouslySetInnerHTML={{__html:post.content.rendered}} />
           </div>
         );
       })}
@@ -105,7 +93,7 @@ const HandoutRender = (props) => {
 
 const CalendarRender = (props) => {
   return (
-    <div className="card">
+    <div className="card mt-3">
       <span>Calendar event list will be inserted here</span>
     </div>
   );

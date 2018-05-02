@@ -9,6 +9,10 @@ function olariv2_setup() {
   add_theme_support( 'title-tag' );
   add_theme_support( 'html5', array('search_form'));
 
+  add_theme_support( 'post-thumbnails' );
+  set_post_thumbnail_size( 50, 50, array( 'center', 'center')  );
+  add_image_size( 'default-thumb', 999, 9999, false);
+
   register_nav_menus(array(
     'primary' => esc_html__('Primary', 'olariv2'),
     'hiligths_mobile' => esc_html__('Hilighted on mobile', 'olariv2'),
@@ -17,6 +21,12 @@ function olariv2_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'olariv2_setup' );
+
+function olariv2_excerpt_more($more) {
+       global $post;
+  return ' <a class="moretag" href="'. get_permalink($post->ID) . '"> <i class="fas fa-angle-double-right"></i></a>';
+}
+add_filter('excerpt_more', 'olariv2_excerpt_more');
 
 
 function olariv2_wigdets_init() {
