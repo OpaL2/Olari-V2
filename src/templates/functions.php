@@ -35,9 +35,9 @@ function olariv2_wigdets_init() {
       'name' => __('Toolbar items', 'olariv2'),
       'id' => 'primary',
       'description' => __('Widget area for toolbar items', 'olariv2'),
-      'before_widget' => '<div id="%1$s" class="primary-widget">',
-      'after_widget' => '</div>',
-      'before_title' => '<h3 class="primary-widget-title" >',
+      'before_widget' => '<div id="%1$s" class="card mt-3"><div class="card-body">',
+      'after_widget' => '</div></div>',
+      'before_title' => '<h3 class="card-title" >',
       'after_title' => '</h3>' 
   ));
 }

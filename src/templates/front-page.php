@@ -4,11 +4,13 @@
 <?php if( is_front_page() && !is_home() ) : while( have_posts() ) : the_post(); ?>
 
 <div class="row mt-3 mt-sm-0 mx-1">
-  <div class="jubotron mx-0 mx-lg-2">
-  <?php the_content(); ?>
+  <div class="jumbotron col-12 mx-0 mx-lg-2">
+    <div class="container">
+      <?php the_content(); ?>
+    </div>
   </div>
 </div>
-<hr class="my-4" />
+<hr class="my-2 my-md-4" />
 <?php endwhile; endif; ?>
 
 
@@ -30,7 +32,19 @@
       <?php endif ?>
 
         <?php the_excerpt(); ?>
-        <?php the_tags(' '); ?>
+
+        <?php 
+          $tags = get_the_tags();
+          $html = '<nav class="nav" role="post tags">';
+          if ($tags): foreach ( $tags as $tag ) {
+            $tag_link = get_tag_link($tag->term_id);
+
+            $html .= "<a href='{$tag_link}' class='nav-item nav-link'>{$tag->name}</a>";
+          }
+          $html .= '</nav>';
+          echo $html;
+        endif;
+         ?>
     </div>
   </div>
 

@@ -82,6 +82,8 @@ class TabletSidebar extends React.Component {
             </div>
           , document.getElementById('main-navigation'))
         }
+        {
+          ReactDOM.createPortal(
         <div className="btn-group-vertical btn-group-lg" role="group">
           <NavToggler action={this.toggleHandout} isActive={this.state.visibleHandout}>
             <i className="fas fa-info" />
@@ -96,6 +98,8 @@ class TabletSidebar extends React.Component {
             <i className="fas fa-search" />
           </NavToggler>
         </div>
+        , document.getElementById('react-mobile-root'))
+        }
         {
           ReactDOM.createPortal(
             <React.Fragment>
