@@ -194,8 +194,6 @@ const CalendarRender = (props) => {
 const SearchRender = (props) => {
   if(!props.visible) return null;
   return (
-  <div className="float-right">
     <SearchForm />
-  </div>
   );
 }
