@@ -17,10 +17,11 @@ $grid-breakpoints: (
   xl: 2400px
 );
 
-$enable-shadows: true;
 
 $body-color: #3a3923;
 $border-color: #e8e6e5;
+
+$link-hover-decoration: none;
 
 @import "node_modules/bootstrap/scss/bootstrap";
 

@@ -9,7 +9,7 @@ class SearchForm extends React.Component {
   <div className="form-group row mx-1">
     <input id="search" type="search" className="form-control col-10" name="s" />
     <div className="col-2">
-      <button type="submit" className="btn btn-secondary"> <i className="fas fa-search" /></button>
+      <button type="submit" className="btn btn-outline-secondary"> <i className="fas fa-search" /></button>
     </div>
   </div>
 </form>

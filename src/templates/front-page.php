@@ -3,7 +3,7 @@
 
 <?php if( is_front_page() && !is_home() ) : while( have_posts() ) : the_post(); ?>
 
-<div class="row mt-3 mx-1 justify-content-center">
+<div class="row justify-content-center">
   <div class="jumbotron col-12 mx-0 mx-lg-2 bg-white rounded">
       <?php the_content(); ?>
   </div>
