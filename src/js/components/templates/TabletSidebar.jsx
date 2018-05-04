@@ -160,7 +160,7 @@ const ContactInfoRender = (props) => {
   if(!props.visible) return null;
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
-    <div className="card">
+    <div className="card my-2">
       <nav className="nav flex-column card-body">
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
@@ -173,7 +173,7 @@ const ContactInfoRender = (props) => {
 const HandoutRender = (props) => {
   if(!props.visible) return null;
   return props.posts ? (
-    <div className="card">
+    <div className="card my-2">
       {props.posts.map((post) => {
         return(
           <div key={post.id} className="card-body">
@@ -189,7 +189,7 @@ const HandoutRender = (props) => {
 const CalendarRender = (props) => {
   if(!props.visible) return null;
   return (
-    <div className="card">
+    <div className="card my-2">
       <span>Calendar event list will be inserted here</span>
     </div>
   );

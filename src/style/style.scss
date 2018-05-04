@@ -1,5 +1,35 @@
 $theme-colors: (
-  "primary": #fd8326
+  "primary": #fd8326,
+  "light": #faf9f8,
+  "dark": #f8f6f5
 );
 
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 2400px
+);
+
+$enable-shadows: true;
+
+$body-color: #3a3923;
+$border-color: #e8e6e5;
+
 @import "node_modules/bootstrap/scss/bootstrap";
+
+#sidebar {
+  @include media-breakpoint-down(md) {
+    background-color: theme-color("light");
+  }
+  @include media-breakpoint-up(md) {
+    max-width: 400px;
+    background-color: theme-color("dark");
+  }
+}

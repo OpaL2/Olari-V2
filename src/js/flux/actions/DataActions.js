@@ -102,6 +102,10 @@ class DataActions {
     return posts;
   }
 
+  fetchCalendar() {
+    return null;
+  }
+
 
   emitError(err) {
     return err;
