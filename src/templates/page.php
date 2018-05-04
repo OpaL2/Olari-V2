@@ -8,21 +8,26 @@ get_header();
 
 ?>
 
-<div id="theloop" class="loop">
-  <?php if(have_posts()) : while( have_posts() ) : the_post(); ?>
+<div class="row justify-content-center">
+  <div id="page" class="col-12 mx-0 mx-lg-2 rounded ">
+  <?php while( have_posts() ) : the_post(); ?>
 
 
-  <header class="page-branding">
-    <h2 class="page-title"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h2>
+  <header class="my-2">
+    <h3 class="display-4"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
+    <hr class="mt-2">
+    <?php 
+    global $post;
+      if(has_excerpt($post)):
+     ?>
+     <p class="lead"><?php esc_html_e(get_the_excerpt()); ?></p>
+    <?php endif; ?>
   </header>
-
-  <div class="page-content">
+  <div class="bg-white p-3 rounder">
     <?php the_content(); ?>
   </div>
-
-  <?php endwhile; else : ?>
-    <p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'olariv2' ); ?></p>
-  <?php endif; ?>
+  <?php endwhile; ?>
+  </div>
 </div>
 
 <?php
