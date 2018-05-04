@@ -90,6 +90,7 @@ class MobileSidebar extends React.Component {
           menus={this.props.data.menus}
           menuLocations={this.props.data.menuLocations}
           menuName="primary"
+          siteAddress={this.props.data.settings.siteAddress}
         />
         <ContactInfoRender
           visible={this.state.visibleContact}
@@ -120,7 +121,7 @@ const MobileMenuRender = (props) => {
   const ID = location ? location.ID : null;
   const menu = ID && props.menus ? _.find(props.menus, {ID: ID}) : null;
   const items = menu ? menu.items : null;
-  return items ? <VerticalMenuRender items={items} /> : null;
+  return items ? <VerticalMenuRender items={items} siteAddress={props.siteAddress} /> : null;
 }
 
 const VerticalMenuRender = (props) => {
@@ -133,7 +134,9 @@ const VerticalMenuRender = (props) => {
       <nav className="nav flex-column">
         {Content}
         <span className="nav-item">
-          <SearchForm/>
+          <SearchForm
+          siteAddress={props.siteAddress}
+          />
         </span>
       </nav>
   );

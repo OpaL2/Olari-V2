@@ -11,7 +11,7 @@ add_action('rest_api_init', function() {
 function olariv2_rest_theme_settings($data) {
   return array(
     'siteName' => get_bloginfo('name'),
-    'siteAddress' => get_bloginfo('url'),
+    'siteAddress' => home_url('/'),
     'socialMedia' => array(
         'facebookUrl' => get_theme_mod('social_media_facebook'),
         'twitterUrl' => get_theme_mod('social_media_twitter'),

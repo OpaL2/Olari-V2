@@ -4,7 +4,7 @@
 <?php if( is_front_page() && !is_home() ) : while( have_posts() ) : the_post(); ?>
 
 <div class="row justify-content-center">
-  <div class="jumbotron col-12 mx-0 mx-lg-2 bg-white rounded">
+  <div class="jumbotron col-12 mx-0 mx-lg-5 bg-white rounded">
       <?php the_content(); ?>
   </div>
 </div>
@@ -22,7 +22,7 @@
 <div id="posts" class="row justify-content-center">
   <?php if($loop->have_posts()) : while( $loop->have_posts() ) : $loop->the_post(); ?>
   <div class="col-lg-6 my-3 mt-md-0 my-lg-3">
-    <div class="mx-0 mx-lg-2 bg-white p-3 rounded">
+    <div class="mx-0 bg-white p-3 rounded">
       <h3 class=""><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
       <?php if(has_post_thumbnail()) : ?>
         <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" class="mw-100 h-auto d-inline-block px-3"></a>

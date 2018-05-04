@@ -116,6 +116,7 @@ class TabletSidebar extends React.Component {
         />
         <SearchRender
           visible={this.state.visibleSearch}
+          siteAddress={this.props.data.settings.siteAddress}
         />
             </React.Fragment>
           , document.getElementById('react-tablet-root'))
@@ -198,6 +199,8 @@ const CalendarRender = (props) => {
 const SearchRender = (props) => {
   if(!props.visible) return null;
   return (
-    <SearchForm />
+    <SearchForm 
+      siteAddress={props.siteAddress}
+    />
   );
 }

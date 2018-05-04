@@ -23,7 +23,9 @@ class DesktopSidebar extends React.Component {
               menuName="primary"
             />
           ,document.getElementById('main-navigation'))}
-        <SearchForm />
+        <SearchForm 
+          siteAddress={this.props.data.settings.siteAddress}
+        />
 
           
           <CalendarRender
