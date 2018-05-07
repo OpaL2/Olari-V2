@@ -22,6 +22,7 @@ get_header();
      ?>
      <p class="lead"><?php esc_html_e(get_the_excerpt()); ?>/p>
     <?php endif; ?>
+    <img src="<?php the_post_thumbnail_url(); ?>" class="my-3 w-100 h-auto">
   </header>
 
     <div class="bg-white p-3 rounder">

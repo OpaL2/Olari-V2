@@ -113,6 +113,7 @@ class TabletSidebar extends React.Component {
         />
         <CalendarRender
           visible={this.state.visibleCalendar}
+          vCalendar={this.props.data.calendar}
         />
         <SearchRender
           visible={this.state.visibleSearch}
@@ -161,7 +162,7 @@ const ContactInfoRender = (props) => {
   if(!props.visible) return null;
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
-    <div className="card my-2">
+    <div className="card my-2 border-0">
       <nav className="nav flex-column card-body">
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
@@ -174,7 +175,7 @@ const ContactInfoRender = (props) => {
 const HandoutRender = (props) => {
   if(!props.visible) return null;
   return props.posts ? (
-    <div className="card my-2">
+    <div className="card my-2 border-0">
       {props.posts.map((post) => {
         return(
           <div key={post.id} className="card-body">
@@ -188,11 +189,40 @@ const HandoutRender = (props) => {
 }
 
 const CalendarRender = (props) => {
-  if(!props.visible) return null;
-  return (
-    <div className="card my-2">
-      <span>Calendar event list will be inserted here</span>
+  return props.vCalendar && props.visible ? (
+    <div className="mt-3">
+      <Calendar
+        events={props.vCalendar}
+      />
     </div>
+  ) : null;
+}
+
+const Calendar = (props) => {
+  const futureEvents = _.sortBy(_.filter(props.events, (event) => {
+    return event.start > new Date();
+  }), (event) => {return event.start}).slice(0,5);
+  const EventComponents = futureEvents.map((event) => {
+    return( <CalEvent event={event} key={event.key} />)
+  });
+
+  return(
+    <ul className="list-group border-0 my-2">
+      {EventComponents}
+    </ul>
+  );
+}
+
+const CalEvent = (props) => {
+  return(
+    <li className="list-group-item border-0">
+      <div className="small">{props.event.start.format('ddd DD.MM.YY')}
+      {props.event.allDay ? null : (
+        <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
+      )}
+      </div>
+      <a href={props.event.link}>{props.event.title}</a>
+    </li>
   );
 }
 

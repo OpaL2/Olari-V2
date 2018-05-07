@@ -29,7 +29,7 @@ class DesktopSidebar extends React.Component {
 
           
           <CalendarRender
-
+            vCalendar={this.props.data.calendar}
           />
           <ContactInfoRender
             content={this.props.data.settings}
@@ -84,7 +84,7 @@ const HandoutRender = (props) => {
       {props.posts.map((post) => {
         return(
           <div key={post.id} className="card-body">
-            <a className="h5 card-title card-link" href={post.link}>{post.title.rendered}</a>
+            <a className="card-title card-link" href={post.link}><h5>{post.title.rendered}</h5></a>
             <p className="card-text" dangerouslySetInnerHTML={{__html:post.content.rendered}} />
           </div>
         );
@@ -94,9 +94,39 @@ const HandoutRender = (props) => {
 }
 
 const CalendarRender = (props) => {
-  return (
-    <div className="card mt-3">
-      <span>Calendar event list will be inserted here</span>
+  return props.vCalendar ? (
+    <div className="mt-3">
+      <Calendar
+        events={props.vCalendar}
+      />
     </div>
+  ) : null;
+}
+
+const Calendar = (props) => {
+  const futureEvents = _.sortBy(_.filter(props.events, (event) => {
+    return event.start > new Date();
+  }), (event) => {return event.start}).slice(0,5);
+  const EventComponents = futureEvents.map((event) => {
+    return( <CalEvent event={event} key={event.key} />)
+  });
+
+  return(
+    <ul className="list-group">
+      {EventComponents}
+    </ul>
+  );
+}
+
+const CalEvent = (props) => {
+  return(
+    <li className="list-group-item">
+      <div className="small">{props.event.start.format('ddd DD.MM.YY')}
+      {props.event.allDay ? null : (
+        <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
+      )}
+      </div>
+      <a href={props.event.link}>{props.event.title}</a>
+    </li>
   );
 }

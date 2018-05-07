@@ -21,6 +21,7 @@ class DataActions {
         this.updateSettings(response.data);
         this.fetchMenus();
         this.fetchMenuLocations();
+        this.fetchCalendar();
         if(response.data.infoCategoryID) this.fetchHandoutPosts(response.data.infoCategoryID);
       })
       .catch((err) => {
@@ -103,7 +104,20 @@ class DataActions {
   }
 
   fetchCalendar() {
-    return null;
+    return (dispatch) => {
+      dispatch();
+      axios.get('/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&no_html=true')
+      .then((response) => {
+        this.updateCalendarICS(response.data);
+      })
+      .catch((err) => {
+        this.emitError(err);
+      });
+    }
+  }
+
+  updateCalendarICS(ics) {
+    return ics;
   }
 
 
