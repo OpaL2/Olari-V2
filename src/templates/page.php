@@ -15,7 +15,7 @@ get_header();
 
   <header class="my-2">
     <h3 class="display-4"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
-    <hr class="mt-2">
+    <hr class="mt-2 mb-0">
     <?php 
     global $post;
       if(has_excerpt($post)):

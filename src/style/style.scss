@@ -25,26 +25,5 @@ $link-hover-decoration: none;
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
-#sidebar {
-  @include media-breakpoint-down(md) {
-    background-color: theme-color("light");
-  }
-  @include media-breakpoint-up(md) {
-    max-width: 400px;
-    background-color: theme-color("dark");
-  }
-}
-
-#page {
-  @include media-breakpoint-up(md) {
-    max-width: 800px;
-  }
-}
-
-blockquote {
-  @extend .my-3;
-  @extend .mx-5;
-  @extend .p-3;
-  @extend .bg-light;
-  @extend .rounded;
-}
+@import "custom";
+//@import "ai1ec";

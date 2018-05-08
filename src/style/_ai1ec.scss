@@ -1,0 +1,121 @@
+/*
+* Main SASS file for timely all in one event caledar plugin
+*
+* Mostly extends bootstrap classes for creating custom style.
+*
+* Import this file after bootstrap imports when using calendar plugin.
+*/
+
+#ai1ec-container {
+  clear: both;
+}
+
+.ai1ec-main-container {
+
+}
+
+.timely {
+  word-wrap: break-word;
+  @extend .m-0
+}
+
+.ai1ec-calendar {
+
+}
+
+.ai1ec-calendar-toolbar {
+  @extend .border-0;
+  @extend .mb-2;
+  @extend .px-3;
+}
+
+.ai1ec-clearfix {
+
+}
+
+.ai1ec-clearfix::before,
+.ai1ec-clearfix::after {
+  content: " ";
+  display: table;
+}
+
+.ai1ec-clearfix::after {
+  clear: both;
+}
+
+.ai1ec-nav {
+
+}
+
+.ai1ec-nav-pills {
+
+}
+
+.ai1ec-pull-left {
+
+}
+
+.ai1ec-pull-right {
+
+}
+
+.ai1ec-filters {
+
+}
+
+.ai1ec-calendar-view-container {
+  @extend .m-1;
+}
+
+.ai1ec-title-buttons {
+  @extend .my-2;
+}
+
+.ai1ec-btn-toolbar {
+
+}
+
+.ai1ec-pagination {
+
+}
+
+.ai1ec-btn-group {
+  @extend .btn-group;
+}
+
+.ai1ec-btn-default {
+  @extend .btn;
+  @extend .btn-secondary;
+}
+
+.ai1ec-btn-sm {
+  @extend .btn-sm;
+}
+
+.ai1ec-prev-year::before {
+  content: "<< ";
+}
+
+.ai1ec-next-year::after {
+  content: ">>";
+}
+
+.ai1ec-month-view {
+  @extend .table;
+}
+
+.ai1ec-weekday {
+  @extend .h5;
+}
+
+.ai1ec-month-view > thead {
+  @extend .thead-light;
+}
+
+.ai1ec-day-stretcher {
+  float-left;
+  heigth: 94px;
+  width: 0;
+
+}
+

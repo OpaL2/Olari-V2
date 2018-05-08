@@ -37,7 +37,7 @@ function olariv2_wigdets_init() {
       'name' => __('Toolbar items', 'olariv2'),
       'id' => 'primary',
       'description' => __('Widget area for toolbar items', 'olariv2'),
-      'before_widget' => '<div id="%1$s" class="card mt-3"><div class="card-body">',
+      'before_widget' => '<div id="%1$s" class="card mt-3 border-0"><div class="card-body">',
       'after_widget' => '</div></div>',
       'before_title' => '<h3 class="card-title" >',
       'after_title' => '</h3>' 
@@ -52,6 +52,8 @@ require_once(get_template_directory() . '/includes/rest-api.php');
 This function is machine generated, please do not modify
 */
 function olariv2_styles() {
+
+  //wp_deregister_style('ai1ec_style');
   ?>
   <!-- inject:css -->
   <!-- endinject -->

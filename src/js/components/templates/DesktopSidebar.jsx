@@ -68,7 +68,7 @@ const NavbarMenuRender = (props) => {
 const ContactInfoRender = (props) => {
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
-    <div className="card mt-3">
+    <div className="card mt-3 border-0">
       <nav className="nav flex-column card-body">
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
@@ -80,7 +80,7 @@ const ContactInfoRender = (props) => {
 
 const HandoutRender = (props) => {
   return props.posts ? (
-    <div className="card mt-3">
+    <div className="card mt-3 border-0">
       {props.posts.map((post) => {
         return(
           <div key={post.id} className="card-body">
@@ -112,7 +112,7 @@ const Calendar = (props) => {
   });
 
   return(
-    <ul className="list-group">
+    <ul className="list-group border-0">
       {EventComponents}
     </ul>
   );
@@ -120,7 +120,7 @@ const Calendar = (props) => {
 
 const CalEvent = (props) => {
   return(
-    <li className="list-group-item">
+    <li className="list-group-item border-0">
       <div className="small">{props.event.start.format('ddd DD.MM.YY')}
       {props.event.allDay ? null : (
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>

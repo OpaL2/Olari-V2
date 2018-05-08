@@ -13,22 +13,36 @@ get_header();
   <?php while( have_posts() ) : the_post(); ?>
 
 
-  <header class="my-2">
+  <header class="mt-2 mb-0">
     <h3 class=""><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
-    <hr class="mt-2">
+    <hr class="mt-2 mb-0">
     <?php 
     global $post;
       if(has_excerpt($post)):
      ?>
      <p class="lead"><?php esc_html_e(get_the_excerpt()); ?>/p>
     <?php endif; ?>
-    <img src="<?php the_post_thumbnail_url(); ?>" class="my-3 w-100 h-auto">
+    <img src="<?php the_post_thumbnail_url(); ?>" class="w-100 h-auto my-0">
   </header>
 
-    <div class="bg-white p-3 rounder">
+    <div class="bg-white p-3 rounded mt-3">
       <?php the_content(); ?>
     </div>
-      <?php endwhile; ?>
+    
+        <?php 
+          $tags = get_the_tags();
+          $html = '<div class="bg-white p-3 rounded mt-3"> <nav class="nav" role="post tags">';
+          if ($tags): foreach ( $tags as $tag ) {
+            $tag_link = get_tag_link($tag->term_id);
+
+            $html .= "<a href='{$tag_link}' class='nav-item nav-link'>{$tag->name}</a>";
+          }
+          $html .= '</div></nav>';
+          echo $html;
+        endif;
+         ?>
+
+    <?php endwhile; ?>
   </div>
 </div>
 

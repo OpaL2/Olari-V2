@@ -19,9 +19,17 @@ import gpotomo from 'gulp-po2mo';
 
 export const clean = () => del(['build/**/*']);
 
+export const ai1ec_clean = () => del(['build-ai1ec/**/*']);
+
 function img() {
   return gulp.src('src/img/**/*.{png,svg,jpeg,jpg}')
     .pipe(gulp.dest('build/images/'))
+    .pipe(livereload());
+}
+
+function ai1ec_img() {
+  return gulp.src('src-ai1ec/img/**/*.{png,svg,jpeg,jpg,gif}')
+    .pipe(gulp.dest('build-ai1ec/img/'))
     .pipe(livereload());
 }
 
@@ -38,7 +46,15 @@ function wp_required() {
     .pipe(livereload());
 }
 
+function ai1ec_wp_required() {
+  return gulp.src('src-ai1ec/wp-required/style.css')
+    .pipe(gulp.dest('build-ai1ec/'))
+    .pipe(livereload());
+}
+
 const sass = build_sass(['src/style/**/*.scss'], 'build/css/');
+
+const ai1ec_sass = build_sass(['src-ai1ec/style/**/*.scss'], 'build-ai1ec/css/');
 
 const js = build_js('./src/js/app.js', './build/js');
 const js_production = build_js_production('src/js/app.js', 'build/js/');
@@ -46,6 +62,18 @@ const js_production = build_js_production('src/js/app.js', 'build/js/');
 function templates() {
   return gulp.src(['src/templates/**/*.php', '!src/templates/functions.php'])
     .pipe(gulp.dest('build/'))
+    .pipe(livereload());
+}
+
+function ai1ec_templates() {
+  return gulp.src(['src-ai1ec/templates/**/*.php'])
+    .pipe(gulp.dest('build-ai1ec/'))
+    .pipe(livereload());
+}
+
+function ai1ec_twig() {
+  return gulp.src('src-ai1ec/twig/**/*.twig')
+    .pipe(gulp.dest('build-ai1ec/twig/'))
     .pipe(livereload());
 }
 
@@ -71,7 +99,13 @@ function watch() {
   gulp.watch('src/img/**/*.{png,svg,jpeg,jpg}', img);
   gulp.watch(['src/templates/functions.php', 'src/widgets/**/*.php'], gulp.series(inject, wppot));
   gulp.watch(['src/includes/**/*.php'], gulp.series(includes, wppot));
+  gulp.watch(['src-ai1ec/style/**/*.scss'], ai1ec_sass);
+  gulp.watch(['src-ai1ec/img/**/*.{png,svg,jpeg,jpg,gif}'], ai1ec_img);
+  gulp.watch(['src-ai1ec/templates/**/*.php'], ai1ec_templates);
+  gulp.watch(['src-ai1ec/twig/**/*.twig'], ai1ec_twig);
+  gulp.watch(['src-ai1ec/wp-required/style.css'], ai1ec_wp_required);
 }
+
 
 function inject() {
   var target = gulp.src('src/templates/functions.php');
@@ -100,16 +134,20 @@ const build_dev = gulp.series(
   wppot
 );
 
-
-export default build_dev;
+const ai1ec_build_dev = gulp.series(
+  ai1ec_clean,
+  gulp.parallel(ai1ec_twig, ai1ec_templates, ai1ec_sass, ai1ec_img, ai1ec_wp_required)
+);
 
 const build = gulp.series(
-  clean,
-  gulp.parallel(js_production, sass, wp_required, lang, templates, img),
+  gulp.parallel(clean, ai1ec_clean),
+  gulp.parallel(js_production, sass, wp_required, lang, templates, img,ai1ec_twig, ai1ec_templates, ai1ec_sass, ai1ec_img, ai1ec_wp_required),
   inject
 );
 
-const build_and_watch = gulp.series(build_dev, watch);
+export {build};
+
+const build_and_watch = gulp.series(gulp.parallel(build_dev, ai1ec_build_dev), watch);
 export {build_and_watch as dev};
 
 

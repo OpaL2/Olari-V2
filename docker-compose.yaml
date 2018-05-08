@@ -13,6 +13,7 @@ services:
       - ./build:/var/www/html/wp-content/themes/olariv2
       - ./env/plugins:/var/www/html/wp-content/plugins
       - ./env/media:/var/www/html/wp-content/uploads
+      - ./build-ai1ec:/var/www/html/wp-content/themes-ai1ec/olari
     depends_on:
       - olariv2-wpdb
 
