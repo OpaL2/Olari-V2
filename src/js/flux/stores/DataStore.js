@@ -85,12 +85,6 @@ class DataStore {
       return null;
     }
 
-    function strToDate(str) {
-      const re = /^((\d{4})(\d{2})(\d{2}))(T(\d{2})(\d{2})(\d{2}))?$/;
-      const m = re.exec(str);
-      return m[5] ? new Date(m[2] + '-' + m[3] + '-' + m[4] + 'T' + m[6] + ':' + m[7] + ':' + m[8]) : new Date(m[2] + '-' + m[3] + '-' + m[4]);
-    }
-
     function parseStart(event) {
       return moment(getPropertyByRegex(event, "DTSTART"));
     }

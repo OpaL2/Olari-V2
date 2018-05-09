@@ -9,7 +9,7 @@ get_header();
 ?>
 
 <div class="row justify-content-center">
-  <div id="page" class="col-12 mx-0 mx-lg-2 rounded ">
+  <article id="post" class="col-12 mx-0 mx-lg-2 rounded ">
   <?php while( have_posts() ) : the_post(); ?>
 
 
@@ -22,7 +22,7 @@ get_header();
      ?>
      <p class="lead"><?php esc_html_e(get_the_excerpt()); ?>/p>
     <?php endif; ?>
-    <img src="<?php the_post_thumbnail_url(); ?>" class="w-100 h-auto my-0">
+    <img src="<?php the_post_thumbnail_url(); ?>" class="w-100 h-auto mb-0 mt-3">
   </header>
 
     <div class="bg-white p-3 rounded mt-3">
@@ -43,7 +43,7 @@ get_header();
          ?>
 
     <?php endwhile; ?>
-  </div>
+  </article>
 </div>
 
 

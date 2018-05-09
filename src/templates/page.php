@@ -9,7 +9,7 @@ get_header();
 ?>
 
 <div class="row justify-content-center">
-  <div id="page" class="col-12 mx-0 mx-lg-2 rounded ">
+  <article id="page" class="col-12 mx-0 mx-lg-2 rounded ">
   <?php while( have_posts() ) : the_post(); ?>
 
 
@@ -27,7 +27,7 @@ get_header();
     <?php the_content(); ?>
   </div>
   <?php endwhile; ?>
-  </div>
+  </article>
 </div>
 
 <?php
