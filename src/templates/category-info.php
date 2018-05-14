@@ -51,7 +51,7 @@ get_header();
   <?php endwhile; ?>
 </div>
 
-<div class="row justify-content-center">
+<footer class="row justify-content-center">
 
   <div class="col-12 mx-0">
     <hr class="mb-2">
@@ -70,7 +70,7 @@ wp_reset_postdata();
 ?>
     </nav>
   </div>
-</div>
+</footer>
 
 
 <?php

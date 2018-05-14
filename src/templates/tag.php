@@ -1,18 +1,21 @@
 <?php
+
 /**
 * @package olariv2
 */
 
 get_header();
 
-  $term = get_term(get_query_var( 'cat' ));
+$term = get_term(get_query_var( 'tag_id' ));
+
   $paged = get_query_var( 'paged' )  ? get_query_var( 'paged' ) : 1;
 
   $loop = new WP_Query(array(
-    'cat' => $term->term_id,
+    'tag_id' => $term->term_id,
     'posts_per_page' => 6,
     'paged' => $paged
   ));
+
 ?>
 
 <header id="category-header" class="row my-2">
@@ -34,12 +37,12 @@ get_header();
         <?php the_excerpt(); ?>
 
         <?php 
-          $tags = get_the_tags();
+          $cats = get_the_category();
           $html = '<nav class="nav" role="post tags">';
-          if ($tags): foreach ( $tags as $tag ) {
-            $tag_link = get_tag_link($tag->term_id);
+          if ($cats): foreach ( $cats as $cat ) {
+            $cat_link = get_category_link($cat->term_id);
 
-            $html .= "<a href='{$tag_link}' class='nav-item nav-link'>{$tag->name}</a>";
+            $html .= "<a href='{$cat_link}' class='nav-item nav-link'>{$cat->name}</a>";
           }
           $html .= '</nav>';
           echo $html;
