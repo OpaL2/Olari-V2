@@ -13,7 +13,13 @@ function olariv2_setup() {
   set_post_thumbnail_size( 50, 50, array( 'center', 'center')  );
   add_image_size( 'default-thumb', 999, 9999, false);
 
+  add_theme_support( 'automatic-feed-links' );
+
   add_post_type_support('page', array('excerpt'));
+
+  add_theme_support( 'post-formats', array(
+    'status',
+  ) );
 
   register_nav_menus(array(
     'primary' => esc_html__('Primary', 'olariv2'),

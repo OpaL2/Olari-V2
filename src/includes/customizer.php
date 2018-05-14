@@ -118,6 +118,24 @@ function olariv2_customize_register($wp_customize) {
     'section' => 'olariv2_toolbar_widgets'
   ));
 
+    $wp_customize->add_setting('contact_info_widget_contact_page', array(
+    'default' => '',
+    'section' => 'olariv2_toolbar_widgets'
+  ));
+
+  $wp_customize->add_control('contact_info_widget_contact_page', array(
+    'label' => __('Contact page', 'olariv2'),
+    'description' => __('Select page which displays contact listing', 'olariv2'),
+    'type' => 'select',
+    'section' => 'olariv2_toolbar_widgets',
+    'choices' => array_reduce(get_pages(),
+      function ($carry,$page) {
+        $carry[$page->ID] = $page->post_title;
+        return $carry;
+      },
+      array())
+    ));
+
   $wp_customize->add_section('olariv2_social_media_widget', array(
     'title' => __('Social media links', 'olariv2'),
     'description' => __('Urls for links in social media', 'olariv2'),
@@ -161,6 +179,33 @@ function olariv2_customize_register($wp_customize) {
     'type' => 'text',
     'section' => 'olariv2_social_media_widget'
   ));
+
+  $wp_customize->add_section('olariv2_calendar', array(
+    'title' => __('Calendar settings', 'olariv2'),
+    'description' => __('', 'olariv2'),
+    'priority' => 40,
+    'panel' => 'olariv2_theme',
+    'capability' => 'edit_theme_options'
+  ));
+
+  $wp_customize->add_setting('calendar_page', array(
+    'default' => '',
+    'section' => 'olariv2_calendar'
+  ));
+
+  $wp_customize->add_control('calendar_page', array(
+    'label' => __('Calendar page', 'olariv2'),
+    'description' => __('Select page which is used as calendar display page', 'olariv2'),
+    'type' => 'select',
+    'section' => 'olariv2_calendar',
+    'choices' => array_reduce(get_pages(),
+      function ($carry,$page) {
+        $carry[$page->ID] = $page->post_title;
+        return $carry;
+      },
+      array())
+    ));
+
 }
 add_action('customize_register', 'olariv2_customize_register');
 

@@ -99,10 +99,12 @@ class MobileSidebar extends React.Component {
         <HandoutRender
           visible={this.state.visibleHandout}
           posts={this.props.data.handoutPosts}
+          category={this.props.data.settings.infoCategoryID}
         />
         <CalendarRender
           visible={this.state.visibleCalendar}
           vCalendar={this.props.data.calendar}
+          calendarPage={this.props.data.settings.calendarPageID}
         />
       </React.Fragment>
       , document.getElementById('react-tablet-root'));
@@ -151,6 +153,7 @@ const ContactInfoRender = (props) => {
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
         {contactInfo.address ? (<a className="nav-item nav-link" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
+        {contactInfo.pageID ? (<a className="nav-item nav-link" href={'/?p=' + contactInfo.pageID}>Kaikki yhteystiedot <i className="fas fa-angle-double-right" /></a>) : null}
       </nav>
     ) : null;
 }
@@ -164,13 +167,15 @@ const HandoutRender = (props) => {
           <a key={post.id} className="nav-item nav-link" href={post.link}> {post.title.rendered} <i className="fas fa-angle-double-right"/></a>
         );
       })}
+      <a className="nav-item nav-link" href={'/?cat=' + props.category}>Näytä kaikki <i className="fas fa-angle-double-right"/></a>
       </nav>
     ) : null;
 }
 
 const CalendarRender = (props) => {
   return props.vCalendar && props.visible ? (
-    <div className="mt-3">
+    <div className="mt-3 bg-white rounded">
+    <a className="mt-4 p-3 pt-5" href={'/?p=' + props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
       <Calendar
         events={props.vCalendar}
       />

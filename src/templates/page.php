@@ -20,7 +20,7 @@ get_header();
     global $post;
       if(has_excerpt($post)):
      ?>
-     <p class="lead"><?php esc_html_e(get_the_excerpt()); ?></p>
+     <p class="lead mt-2"><?php esc_html_e(get_the_excerpt()); ?></p>
     <?php endif; ?>
   </header>
   <div class="bg-white p-3 rounder">

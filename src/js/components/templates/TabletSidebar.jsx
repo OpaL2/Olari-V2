@@ -110,10 +110,12 @@ class TabletSidebar extends React.Component {
         <HandoutRender
           visible={this.state.visibleHandout}
           posts={this.props.data.handoutPosts}
+          category={this.props.data.settings.infoCategoryID}
         />
         <CalendarRender
           visible={this.state.visibleCalendar}
           vCalendar={this.props.data.calendar}
+          calendarPage={this.props.data.settings.calendarPageID}
         />
         <SearchRender
           visible={this.state.visibleSearch}
@@ -167,6 +169,7 @@ const ContactInfoRender = (props) => {
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
         {contactInfo.address ? (<a className="nav-item nav-link" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
+        {contactInfo.pageID ? (<a className="nav-item nav-link" href={'/?p=' + contactInfo.pageID}>Kaikki yhteystiedot <i className="fas fa-angle-double-right" /></a>) : null}
       </nav>
     </div>
     ) : null;
@@ -175,25 +178,30 @@ const ContactInfoRender = (props) => {
 const HandoutRender = (props) => {
   if(!props.visible) return null;
   return props.posts ? (
-    <div className="card my-2 border-0">
+    <div className="card mt-3 border-0">
+      <div className="card-body">
       {props.posts.map((post) => {
         return(
-          <div key={post.id} className="card-body">
-            <a className="h5 card-title card-link" href={post.link}>{post.title.rendered}</a>
+          <div key={post.id} className="mb-4">
+            <a className="card-title card-link" href={post.link}><h5>{post.title.rendered}</h5></a>
             <p className="card-text" dangerouslySetInnerHTML={{__html:post.content.rendered}} />
           </div>
         );
       })}
+        <a className="card-link" href={'/?cat=' + props.category}>Näytä kaikki <i className="fas fa-angle-double-right"/></a>
+      </div>
     </div>
     ) : null;
 }
-
 const CalendarRender = (props) => {
   return props.vCalendar && props.visible ? (
-    <div className="mt-3">
+    <div className="card mt-3 border-0">
+      <div className="card-body">
       <Calendar
         events={props.vCalendar}
       />
+      <a className="card-link pt-3" href={'/?p=' + props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
+      </div>
     </div>
   ) : null;
 }
@@ -207,7 +215,7 @@ const Calendar = (props) => {
   });
 
   return(
-    <ul className="list-group border-0 my-2">
+    <ul className="list-group m-0 p-0 border-0">
       {EventComponents}
     </ul>
   );
@@ -215,7 +223,7 @@ const Calendar = (props) => {
 
 const CalEvent = (props) => {
   return(
-    <li className="list-group-item border-0">
+    <li className="list-group-item mx-0 px-0 border-0">
       <div className="small">{props.event.start.format('ddd DD.MM.YY')}
       {props.event.allDay ? null : (
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>

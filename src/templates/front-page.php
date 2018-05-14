@@ -16,11 +16,12 @@
 <?php
   $loop = new WP_Query(array(
     'cat' => get_theme_mod('front_page_post_category'),
-    'posts_per_page' => 10
+    'posts_per_page' => 6,
+    'paged' => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1
   ));
 ?>
 <div id="posts" class="row justify-content-center">
-  <?php if($loop->have_posts()) : while( $loop->have_posts() ) : $loop->the_post(); ?>
+  <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
   <div class="col-lg-6 my-3 mt-md-0 my-lg-3">
     <div class="mx-0 bg-white p-3 rounded">
       <h3 class=""><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -45,9 +46,11 @@
     </div>
   </div>
 
-  <?php endwhile; else : ?>
-    <p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'olariv2' ); ?></p>
-  <?php endif; ?>
+  <?php endwhile; ?>
+</div>
+
+<div class="row justify-content-center bg-white mx-1 my-3 mt-md-0 mt-lg-3 rounded p-3">
+  <a href="/?cat=<?php echo get_theme_mod('front_page_post_category'); ?>" class="btn btn-outline-primary btn-lg" role="show more" type="button"><?php _e('Show more', 'olariv2');?></a>
 </div>
 
 <!--posts:end-->
