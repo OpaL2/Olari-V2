@@ -20,8 +20,7 @@
     </div>
   </div>
 
-  <footer id="footer" class="site-footer border-top">
-    <div id="to-top-btn"><a href="<?php if(is_front_page()): echo ''; else: echo '#top'; endif;?>"> <i class="fas fa-angle-up"></i></a> </div>
+  <footer class="site-footer border-top">
   </footer>
   <?php wp_footer(); ?>
 <!-- end:body -->

@@ -37,6 +37,32 @@ function olariv2_excerpt_more($more) {
 add_filter('excerpt_more', 'olariv2_excerpt_more');
 
 
+add_action( 'init', 'olariv2_update_ai1ec_event', 99 );
+
+function olariv2_update_ai1ec_event() {
+    global $wp_post_types;
+
+    if ( post_type_exists( 'ai1ec_event' ) ) {
+
+        // exclude from search results
+        $wp_post_types['ai1ec_event']->exclude_from_search = true;
+    }
+}
+
+function olariv2_search_filter( $query ) {
+  if ( 'page' == get_option('show_on_front') ) {
+    $frontpage_id = (int)get_option( 'page_on_front' );
+    $blog_id = (int)get_option( 'page_for_posts' );
+
+    if( ! $query->is_admin && $query->is_search ) {
+      $query->set( 'post__not_in', [$frontpage_id, $blog_id]);
+    }
+  }
+}
+
+add_action( 'pre_get_posts', 'olariv2_search_filter');
+
+
 function olariv2_wigdets_init() {
   register_sidebar(
     array(
