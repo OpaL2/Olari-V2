@@ -21,10 +21,14 @@ get_header();
   <div class="col-12 mx-0 mx-lg-2 rounded">
     <h3 class="display-4 text-primary"><?php _e('Search', 'olariv2'); ?></h3>
     <hr class="mt-2 mb-0">
-    <p class="lead mt-2"><?php printf( __('Search results for: %s', 'olariv2'), get_search_query()); ?></p>
+    <?php if( $loop->have_posts() ): ?>
+      <p class="lead mt-2"><?php printf( __('Search results for: %s', 'olariv2'), get_search_query()); ?></p>
+    <?php endif; ?>
   </div>
 </header>
 
+
+<?php if( $loop->have_posts() ): ?>
 <div id="posts" class="row grid">
   <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
   <div class="col-12 col-lg-6 my-3 mt-md-0 my-lg-3 grid-item">
@@ -65,9 +69,29 @@ get_header();
     </div>
   </div>
 
-  <?php
- endwhile; ?>
+  <?php endwhile; ?>
 </div>
+
+<?php else: ?>
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="jumbotron col-12 mx-0 mx-lg-2 bg-white rounded">
+      <div class="display-4"><?php _e('No search results found', 'olariv2'); ?></div> 
+      <p class="lead"><?php printf( __('We got no results for search: %s', 'olariv2'), get_search_query()); ?></p>
+      <hr class="my-4">
+      <form role="search" method="get" class="form" action="<?php echo esc_url( home_url( '/' )); ?>">
+        <div class="form-group">
+          <label for="search"> <?php _e('You can try research to find what you where looking:', 'olariv2') ?> </label>
+          <input id="search" type="search" class="form-control" name="s">
+          <button type="submit" class="btn btn-outline-primary mt-2"><?php _e('Submit', 'olariv2') ?></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<?php endif; ?>
+
 <footer class="row justify-content-center">
 
   <div class="col-12 mx-0">
