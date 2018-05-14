@@ -14,6 +14,7 @@ import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
 import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
 import faAngleDown from '@fortawesome/fontawesome-free-solid/faAngleDown';
 import faAngleUp from '@fortawesome/fontawesome-free-solid/faAngleUp';
+import faAngleDoubleLeft from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft';
 import faAngleDoubleRight from '@fortawesome/fontawesome-free-solid/faAngleDoubleRight';
 
 //Contact icons
@@ -36,6 +37,7 @@ fontawesome.library.add(
   faAngleRight,
   faAngleDown,
   faAngleUp,
+  faAngleDoubleLeft,
   faAngleDoubleRight,
   faEnvelope,
   faPhone,
