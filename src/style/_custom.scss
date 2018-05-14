@@ -21,3 +21,26 @@ blockquote {
   @extend .bg-light;
   @extend .rounded;
 }
+
+#pagination-nav  ul {
+  @extend .nav;
+  @extend .justify-content-center;
+
+}
+
+#pagination-nav li {
+  @extend .nav-item;
+}
+
+#pagination-nav .current {
+  @extend .active;
+  @extend .nav-link;
+  @extend .border-0;
+  @extend .bg-light;
+}
+
+#pagination-nav a {
+  @extend .nav-link;
+  @extend .border-0;
+  @extend .bg-light;
+}

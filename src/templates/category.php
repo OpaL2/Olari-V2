@@ -1,29 +1,30 @@
-
-<?php get_header(); ?>
-
-<?php if( is_front_page() && !is_home() ) : while( have_posts() ) : the_post(); ?>
-
-<div class="row justify-content-center">
-  <div class="jumbotron col-12 mx-0 mx-lg-5 bg-white rounded">
-      <?php the_content(); ?>
-  </div>
-</div>
-<?php endwhile; endif; ?>
-
-
-<!--posts:begin-->
-
 <?php
-  
+/**
+* @package olariv2
+*/
+
+get_header();
+
+  $term = get_term(get_query_var( 'cat' ));
+  $paged = get_query_var( 'paged' )  ? get_query_var( 'paged' ) : 1;
+
   $loop = new WP_Query(array(
-    'cat' => get_theme_mod('front_page_post_category'),
+    'cat' => $term->term_id,
     'posts_per_page' => 6,
-    'paged' => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1
+    'paged' => $paged
   ));
 ?>
+
+<header id="category-header" class="row my-2">
+  <div class="col-12 mx-0 mx-lg-2 rounded">
+    <h3 class="display-4"><a href="<?php echo esc_url("/?cat=" . $term->term_id); ?>"><?php esc_html_e($term->name);?></a></h3>
+    <hr class="mt-2 mb-0">
+  </div>
+</header>
+
 <div id="posts" class="row justify-content-center">
   <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
-  <div class="col-lg-6 my-3 mt-md-0 my-lg-3">
+  <div class="col-12 col-lg-6 my-3 mt-md-0 my-lg-3">
     <div class="mx-0 bg-white p-3 rounded">
       <h3 class=""><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
       <?php if(has_post_thumbnail()) : ?>
@@ -51,15 +52,30 @@
 </div>
 
 <div class="row justify-content-center">
+
   <div class="col-12 mx-0">
     <hr class="mb-2">
-    <div class="w-100 text-center">
-      <a class="" href="/?cat=<?php echo get_theme_mod('front_page_post_category'); ?>"><?php _e("Show all", 'olariv2') ?> <i class="fas fa-angle-double-right"></i></a>
-    </div>
+    <nav class="" aria-label="pagination navigation" id="pagination-nav">
+<?php
+
+echo paginate_links( array(
+  'format' => '/page/%#%',
+  'total' => $loop->max_num_pages,
+  'current' => $paged,
+  'mid_size' => 2,
+  'type' => 'list',
+  'prev_text' => '<i class="fas fa-angle-double-left"></i> ' . __('Previous', 'olariv2'),
+  'next_text' => __('Next', 'olariv2') . ' <i class="fas fa-angle-double-right"></i>'
+));
+wp_reset_postdata();
+?>
+    </nav>
   </div>
 </div>
 
-<?php wp_reset_postdata(); ?>
 
-<!--posts:end-->
-<?php get_footer(); ?>
+<?php
+
+get_footer();
+
+?>

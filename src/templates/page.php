@@ -13,7 +13,7 @@ get_header();
   <?php while( have_posts() ) : the_post(); ?>
 
 
-  <header class="my-2">
+  <header class="">
     <h3 class="display-4"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
     <hr class="mt-2 mb-0">
     <?php 

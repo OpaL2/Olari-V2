@@ -28,12 +28,13 @@ class DesktopSidebar extends React.Component {
         />
 
           
+
+          <ContactInfoRender
+            content={this.props.data.settings}
+          />
           <CalendarRender
             vCalendar={this.props.data.calendar}
             calendarPage={this.props.data.settings.calendarPageID}
-          />
-          <ContactInfoRender
-            content={this.props.data.settings}
           />
           <HandoutRender
             posts={this.props.data.handoutPosts}
@@ -71,11 +72,14 @@ const ContactInfoRender = (props) => {
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
     <div className="card mt-3 border-0">
+      <div className="card-header bg-white border-0 mb-0 pb-0">
+        <h3 className="card-title mb-0 pb-0">Yhteystiedot</h3>
+      </div>
       <nav className="nav flex-column card-body">
-        {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
-        {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
-        {contactInfo.address ? (<a className="nav-item nav-link" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
-        {contactInfo.pageID ? (<a className="nav-item nav-link" href={'/?p=' + contactInfo.pageID}>Kaikki yhteystiedot <i className="fas fa-angle-double-right" /></a>) : null}
+        {contactInfo.email ? (<a className="nav-item nav-link ml-0 pl-0" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
+        {contactInfo.phone ? (<a className="nav-item nav-link ml-0 pl-0" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
+        {contactInfo.address ? (<a className="nav-item nav-link ml-0 pl-0" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
+        {contactInfo.pageID ? (<a className="nav-item nav-link ml-0 pl-0" href={'/?p=' + contactInfo.pageID}>Kaikki yhteystiedot <i className="fas fa-angle-double-right" /></a>) : null}
       </nav>
     </div>
     ) : null;
@@ -84,6 +88,9 @@ const ContactInfoRender = (props) => {
 const HandoutRender = (props) => {
   return props.posts ? (
     <div className="card mt-3 border-0">
+      <div className="card-header bg-white border-0 mb-0 pb-0">
+        <h3 className="card-title mb-0 pb-0">Tiedotteet</h3>
+      </div>
       <div className="card-body">
       {props.posts.map((post) => {
         return(
@@ -102,6 +109,9 @@ const HandoutRender = (props) => {
 const CalendarRender = (props) => {
   return props.vCalendar ? (
     <div className="card mt-3 border-0">
+      <div className="card-header bg-white border-0 mb-0 pb-0">
+        <h3 className="card-title mb-0 pb-0">Kalenteri</h3>
+      </div>
       <div className="card-body">
       <Calendar
         events={props.vCalendar}
