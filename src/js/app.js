@@ -1,5 +1,5 @@
 'use strict';
-//Iplicit font awesome icon import
+//Iplicit fontawesome icon import
 import 'icons';
 
 import React from 'react';

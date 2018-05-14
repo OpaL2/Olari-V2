@@ -18,14 +18,14 @@ $term = get_term(get_query_var( 'tag_id' ));
 
 ?>
 
-<header id="category-header" class="row my-2">
+<header id="tag-header" class="row my-2">
   <div class="col-12 mx-0 mx-lg-2 rounded">
     <h3 class="display-4"><a href="<?php echo esc_url("/?cat=" . $term->term_id); ?>"><?php esc_html_e($term->name);?></a></h3>
     <hr class="mt-2 mb-0">
   </div>
 </header>
 
-<div id="posts" class="row justify-content-center">
+<div id="posts" class="row">
   <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
   <div class="col-12 col-lg-6 my-3 mt-md-0 my-lg-3">
     <div class="mx-0 bg-white p-3 rounded">
@@ -38,7 +38,7 @@ $term = get_term(get_query_var( 'tag_id' ));
 
         <?php 
           $cats = get_the_category();
-          $html = '<nav class="nav" role="post tags">';
+          $html = '<nav class="nav" role="post categories">';
           if ($cats): foreach ( $cats as $cat ) {
             $cat_link = get_category_link($cat->term_id);
 

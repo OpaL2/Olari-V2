@@ -153,7 +153,7 @@ export {build_and_watch as dev};
 
 function build_js(startPath, targetDirectory) {
   return function build_js(done) {
-    return browserify({entries: startPath, extensions:['.jsx', '.js'], debug: true,
+    return browserify({entries: [startPath], extensions:['.jsx', '.js'], debug: true,
       paths: ['node_modules/', 'src/js/']})
       .transform(babelify, {presets: ['env', 'react'], sourceMaps: true})
       .bundle()
