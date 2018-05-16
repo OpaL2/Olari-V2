@@ -79,6 +79,7 @@ add_action('widgets_init', 'olariv2_wigdets_init');
 
 require_once(get_template_directory() . '/includes/customizer.php');
 require_once(get_template_directory() . '/includes/rest-api.php');
+require_once(get_template_directory() . '/includes/permalinks.php');
 
 /*
 This function is machine generated, please do not modify
