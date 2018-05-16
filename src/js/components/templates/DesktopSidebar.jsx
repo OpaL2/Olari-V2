@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SearchForm from 'components/templates/SearchForm';
+import container from 'components/containers/Container';
 
 import Media from 'react-media';
 
@@ -23,12 +24,9 @@ class DesktopSidebar extends React.Component {
               menuName="primary"
             />
           ,document.getElementById('main-navigation'))}
-        <SearchForm 
-          siteAddress={this.props.data.settings.siteAddress}
-        />
-
-          
-
+          <SearchForm 
+            siteAddress={this.props.data.settings.siteAddress}
+          />
           <ContactInfoRender
             content={this.props.data.settings}
           />
@@ -45,7 +43,7 @@ class DesktopSidebar extends React.Component {
   }
 }
 
-export default DesktopSidebar;
+export default container(DesktopSidebar);
 
 const DesktopMenuRender = (props) => {
   const location = props.menuLocations ? props.menuLocations[props.menuName] : null;

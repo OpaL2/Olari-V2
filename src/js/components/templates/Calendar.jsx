@@ -1,6 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
 
+import container from 'components/containers/Container';
 
 import moment from 'moment';
 import _ from 'lodash/collection';
@@ -86,7 +87,7 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+export default container(Calendar);
 
 const PageNavigation = (props) => {
   return(

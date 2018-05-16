@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SearchForm from 'components/templates/SearchForm';
+import container from 'components/containers/Container';
 
 import _ from 'lodash/collection';
 
@@ -110,7 +111,7 @@ const MobileSidebar = (props) => {
       , document.getElementById('react-tablet-root'));
 }
 
-export default toggledSidebar(MobileSidebar) ;
+export default container(toggledSidebar(MobileSidebar));
 
 const NavToggler = (props) => {
   return(
