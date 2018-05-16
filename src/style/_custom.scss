@@ -44,3 +44,16 @@ blockquote {
   @extend .border-0;
   @extend .bg-light;
 }
+
+
+.grid-item, .grid-size {
+  @include media-breakpoint-up(xs) {
+    width: 100%;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 33.333%;
+  }
+}

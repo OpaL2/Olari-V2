@@ -59,6 +59,11 @@ const ai1ec_sass = build_sass(['src-ai1ec/style/**/*.scss'], 'build-ai1ec/css/')
 const js = build_js('./src/js/app.js', './build/js');
 const js_production = build_js_production('src/js/app.js', 'build/js/');
 
+function masonry() {
+  return gulp.src('node_modules/masonry-layout/dist/masonry.pkgd.min.js')
+    .pipe(gulp.dest('build/js/'));
+}
+
 function templates() {
   return gulp.src(['src/templates/**/*.php', '!src/templates/functions.php'])
     .pipe(gulp.dest('build/'))

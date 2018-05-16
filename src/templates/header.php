@@ -19,6 +19,6 @@
 
   <div class="container-fluid bg-light">
     <div class="row justify-content-around">
-      <main id="content" class="col-12 col-sm-10 col-md-7 col-lg-8 col-xl-10">
+      <main id="content" class="col-12 col-sm-10 col-md-7 col-lg-8 col-xl-9">
         <div id="react-tablet-root" class="my-2 my-sm-0"></div>
           <div class="container justify-content-center my-3">

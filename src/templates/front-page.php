@@ -23,7 +23,7 @@
 ?>
 <div id="posts" class="row">
   <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
-  <div class="col-lg-6 my-3 mt-md-0 my-lg-3">
+  <div class="col-12 col-lg-6 col-xl-4 my-3 mt-md-0 my-lg-3">
     <div class="mx-0 bg-white p-3 rounded">
       <h3 class=""><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
       <?php if(has_post_thumbnail()) : ?>

@@ -6,8 +6,11 @@
 
 get_header();
 
-get_template_part('partials/theloop', 'excrept');
+?>
 
+No valid template !!!
+
+<?php
 get_footer();
 
 ?>

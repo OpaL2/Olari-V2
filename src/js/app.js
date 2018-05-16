@@ -1,6 +1,8 @@
 'use strict';
 //Iplicit fontawesome icon import
 import 'icons';
+//import masonry
+import Masonry from 'masonry-layout';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,6 +19,7 @@ class App {
         <ReactSidebar />
       , document.getElementById('react-sidebar')
     );
+
     const calendar = document.getElementById('react-calendar');
     if(calendar) {
       ReactDOM.render(

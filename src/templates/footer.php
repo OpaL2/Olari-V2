@@ -6,7 +6,7 @@
       </div>
       </main>
       <div id="react-mobile-root" class="col-sm-2 d-md-none my-0 my-sm-2 my-md-0"></div>
-      <div id="sidebar" class="col-12 col-md-5 col-lg-4 col-xl-2 ml-md-auto border-left">
+      <div id="sidebar" class="col-12 col-md-5 col-lg-4 col-xl-3 ml-md-auto border-left">
         <div class="row">
           <div id="react-sidebar" class="col-12 rounded">
           </div>

@@ -10,7 +10,7 @@ get_header();
 
   $loop = new WP_Query(array(
     'cat' => get_theme_mod('handout_widget_category'),
-    'posts_per_page' => 20,
+    'posts_per_page' => 24,
     'paged' => $paged
   ));
 ?>
