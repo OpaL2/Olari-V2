@@ -120,5 +120,6 @@ GitHub.sublime-settings
 
 wordpress/*
 build/*
+build-ai1ec/*
 src/lang/*.pot
 env/*
