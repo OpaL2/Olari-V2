@@ -5,112 +5,112 @@ import SearchForm from 'components/templates/SearchForm';
 
 import _ from 'lodash/collection';
 
-class MobileSidebar extends React.Component {
+function toggledSidebar (Sidebar) {
+  return class extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visibleMenu: false,
-      visibleCalendar: false,
-      visibleHandout: false,
-      visibleContact: false
+    constructor(props) {
+      super(props);
+      this.state = {
+        menu: false,
+        calendar: false,
+        handout: false,
+        contact: false
+      }
+
+      this.toggleMenu = this.toggleMenu.bind(this);
+      this.toggleCalendar = this.toggleCalendar.bind(this);
+      this.toggleHandout = this.toggleHandout.bind(this);
+      this.toggleContact = this.toggleContact.bind(this);
     }
 
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.toggleCalendar = this.toggleCalendar.bind(this);
-    this.toggleHandout = this.toggleHandout.bind(this);
-    this.toggleContact = this.toggleContact.bind(this);
+    toggleMenu() {
+      this.setState((prev, props) => {
+        return {
+          menu: !prev.menu,
+          calendar: false,
+          handout: false,
+          contact: false
+        }
+      });
+    }
+
+    toggleCalendar() {
+      this.setState((prev, props) => {
+        return {
+          menu: false,
+          calendar: !prev.calendar,
+          handout: false,
+          contact: false
+        }
+      });
+    }
+
+    toggleHandout() {
+      this.setState((prev, props) => {
+        return {
+          menu: false,
+          calendar: false,
+          handout: !prev.handout,
+          contact: false
+        }
+      });
+    }
+
+    toggleContact() {
+      this.setState((prev, props) => {
+        return {
+          menu: false,
+          calendar: false,
+          handout: false,
+          contact: !prev.contact
+        }
+      });
+    }
+
+    render() {
+      return <Sidebar 
+        visibility={this.state}
+        toggle={
+          {
+            contact:this.toggleContact,
+            handout:this.toggleHandout,
+            menu:this.toggleMenu,
+            calendar:this.toggleCalendar
+          }
+        }
+        {...this.props} />
+    }
   }
+}
 
-  toggleMenu() {
-    this.setState((prev, props) => {
-      return {
-        visibleMenu: !prev.visibleMenu,
-        visibleCalendar: false,
-        visibleHandout: false,
-        visibleContact: false
-      }
-    });
-  }
+export { toggledSidebar };
 
-  toggleCalendar() {
-    this.setState((prev, props) => {
-      return {
-        visibleMenu: false,
-        visibleCalendar: !prev.visibleCalendar,
-        visibleHandout: false,
-        visibleContact: false
-      }
-    });
-
-  }
-
-  toggleHandout() {
-    this.setState((prev, props) => {
-      return {
-        visibleMenu: false,
-        visibleCalendar: false,
-        visibleHandout: !prev.visibleHandout,
-        visibleContact: false
-      }
-    });
-  }
-
-  toggleContact() {
-    this.setState((prev, props) => {
-      return {
-        visibleMenu: false,
-        visibleCalendar: false,
-        visibleHandout: false,
-        visibleContact: !prev.visibleContact
-      }
-    });
-  }
-
-  render() {
+const MobileSidebar = (props) => {
     return ReactDOM.createPortal(
       <React.Fragment>
         <div className="btn-group btn-group-lg w-100" role="group">
-          <NavToggler action={this.toggleHandout} isActive={this.state.visibleHandout}>
+          <NavToggler action={props.toggle.handout} isActive={props.visibility.handout}>
             <i className="fas fa-info" />
           </NavToggler>
-          <NavToggler action={this.toggleCalendar} isActive={this.state.visibleCalendar}>
+          <NavToggler action={props.toggle.calendar} isActive={props.visibility.calendar}>
             <i className="far fa-calendar-alt" />
           </NavToggler>
-          <NavToggler action={this.toggleContact} isActive={this.state.visibleContact}>
+          <NavToggler action={props.toggle.contact} isActive={props.visibility.contact}>
             <i className="fas fa-address-book" />
           </NavToggler>
-          <NavToggler action={this.toggleMenu} isActive={this.state.visibleMenu}>
+          <NavToggler action={props.toggle.menu} isActive={props.visibility.menu}>
             <i className="fas fa-bars" />
           </NavToggler>
         </div>
-
-        <MobileMenuRender
-          visible={this.state.visibleMenu}
-          menus={this.props.data.menus}
-          menuLocations={this.props.data.menuLocations}
-          menuName="primary"
-          siteAddress={this.props.data.settings.siteAddress}
-        />
-        <ContactInfoRender
-          visible={this.state.visibleContact}
-          content={this.props.data.settings}
-        />
-        <HandoutRender
-          visible={this.state.visibleHandout}
-          posts={this.props.data.handoutPosts}
-          category={this.props.data.settings.infoCategoryID}
-        />
-        <CalendarRender
-          visible={this.state.visibleCalendar}
-          vCalendar={this.props.data.calendar}
-          calendarPage={this.props.data.settings.calendarPageID}
+        <SidebarElements
+          visibility={props.visibility}
+          data={props.data}
         />
       </React.Fragment>
       , document.getElementById('react-tablet-root'));
-  }
 }
-export default MobileSidebar;
+
+export default toggledSidebar(MobileSidebar) ;
 
 const NavToggler = (props) => {
   return(
@@ -118,7 +118,37 @@ const NavToggler = (props) => {
   ); 
 }
 
-const MobileMenuRender = (props) => {
+const SidebarElements = (props) => {
+  return(
+    <React.Fragment>
+        <MenuRender
+          visible={props.visibility.menu}
+          menus={props.data.menus}
+          menuLocations={props.data.menuLocations}
+          menuName="primary"
+          siteAddress={props.data.settings.siteAddress}
+        />
+        <ContactInfoRender
+          visible={props.visibility.contact}
+          content={props.data.settings}
+        />
+        <HandoutRender
+          visible={props.visibility.handout}
+          posts={props.data.handoutPosts}
+          category={props.data.settings.infoCategoryID}
+        />
+        <CalendarRender
+          visible={props.visibility.calendar}
+          vCalendar={props.data.calendar}
+          calendarPage={props.data.settings.calendarPageID}
+        />
+    </React.Fragment>
+  );
+}
+
+export { SidebarElements };
+
+const MenuRender = (props) => {
   if(!props.visible) return null;
   const location = props.menuLocations ? props.menuLocations[props.menuName] : null;
   const ID = location ? location.ID : null;
@@ -149,7 +179,7 @@ const ContactInfoRender = (props) => {
   if(!props.visible) return null;
   const contactInfo = props.content ? props.content.contactInfo : null;
   return contactInfo ? (
-      <nav className="nav flex-column my-2">
+      <nav className="nav flex-column my-2 bg-white rounded">
         {contactInfo.email ? (<a className="nav-item nav-link" href={"mailto:" + contactInfo.email}><i className="far fa-envelope" /> {contactInfo.email}</a>) : null}
         {contactInfo.phone ? (<a className="nav-item nav-link" href={"tel:" + contactInfo.phone}><i className="fas fa-phone"/> {contactInfo.phone}</a>) : null}
         {contactInfo.address ? (<a className="nav-item nav-link" href={contactInfo.locationUrl}><i className="fas fa-map-marker-alt"/> {contactInfo.address}</a>) : null}
@@ -161,7 +191,7 @@ const ContactInfoRender = (props) => {
 const HandoutRender = (props) => {
   if(!props.visible) return null;
   return props.posts ? (
-      <nav className="nav flex-column my-2">
+      <nav className="nav flex-column my-2 bg-white rounder">
       {props.posts.map((post) => {
         return(
           <a key={post.id} className="nav-item nav-link" href={post.link}> {post.title.rendered} <i className="fas fa-angle-double-right"/></a>
@@ -174,11 +204,12 @@ const HandoutRender = (props) => {
 
 const CalendarRender = (props) => {
   return props.vCalendar && props.visible ? (
-    <div className="mt-3 bg-white rounded">
-    <a className="mt-4 p-3 pt-5" href={'/?p=' + props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
+    <div className="my-2 bg-white rounded">
+
       <Calendar
         events={props.vCalendar}
       />
+          <a className="mt-4 p-3 pt-5" href={'/?p=' + props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
     </div>
   ) : null;
 }

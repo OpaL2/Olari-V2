@@ -58,7 +58,7 @@ const DesktopMenuRender = (props) => {
 const NavbarMenuRender = (props) => {
   const Content = props.items.map((item) => {
     return(
-      <a key={item.id} className="nav-item nav-link" href={item.url}>{item.title}</a>
+      <a key={item.id} className="nav-item nav-link text-info" href={item.url}>{item.title}</a>
     );
   });
   return(
