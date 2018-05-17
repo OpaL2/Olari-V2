@@ -123,3 +123,4 @@ build/*
 build-ai1ec/*
 src/lang/*.pot
 env/*
+*.zip

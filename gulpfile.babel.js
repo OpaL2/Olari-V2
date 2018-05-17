@@ -3,7 +3,7 @@
 import gulp from 'gulp';
 import del from 'del';
 import gcs from 'gulp-clean-css';
-import uglify from 'gulp-uglify';
+import uglify from 'gulp-uglify-es';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import browserify from 'browserify';
@@ -146,7 +146,7 @@ const ai1ec_build_dev = gulp.series(
 
 const build = gulp.series(
   gulp.parallel(clean, ai1ec_clean),
-  gulp.parallel(js_production, sass, wp_required, lang, templates, img,ai1ec_twig, ai1ec_templates, ai1ec_sass, ai1ec_img, ai1ec_wp_required),
+  gulp.parallel(js_production, sass, wp_required, includes, lang, templates, img,ai1ec_twig, ai1ec_templates, ai1ec_sass, ai1ec_img, ai1ec_wp_required),
   inject
 );
 
@@ -177,16 +177,17 @@ function build_js(startPath, targetDirectory) {
 function build_js_production(startPath, targetDirectory) {
   return function build_js_production() {
     process.env.NODE_ENV = 'production';
-    return browserify({entries: startPath, extensions:['.jsx', '.js']})
-      .transform(babelify, {presets: ['env', 'react']})
-      .bundle()
-      .on('error', (err) => {
-        console.log(err);
-      })
-      .pipe(source('index.js'))
-      .pipe(buffer())
-      .pipe(uglify())
-      .pipe(gulp.dest(targetDirectory));
+    return browserify({
+    entries: startPath,
+    extensions:['.jsx', '.js'],
+    paths: ['node_modules/', 'src/js/']
+    })
+    .transform(babelify, {presets: ['react',['env', {"targets": {"browsers": ["last 2 versions", "ie >= 7"]}}]]})
+    .bundle()
+    .pipe(source('index.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest(targetDirectory));
   }
 }
 

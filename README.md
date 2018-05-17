@@ -4,12 +4,15 @@ Olari V2 Wordpress Theme
 Build instructions
 ------------------
 
+You MUST have yarn installed.
+
 1. `yarn install` for installing dependencies
 
 2. `yarn run dev` for developement build
 
 3. `yarn run build` for production build, generates two zip files: olariv2.zip and olariv2-ai1ec.zip
 
+You MUST NOT use developement build in production. Always use production build.
 
 Running developement server
 ---------------------------
@@ -18,7 +21,7 @@ You MUST have docker engine and docker compose installed and running.
 
 First build developement version with command: `yarn run dev`
 
-Run `docker-compose up -d` to start developement server and navigate to "localhost:8000"
+Run `docker-compose up -d` to start developement server and navigate to <http://localhost:8000/>
 
 Complete wordpress core install and install required plugins and theme.
 

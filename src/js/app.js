@@ -1,8 +1,6 @@
 'use strict';
 //Iplicit fontawesome icon import
 import 'icons';
-//import masonry
-import Masonry from 'masonry-layout';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
