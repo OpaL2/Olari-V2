@@ -14,8 +14,8 @@ get_header();
 
 
   <header class="mt-2 mb-0">
-    <h3 class=""><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3>
-    <hr class="mt-3 mb-0">
+    <h3 class="mb-0"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php the_title(); ?></a></h3> <span class="small text-info"> <?php the_time("d.m.Y") ?> </span>
+    <hr class="mt-2 mb-0">
     <?php 
     global $post;
       if(has_excerpt($post)):
@@ -37,7 +37,7 @@ get_header();
 
             $html .= "<a href='{$tag_link}' class='nav-item nav-link'>{$tag->name}</a>";
           }
-          $html .= '</div></nav>';
+          $html .= '</nav></div>';
           echo $html;
         endif;
          ?>

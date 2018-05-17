@@ -1,4 +1,4 @@
-
+§
 <?php get_header(); ?>
 
 <?php if( is_front_page() && !is_home() ) : while( have_posts() ) : the_post(); ?>
@@ -25,7 +25,7 @@
   <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
   <div class="col-12 col-lg-6 col-xl-4 my-3 mt-md-0 my-lg-3">
     <div class="mx-0 bg-white p-3 rounded">
-      <h3 class=""><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+      <h3 class=""><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3> <span class="small text-info"><?php the_time('d.m.Y'); ?> </span>
       <?php if(has_post_thumbnail()) : ?>
         <a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" class="mw-100 h-auto d-inline-block px-3"></a>
       <?php endif ?>
