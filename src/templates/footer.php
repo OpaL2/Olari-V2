@@ -21,7 +21,7 @@
   </div>
 
   <footer id="site-footer" class="border-top row mx-2 bg-white">
-      <div class="col-6 nav text-left flex-column small">
+      <div class="col-6 nav text-left flex-column small my-2">
         <a href="<?php echo esc_url("mailto:" . get_theme_mod('contact_info_widget_email')); ?>" class="nav-item nav-link py-1">
           <i class="far fa-envelope"></i> 
           <?php esc_html_e(get_theme_mod('contact_info_widget_email')); ?>

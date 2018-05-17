@@ -11,7 +11,7 @@
 </head>
 <body <?php body_class(); ?>>
 <!-- begin:body -->
-  <header  class="shadow sticky-top bg-white border-bottom">
+  <header  class="bg-white border-bottom">
     <nav id="main-navigation" class="navbar navbar-expand ">
       <h1 class=""><a href="<?php echo esc_url( home_url( '/' )); ?>" rel="home" class="navbar-brand"><?php bloginfo( 'name' ); ?></a></h1>
     </nav>

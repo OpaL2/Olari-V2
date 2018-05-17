@@ -11,6 +11,8 @@ get_header();
   $paged = get_query_var( 'paged' )  ? get_query_var( 'paged' ) : 1;
 
   $loop = new WP_Query(array(
+    'monthnum' => $monthnum,
+    'year' => $year,
     'posts_per_page' => 24,
     'paged' => $paged
   ));
@@ -18,7 +20,7 @@ get_header();
 
 <header id="date-header" class="row my-2">
   <div class="col-12 mx-0 mx-lg-2 rounded">
-    <h3 class="display-4"><a href="<?php echo esc_url("#"); ?>"><?php the_archive_title();?></a></h3>
+    <h3 class="display-4"><a href="<?php echo esc_url("/" . $year . "/" . $monthnum); ?>"><?php the_archive_title();?></a></h3>
     <hr class="mt-2 mb-0">
   </div>
 </header>
