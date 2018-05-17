@@ -4,13 +4,6 @@
 * @package olariv2
 */
 
-get_header();
-
-?>
-
-No valid template !!!
-
-<?php
-get_footer();
-
+header("HTTP/1.1 301 Moved Permanently");
+header("Location: " . esc_url( home_url( '/' )));
 ?>
