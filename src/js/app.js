@@ -9,6 +9,8 @@ import DataActions from 'flux/actions/DataActions';
 import ReactSidebar from 'components/ReactSidebar';
 import ReactCalendar from 'components/ReactCalendar';
 
+import 'moment/locale/fi.js';
+
 class App {
 
   run() {

@@ -4,6 +4,7 @@ import DataActions from 'flux/actions/DataActions.js';
 import _ from 'lodash/collection';
 import ical2json from 'ical2json';
 import moment from 'moment';
+moment.locale('fi');
 
 class DataStore {
 
@@ -99,6 +100,7 @@ class DataStore {
         title: event.SUMMARY,
         content: event.DESCRIPTION,
         link: event.URL,
+        url: parseStart(event).format('#/YYYY/MM/DD/') + event.UID,
         start: parseStart(event),
         end: parseEnd(event),
         allDay: event["DTSTART;VALUE=DATE"] ? true : false

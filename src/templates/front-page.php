@@ -1,4 +1,4 @@
-§
+
 <?php get_header(); ?>
 
 <?php if( is_front_page() && !is_home() ) : while( have_posts() ) : the_post(); ?>

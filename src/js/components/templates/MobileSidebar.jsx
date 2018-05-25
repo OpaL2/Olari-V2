@@ -141,7 +141,7 @@ const SidebarElements = (props) => {
         <CalendarRender
           visible={props.visibility.calendar}
           vCalendar={props.data.calendar}
-          calendarPage={props.data.settings.calendarPageID}
+          calendarPage={props.data.settings.calendarPageUrl}
         />
     </React.Fragment>
   );
@@ -209,8 +209,9 @@ const CalendarRender = (props) => {
 
       <Calendar
         events={props.vCalendar}
+        calendarPage={props.calendarPage}
       />
-          <a className="mt-4 p-3 pt-5" href={'/?p=' + props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
+          <a className="mt-4 p-3 pt-5" href={props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
     </div>
   ) : null;
 }
@@ -220,7 +221,7 @@ const Calendar = (props) => {
     return event.start > new Date();
   }), (event) => {return event.start}).slice(0,5);
   const EventComponents = futureEvents.map((event) => {
-    return( <CalEvent event={event} key={event.key} />)
+    return( <CalEvent event={event} key={event.key} calendarPage={props.calendarPage} />)
   });
 
   return(
@@ -238,7 +239,7 @@ const CalEvent = (props) => {
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
       )}
       </div>
-      <a href={props.event.link}>{props.event.title}</a>
+      <a href={props.calendarPage + props.event.url}>{props.event.title}</a>
     </li>
   );
 }

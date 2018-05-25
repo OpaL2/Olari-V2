@@ -7,7 +7,7 @@
 //Creates pretty search links for theme
 
 function olariv2_add_rewrite() {
-  add_rewrite_rule('^search/(.+)/?$', 'index.php?s=$matches[1]',  'top');
+  add_rewrite_rule('^search/(.+)/?$', 'index.php?s=$matches[1]', 'top');
 }
 
 add_action('init', 'olariv2_add_rewrite');
@@ -20,5 +20,7 @@ function olariv2_change_search_url_rewrite() {
 }
 add_action( 'template_redirect', 'olariv2_change_search_url_rewrite' );
 
+add_action( 'after_switch_theme', 'flush_rewrite_rules' );
 
  ?>
+

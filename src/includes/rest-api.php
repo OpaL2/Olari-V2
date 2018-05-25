@@ -26,6 +26,7 @@ function olariv2_rest_theme_settings($data) {
       ),
     'infoCategoryID' => get_theme_mod('handout_widget_category'),
     'calendarPageID' => get_theme_mod('calendar_page'),
+    'calendarPageUrl' => get_permalink(get_theme_mod('calendar_page')),
     'frontPage' => array(
         'postCategoryID' => get_theme_mod('front_page_post_category'),
         'brandingImg' => get_theme_mod('front_page_img')
