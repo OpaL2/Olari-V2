@@ -132,6 +132,7 @@ const EventList = (props) => {
       <Event
         key={event.key}
         event={event}
+        selected={props.selected}
       />
     );
   });
@@ -152,7 +153,7 @@ const Event = (props) => {
 
   return (
     <li className="list-group-item border-right-0 border-left-0 mx-0 px-0">
-      <Link to={props.event.url}>{props.event.title}</Link>
+      <Link to={props.selected.format('/YYYY/MM/DD/') + props.event.key}>{props.event.title}</Link>
       {props.event.allDay ? null : (
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
       )}
@@ -168,7 +169,7 @@ const ExpandedEvent = (props) => {
     <div className="col-6 card border-0 mt-3">
       <div className="card-header bg-white border-0 m-0 p-0">
         <h3 className="card-title">{event.title}</h3>
-        <h6 className="card-subtitle">{event.allDay ? event.start.format('ddd DD.MM.YYYY') : event.start.format('DD.MM.YYYY HH:mm') + (event.start.isSame(event.end, 'day') ? event.end.format(' - HH:mm') : event.end.format(' - DD.MM.YYYY HH:mm'))} </h6>
+        <h6 className="card-subtitle">{event.allDay ? (event.start.isSame(event.end.clone().subtract(1, 'day')) ? event.start.format('ddd DD.MM.YYYY') : event.start.format('ddd DD.MM.YYYY - ') + event.end.clone().subtract(1, 'day').format('ddd DD.MM.YYYY') ) : event.start.format('DD.MM.YYYY HH:mm') + (event.start.isSame(event.end, 'day') ? event.end.format(' - HH:mm') : event.end.format(' - DD.MM.YYYY HH:mm'))} </h6>
       </div>
       <div className="card-body m-0 p-0">
         {event.content}
