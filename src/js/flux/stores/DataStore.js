@@ -100,7 +100,7 @@ class DataStore {
         title: event.SUMMARY,
         content: event.DESCRIPTION,
         link: event.URL,
-        url: parseStart(event).format('#/YYYY/MM/DD/') + event.UID,
+        url: parseStart(event).format('/YYYY/MM/DD/') + event.UID,
         start: parseStart(event),
         end: parseEnd(event),
         allDay: event["DTSTART;VALUE=DATE"] ? true : false

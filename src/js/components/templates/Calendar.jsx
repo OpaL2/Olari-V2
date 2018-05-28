@@ -17,20 +17,44 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      today: moment()
+      today: moment(),
+      view: moment(this.props.match.params.day + '-' + this.props.match.params.month + '-' + this.props.match.params.year, 'DD-MM-YYYY')
     }
+
+    this.backMonth = this.backMonth.bind(this);
+    this.forwardMonth = this.forwardMonth.bind(this);
+  }
+
+  backMonth() {
+    this.setState((prevState, props) => {
+      return {view: prevState.view.clone().subtract(1, 'months').date(1)};
+    })
+  }
+
+  forwardMonth() {
+    this.setState((prevState, props) => {
+      return {view: prevState.view.clone().add(1, 'months').date(1)};
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({view: moment(nextProps.match.params.day + '-' + nextProps.match.params.month + '-' + nextProps.match.params.year, 'DD-MM-YYYY')})
   }
 
   render() {
     const selected = moment(this.props.match.params.day + '-' + this.props.match.params.month + '-' + this.props.match.params.year, 'DD-MM-YYYY');
-    console.log(selected);
     return(
     <div>
-      <CalendarPageNavigation selected={selected.clone()} today={this.state.today}/>
+      <CalendarPageNavigation
+        selected={selected.clone()}
+        today={this.state.today}
+        back={this.backMonth}
+        forward={this.forwardMonth}
+      />
       <Media query="(min-width: 992px)">
         {largeScreen => largeScreen
           ?
-            <CalendarMonthView events={this.props.data.calendar} selected={selected.clone()} today={this.state.today} />
+            <CalendarMonthView events={this.props.data.calendar} selected={selected.clone()} today={this.state.today} view={this.state.view} />
           :
             <CalendarListView {...this.props} today={this.state.today} />
         }
@@ -46,13 +70,11 @@ export default container(Calendar);
 class CalendarPageNavigation extends React.Component {
 
   render() {
-    const backMonth = this.props.selected.clone().subtract(1, 'months').date(1);
-    const frontMonth = this.props.selected.clone().add(1, "months").date(1);
     return(
       <div className="btn-group">
-        <Link className="btn btn-outline-secondary" to={backMonth.format("/YYYY/MM/DD")}><i className="fas fa-angle-double-left" /></Link>
-        <Link className="btn btn-outline-secondary" to={this.props.today.format("/YYYY/MM/DD")}>{this.props.selected.format("DD.MM.YYYY")}</Link>
-        <Link className="btn btn-outline-secondary" to={frontMonth.format("/YYYY/MM/DD")}><i className="fas fa-angle-double-right" /></Link>
+        <button className="btn btn-outline-secondary" onClick={this.props.back}><i className="fas fa-angle-double-left" /></button>
+        <Link className="btn btn-outline-secondary" to={this.props.today.format("/YYYY/MM/DD")}>Tänään</Link>
+        <button className="btn btn-outline-secondary" onClick={this.props.forward}><i className="fas fa-angle-double-right" /></button>
       </div>
     );
   }

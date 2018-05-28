@@ -239,7 +239,7 @@ const CalEvent = (props) => {
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
       )}
       </div>
-      <a href={props.calendarPage + props.event.url}>{props.event.title}</a>
+      <a href={props.calendarPage + '#' + props.event.url}>{props.event.title}</a>
     </li>
   );
 }
