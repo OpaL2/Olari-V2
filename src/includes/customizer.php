@@ -188,6 +188,18 @@ function olariv2_customize_register($wp_customize) {
     'capability' => 'edit_theme_options'
   ));
 
+  $wp_customize->add_setting('calendar_ics_url', array(
+    'default' => '',
+    'section' => 'olariv2_calendar'
+  ));
+
+  $wp_customize->add_control('calendar_ics_url', array(
+    'label' => __('Calendar ICS link for subscribe button', 'olariv2'),
+    'description' => __('CalDav ICS URL', 'olariv2'),
+    'type' => 'text',
+    'section' => 'olariv2_calendar'
+  ));
+
   $wp_customize->add_setting('calendar_page', array(
     'default' => '',
     'section' => 'olariv2_calendar'

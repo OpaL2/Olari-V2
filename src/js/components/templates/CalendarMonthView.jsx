@@ -4,6 +4,8 @@ import { Route, Link } from 'react-router-dom';
 
 import _ from 'lodash';
 
+//import moment from 'moment';
+
 class CalendarMonthView extends React.Component {
 
   constructor(props) {
@@ -12,7 +14,8 @@ class CalendarMonthView extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="my-3">
+        <h3>{this.props.view.format('MMMM YYYY')}</h3>
         <div className="row my-3">
           <Month selected={this.props.selected.clone()} {...this.props}/>
         </div>
@@ -33,15 +36,15 @@ class CalendarMonthView extends React.Component {
 export default CalendarMonthView;
 
 const Month = (props) => {
-  const startWeek = props.view.clone().date(1).week();
-  const endWeek = props.view.clone().date(31).week();
-
-  const Weeks = _.range(startWeek, endWeek + 1).map( (n) => {
+  const firstDay = props.view.clone().startOf('month');
+  const endDay = props.view.clone().endOf('month');
+  const numOfWeeks = endDay.weekday(6).diff(firstDay.weekday(0), 'weeks');
+  const Weeks = _.range(firstDay.week(), firstDay.week() + numOfWeeks + 1).map( (n) => {
     return(
       <Week
         key={n}
         weekNumber={n}
-        today={props.today}
+        firstDay={firstDay}
         {...props}
       />
     );
@@ -70,7 +73,7 @@ const Month = (props) => {
 }
 
 const Week = (props) => {
-  const startDate = props.view.clone().week(props.weekNumber).weekday(0);
+  const startDate = props.firstDay.clone().week(props.weekNumber).weekday(0);
 
   const Days = _.range(7).map( (n) => {
     const date = startDate.clone().weekday(n);

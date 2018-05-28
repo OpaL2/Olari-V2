@@ -141,7 +141,7 @@ const SidebarElements = (props) => {
         <CalendarRender
           visible={props.visibility.calendar}
           vCalendar={props.data.calendar}
-          calendarPage={props.data.settings.calendarPageUrl}
+          calendar={props.data.settings.calendar}
         />
     </React.Fragment>
   );
@@ -204,14 +204,14 @@ const HandoutRender = (props) => {
 }
 
 const CalendarRender = (props) => {
-  return props.vCalendar && props.visible ? (
+  return props.vCalendar && props.calendar && props.visible ? (
     <div className="my-2 bg-white rounded">
 
       <Calendar
         events={props.vCalendar}
-        calendarPage={props.calendarPage}
+        calendarPage={props.calendar.pageURL}
       />
-          <a className="mt-4 p-3 pt-5" href={props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
+          <a className="mt-4 p-3 pt-5" href={props.calendar.pageURL}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
     </div>
   ) : null;
 }

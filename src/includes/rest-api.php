@@ -25,8 +25,11 @@ function olariv2_rest_theme_settings($data) {
         'pageID' => get_theme_mod('contact_info_widget_contact_page')
       ),
     'infoCategoryID' => get_theme_mod('handout_widget_category'),
-    'calendarPageID' => get_theme_mod('calendar_page'),
-    'calendarPageUrl' => get_permalink(get_theme_mod('calendar_page')),
+    'calendar' => array(
+      'pageID' => get_theme_mod('calendar_page'),
+      'pageURL' => get_permalink(get_theme_mod('calendar_page')),
+      'icsURL' => get_theme_mod('calendar_ics_url')
+    ),
     'frontPage' => array(
         'postCategoryID' => get_theme_mod('front_page_post_category'),
         'brandingImg' => get_theme_mod('front_page_img')

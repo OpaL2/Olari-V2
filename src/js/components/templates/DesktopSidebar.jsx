@@ -32,7 +32,7 @@ class DesktopSidebar extends React.Component {
           />
           <CalendarRender
             vCalendar={this.props.data.calendar}
-            calendarPage={this.props.data.settings.calendarPageUrl}
+            calendar={this.props.data.settings.calendar}
           />
           <HandoutRender
             posts={this.props.data.handoutPosts}
@@ -105,7 +105,7 @@ const HandoutRender = (props) => {
 }
 
 const CalendarRender = (props) => {
-  return props.vCalendar ? (
+  return props.vCalendar && props.calendar ? (
     <div className="card mt-3 border-0">
       <div className="card-header bg-white border-0 mb-0 pb-0">
         <h3 className="card-title mb-0 pb-0">Kalenteri</h3>
@@ -113,9 +113,9 @@ const CalendarRender = (props) => {
       <div className="card-body">
       <Calendar
         events={props.vCalendar}
-        calendarPage={props.calendarPage}
+        calendarPage={props.calendar.pageURL}
       />
-      <a className="card-link pt-3" href={props.calendarPage}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
+      <a className="card-link pt-3" href={props.calendar.pageURL}>Näytä kalenteri <i className="fas fa-angle-double-right"/></a>
       </div>
     </div>
   ) : null;

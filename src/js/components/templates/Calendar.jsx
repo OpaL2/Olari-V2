@@ -51,6 +51,7 @@ class Calendar extends React.Component {
         back={this.backMonth}
         forward={this.forwardMonth}
       />
+      <SubscribeButton url={this.props.data.settings.calendar ? this.props.data.settings.calendar.icsURL : null} />
       <Media query="(min-width: 992px)">
         {largeScreen => largeScreen
           ?
@@ -59,7 +60,13 @@ class Calendar extends React.Component {
             <CalendarListView {...this.props} today={this.state.today} />
         }
       </Media>
-      <CalendarPageNavigation selected={selected.clone()} today={this.state.today} />
+      <CalendarPageNavigation
+        selected={selected.clone()}
+        today={this.state.today}
+        back={this.backMonth}
+        forward={this.forwardMonth}
+      />
+      <SubscribeButton url={this.props.data.settings.calendar ? this.props.data.settings.calendar.icsURL : null} />
     </div>
     );
   }
@@ -71,7 +78,7 @@ class CalendarPageNavigation extends React.Component {
 
   render() {
     return(
-      <div className="btn-group">
+      <div className="btn-group px-2">
         <button className="btn btn-outline-secondary" onClick={this.props.back}><i className="fas fa-angle-double-left" /></button>
         <Link className="btn btn-outline-secondary" to={this.props.today.format("/YYYY/MM/DD")}>Tänään</Link>
         <button className="btn btn-outline-secondary" onClick={this.props.forward}><i className="fas fa-angle-double-right" /></button>
@@ -79,3 +86,13 @@ class CalendarPageNavigation extends React.Component {
     );
   }
 }
+
+const SubscribeButton = (props) => {
+  return(
+    <div className="btn-group px-2">
+      <a className="btn btn-outline-secondary" href={props.url}>tilaa</a>
+    </div>
+  );
+}
+
+

@@ -7,14 +7,14 @@
 //Creates pretty search links for theme
 
 function olariv2_add_rewrite() {
-  add_rewrite_rule('^search/(.+)/?$', 'index.php?s=$matches[1]', 'top');
+  add_rewrite_rule('^hae/(.+)/?$', 'index.php?s=$matches[1]', 'top');
 }
 
 add_action('init', 'olariv2_add_rewrite');
 
 function olariv2_change_search_url_rewrite() {
   if ( is_search() && ! empty( $_GET['s'] ) ) {
-    wp_redirect( home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) );
+    wp_redirect( home_url( "/hae/" ) . urlencode( get_query_var( 's' ) ) );
     exit();
   } 
 }
