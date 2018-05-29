@@ -234,7 +234,7 @@ const Calendar = (props) => {
 const CalEvent = (props) => {
   return(
     <li className="list-group-item border-0">
-      <div className="small">{props.event.start.format('ddd DD.MM.YY')}
+      <div className="small text-info">{props.event.start.format('ddd DD.MM.YY')}
       {props.event.allDay ? null : (
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
       )}

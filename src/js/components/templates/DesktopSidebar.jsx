@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import SearchForm from 'components/templates/SearchForm';
 import container from 'components/containers/Container';
 
-import Media from 'react-media';
-
 import _ from 'lodash/collection';
+
+import moment from 'moment';
 
 class DesktopSidebar extends React.Component {
 
@@ -94,6 +94,7 @@ const HandoutRender = (props) => {
         return(
           <div key={post.id} className="mb-4">
             <a className="card-title card-link" href={post.link}><h5>{post.title.rendered}</h5></a>
+            <h6 className="card-subtitle small text-info">{moment(post.date).format('DD.MM.YYYY')}</h6>
             <p className="card-text" dangerouslySetInnerHTML={{__html:post.content.rendered}} />
           </div>
         );
@@ -139,7 +140,7 @@ const Calendar = (props) => {
 const CalEvent = (props) => {
   return(
     <li className="list-group-item mx-0 px-0 border-0">
-      <div className="small">{props.event.start.format('ddd DD.MM.YY')}
+      <div className="small text-info">{props.event.start.format('ddd DD.MM.YY')}
       {props.event.allDay ? null : (
         <span className="badge badge-secondary float-right">{props.event.start.format('HH:mm')}</span>
       )}
