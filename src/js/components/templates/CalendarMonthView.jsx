@@ -14,7 +14,7 @@ class CalendarMonthView extends React.Component {
 
   render() {
     return(
-      <div className="my-3">
+      <div id="calendar" className="my-3">
         <h3>{this.props.view.format('MMMM YYYY')}</h3>
         <div className="row my-3">
           <Month selected={this.props.selected.clone()} {...this.props}/>
@@ -80,7 +80,6 @@ const Week = (props) => {
     return(
       <Day
         key={date.format('YYYYMMDD')}
-        today={props.today}
         selected={props.selected}
         date={date}
         events={filterEventsOnDate(props.events, date)}

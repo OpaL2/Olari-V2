@@ -44,7 +44,7 @@ class Calendar extends React.Component {
   render() {
     const selected = moment(this.props.match.params.day + '-' + this.props.match.params.month + '-' + this.props.match.params.year, 'DD-MM-YYYY');
     return(
-    <div>
+    <div id="calendar-wrapper">
       <CalendarPageNavigation
         selected={selected.clone()}
         today={this.state.today}
@@ -55,9 +55,9 @@ class Calendar extends React.Component {
       <Media query="(min-width: 992px)">
         {largeScreen => largeScreen
           ?
-            <CalendarMonthView events={this.props.data.calendar} selected={selected.clone()} today={this.state.today} view={this.state.view} />
+            <CalendarMonthView events={this.props.data.calendar} selected={selected.clone()} view={this.state.view} />
           :
-            <CalendarListView {...this.props} today={this.state.today} />
+            <CalendarListView events={this.props.data.calendar} selected={selected.clone()} view={this.state.view} />
         }
       </Media>
       <CalendarPageNavigation
@@ -78,7 +78,7 @@ class CalendarPageNavigation extends React.Component {
 
   render() {
     return(
-      <div className="btn-group px-2">
+      <div className="btn-group pr-1 px-md-2">
         <button className="btn btn-outline-secondary" onClick={this.props.back}><i className="fas fa-angle-double-left" /></button>
         <Link className="btn btn-outline-secondary" to={this.props.today.format("/YYYY/MM/DD")}>Tänään</Link>
         <button className="btn btn-outline-secondary" onClick={this.props.forward}><i className="fas fa-angle-double-right" /></button>
@@ -89,7 +89,7 @@ class CalendarPageNavigation extends React.Component {
 
 const SubscribeButton = (props) => {
   return(
-    <div className="btn-group px-2">
+    <div className="btn-group px-md-2">
       <a className="btn btn-outline-secondary" href={props.url}>tilaa</a>
     </div>
   );
