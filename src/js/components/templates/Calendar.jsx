@@ -9,8 +9,7 @@ import CalendarListView from 'components/templates/CalendarListView';
 import CalendarMonthView from 'components/templates/CalendarMonthView';
 
 import moment from 'moment';
-import _ from 'lodash/collection';
-
+moment.locale('fi');
 
 class Calendar extends React.Component {
 

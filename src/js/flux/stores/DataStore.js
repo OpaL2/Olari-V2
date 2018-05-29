@@ -1,7 +1,8 @@
 import alt from 'flux/alt/alt';
 import DataActions from 'flux/actions/DataActions.js';
 
-import _ from 'lodash/collection';
+import map from 'lodash/fp/map';
+import find from 'lodash/fp/find';
 import ical2json from 'ical2json';
 import moment from 'moment';
 moment.locale('fi');
@@ -48,7 +49,7 @@ class DataStore {
   }
 
   handleMenuItemsUpdate(data) {
-    _.find(this.menus, {ID: data.ID}).items = data.items;
+    find({ID: data.ID})(this.menus).items = data.items;
   }
 
   handleMenuLocationsFetch() {
@@ -94,7 +95,7 @@ class DataStore {
       return moment(getPropertyByRegex(event, "DTEND"));
     }
 
-    const events = _.map(ical2json.convert(ics).VCALENDAR[0].VEVENT, (event) => {
+    const events = map( (event) => {
       return {
         key: event.UID,
         title: event.SUMMARY,
@@ -105,7 +106,7 @@ class DataStore {
         end: parseEnd(event),
         allDay: event["DTSTART;VALUE=DATE"] ? true : false
       }
-    });
+    })(ical2json.convert(ics).VCALENDAR[0].VEVENT);
     this.calendar = events;
   }
 }

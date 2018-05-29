@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import {SidebarElements, toggledSidebar} from 'components/templates/MobileSidebar';
 import container from 'components/containers/Container';
 
-import _ from 'lodash/collection';
 
 const TabletSidebar = (props) => {
     return(

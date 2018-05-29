@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Route, Link } from 'react-router-dom';
 
-import _ from 'lodash';
-
-//import moment from 'moment';
+import range from 'lodash/fp/range';
+import filter from 'lodash/fp/filter';
+import find from 'lodash/fp/find';
 
 class CalendarMonthView extends React.Component {
 
@@ -39,7 +39,7 @@ const Month = (props) => {
   const firstDay = props.view.clone().startOf('month');
   const endDay = props.view.clone().endOf('month');
   const numOfWeeks = endDay.weekday(6).diff(firstDay.weekday(0), 'weeks');
-  const Weeks = _.range(firstDay.week(), firstDay.week() + numOfWeeks + 1).map( (n) => {
+  const Weeks = range(firstDay.week(), firstDay.week() + numOfWeeks + 1).map( (n) => {
     return(
       <Week
         key={n}
@@ -50,7 +50,7 @@ const Month = (props) => {
     );
   });
 
-  const Weekdays = _.range(7).map( (n) => {
+  const Weekdays = range(0, 7).map( (n) => {
     return(
       <th key={n}>
         {props.view.clone().weekday(n).format('ddd')}
@@ -75,7 +75,7 @@ const Month = (props) => {
 const Week = (props) => {
   const startDate = props.firstDay.clone().week(props.weekNumber).weekday(0);
 
-  const Days = _.range(7).map( (n) => {
+  const Days = range(0, 7).map( (n) => {
     const date = startDate.clone().weekday(n);
     return(
       <Day
@@ -165,7 +165,7 @@ const Event = (props) => {
 
 const ExpandedEvent = (props) => {
 
-  const event = _.find(props.events, {key: props.match.params.key});
+  const event = find({key: props.match.params.key})(props.events);
 
   return event ? ( 
     <div className="col-6 card border-0 mt-3">
@@ -183,7 +183,7 @@ const ExpandedEvent = (props) => {
 }
 
 function filterEventsOnDate(events, date) {
-  return _.filter(events, (event)=> {
+  return filter((event)=> {
     return event.allDay ? event.start.isSameOrBefore(date, 'day') && event.end.isAfter(date, 'day') : event.start.isSame(date, 'day') || (event.start.isBefore(date, 'day') && event.end.isSameOrAfter(date, 'day'));
-  });
+  })(events);
 }

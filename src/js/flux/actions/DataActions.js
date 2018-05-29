@@ -2,7 +2,7 @@ import alt from 'flux/alt/alt';
 
 import axios from 'axios';
 
-import _ from 'lodash/collection';
+import forEach from 'lodash/fp/forEach'
 
 class DataActions {
 
@@ -40,7 +40,7 @@ class DataActions {
       axios.get('/wp-json/wp-api-menus/v2/menus')
       .then((response) => {
         this.updateMenus(response.data);
-        _.forEach(response.data, (menu) => {this.fetchMenuItems(menu.ID)});
+        forEach( (menu) => {this.fetchMenuItems(menu.ID)} )(response.data);
       })
       .catch((err) => {
         this.emitError(err);

@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Route, Link, Switch } from 'react-router-dom';
 
-import _ from 'lodash/collection';
+import filter from 'lodash/fp/filter';
+import sortBy from 'lodash/fp/sortBy';
+import flow from 'lodash/fp/flow'
 
 class CalendarListView extends React.Component {
 
@@ -78,7 +80,8 @@ const ExpandedEvent = (props) => {
 }
 
 function filterEventsOnMonth(events, date) {
-  return _.filter(events, (event) => {
-    return event.start.isSame(date, 'month') || event.end.isSame(date, 'month');
-  });
+  return flow(
+      filter((e) => { return e.start.isSame(date, 'month') }),
+      sortBy((e) => { return e.start })
+    )(events);
 }

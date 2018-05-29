@@ -4,7 +4,15 @@ import ReactDOM from 'react-dom';
 import SearchForm from 'components/templates/SearchForm';
 import container from 'components/containers/Container';
 
-import _ from 'lodash/collection';
+import flow from 'lodash/fp/flow';
+import sortBy from 'lodash/fp/sortBy';
+import filter from 'lodash/fp/filter';
+import slice from 'lodash/fp/slice';
+import map from 'lodash/fp/map';
+import find from 'lodash/fp/find';
+
+import moment from 'moment';
+moment.locale('fi');
 
 function toggledSidebar (Sidebar) {
   return class extends React.Component {
@@ -153,7 +161,7 @@ const MenuRender = (props) => {
   if(!props.visible) return null;
   const location = props.menuLocations ? props.menuLocations[props.menuName] : null;
   const ID = location ? location.ID : null;
-  const menu = ID && props.menus ? _.find(props.menus, {ID: ID}) : null;
+  const menu = ID && props.menus ? find({ID: ID})(props.menus) : null;
   const items = menu ? menu.items : null;
   return items ? <VerticalMenuRender items={items} siteAddress={props.siteAddress} /> : null;
 }
@@ -217,12 +225,12 @@ const CalendarRender = (props) => {
 }
 
 const Calendar = (props) => {
-  const futureEvents = _.sortBy(_.filter(props.events, (event) => {
-    return event.start > new Date();
-  }), (event) => {return event.start}).slice(0,5);
-  const EventComponents = futureEvents.map((event) => {
-    return( <CalEvent event={event} key={event.key} calendarPage={props.calendarPage} />)
-  });
+  const EventComponents = flow(
+      filter( (e) => { return e.start > moment() } ),
+      sortBy( (e) => { return e.start }),
+      slice(0, 5),
+      map( (e) => { return( <CalEvent event={e} key={e.key} calendarPage={props.calendarPage} /> )})
+    )(props.events)
 
   return(
     <ul className="list-group border-0">
