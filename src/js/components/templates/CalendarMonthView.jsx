@@ -82,6 +82,7 @@ const Week = (props) => {
         key={date.format('YYYYMMDD')}
         selected={props.selected}
         date={date}
+        view={props.view}
         events={filterEventsOnDate(props.events, date)}
       />
     );
@@ -96,7 +97,7 @@ const Week = (props) => {
 
 const Day = (props) => {
 
-  const classes = props.date.isSame(props.selected, 'day') ? "nav-link disabled m-0 p-0" : "nav-link m-0 p-0";
+  const dayHeaderClasses= "small border-bottom px-1 " + (props.date.isSame(props.view, 'month') ? "" : "text-secondary ") + (props.date.isSame(props.view, 'day') ? "text-danger bg-dark" : "bg-light");
 
   const Events = props.events.map( (event) => {
     return (
@@ -109,9 +110,9 @@ const Day = (props) => {
   });
 
   return (
-    <td className="border p-1">
-      <Link to={props.date.format('/YYYY/MM/DD')} className={classes} style={{height:'92px', width: '100%'}}>
-        <div className="small">{props.date.format('DD.MM')}</div>
+    <td className="border">
+      <Link to={props.date.format('/YYYY/MM/DD')} className="d-block m-0 p-0" style={{minHeight:'92px', width: '100%'}}>
+        <div className={dayHeaderClasses}>{props.date.format('DD.MM')}</div>
         {Events}
       </Link>
     </td>
@@ -121,7 +122,7 @@ const Day = (props) => {
 const DayEvent = (props) => {
   const title = props.event.title.length < 11 ? props.event.title.substring(0,11) : props.event.title.substring(0, 8) + '...';
   return(
-  <div className={props.active ? "w-100 small nav-link disabled m-0 p-0" : "w-100 small text-info nav-link m-0 p-0"}>
+  <div className="w-100 small text-info m-0 p-0">
     {title}
   </div>
   );
