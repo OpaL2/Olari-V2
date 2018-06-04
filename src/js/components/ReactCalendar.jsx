@@ -13,7 +13,7 @@ const ReactCalendar = () => {
       <Switch>
         <Route path="/tissit" component={Tissit} />
         <Route path="/:year/:month/:day" component={Calendar} />
-        <Route path="/">
+        <Route>
           <Redirect to={moment().format("/YYYY/MM/DD")} />
         </Route>
       </Switch>
