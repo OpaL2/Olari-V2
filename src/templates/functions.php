@@ -22,9 +22,7 @@ function olariv2_setup() {
   ) );
 
   register_nav_menus(array(
-    'primary' => esc_html__('Primary', 'olariv2'),
-    'hiligths_mobile' => esc_html__('Hilighted on mobile', 'olariv2'),
-    'hiligths_desktop' => esc_html__('Hilighted on desktop', 'olariv2')
+    'primary' => esc_html__('Primary', 'olariv2')
   ));
 }
 endif;

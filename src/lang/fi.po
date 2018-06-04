@@ -1,0 +1,196 @@
+# Copyright (C) 2018 olariv2
+# This file is distributed under the same license as the olariv2 package.
+msgid ""
+msgstr ""
+"Project-Id-Version: olariv2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: build/404.php:14
+msgid "Page you requested could not be found"
+msgstr "Pyytämääsi sivua ei löytynyt"
+
+#: build/404.php:18
+msgid "You can try search to find what you where looking:"
+msgstr "Kokeile hakua löytääksesi etsimäsi"
+
+#: build/404.php:20, build/search.php:86
+msgid "Submit"
+msgstr "Hae"
+
+#: build/category-info.php:66, build/category.php:67, build/date.php:83, build/search.php:108, build/tag.php:70
+msgid "Previous"
+msgstr "Edellinen"
+
+#: build/category-info.php:67, build/category.php:68, build/date.php:84, build/search.php:109, build/tag.php:71
+msgid "Next"
+msgstr "Seuraava"
+
+#: build/footer.php:27, build/footer.php:31, build/footer.php:35, build/page.php:23, build/single.php:23
+msgstr ""
+
+#: build/front-page.php:57
+msgid "Show all"
+msgstr "Näytä kaikki"
+
+#: build/functions.php:25
+msgid "Primary"
+msgstr "Päävalikko"
+
+#: build/functions.php:69
+msgid "Toolbar items"
+msgstr "Työkalupalkki"
+
+#: build/functions.php:71
+msgid "Widget area for toolbar items"
+msgstr "Widgettialue työkaluille"
+
+#: build/search.php:22
+msgid "Search"
+msgstr "Hae"
+
+#: build/search.php:25
+msgid "Search results for: %s"
+msgstr "Hakutulokset haulla: %s"
+
+#: build/search.php:79
+msgid "No search results found"
+msgstr "Ei hakutuloksia"
+
+#: build/search.php:80
+msgid "We got no results for search: %s"
+msgstr "Emme löytäneet mitään haulla %s"
+
+#: build/search.php:84
+msgid "You can try research to find what you where looking:"
+msgstr "Voit kokeilla hakea uudestaan."
+
+#: build/includes/customizer.php:6
+msgid "Theme settings"
+msgstr "Teeman asetukset"
+
+#: build/includes/customizer.php:11
+msgid "Front page"
+msgstr "Etusivu"
+
+#: build/includes/customizer.php:12
+msgid "Settings for front page"
+msgstr "Etusivun asetukset"
+
+#: build/includes/customizer.php:24
+msgid "Front page branding image"
+msgstr "Etusivun brändikuva"
+
+#: build/includes/customizer.php:35
+msgid "Front page post category"
+msgstr "Artikkelikategoria"
+
+#: build/includes/customizer.php:36
+msgid "Controls which post category is used in front page"
+msgstr "Valitse etusivulla näytettävä artikkelikategoria"
+
+#: build/includes/customizer.php:48
+msgid "Toolbar widgets"
+msgstr "Työkalut"
+
+#: build/includes/customizer.php:49
+msgid "Settings for widgets in toolbar items"
+msgstr "Asetukset työkalupalkin perustyökaluille"
+
+#: build/includes/customizer.php:61
+msgid "Handout Widget Post Category"
+msgstr "Tiedotteiden kategoria"
+
+#: build/includes/customizer.php:62
+msgid "Controls which post category is used in handout widget"
+msgstr "Valitse tiedotteiden käyttämä kategoria"
+
+#: build/includes/customizer.php:79
+msgid "Contact widget email address:"
+msgstr "Ensisijainen sähköpostiosoite"
+
+#: build/includes/customizer.php:80
+msgid "Email address which is displayed in main contact widget"
+msgstr "Sähköpostiosoite, jota käytetään työkalupalkissa"
+
+#: build/includes/customizer.php:91
+msgid "Contact widget phone number:"
+msgstr "Ensisijainen puhelinnumero"
+
+#: build/includes/customizer.php:92
+msgid "Phone number which is displayed in main contact widget"
+msgstr "Työkalupalkissa käytettävä puhelinnumero"
+
+#: build/includes/customizer.php:103
+msgid "Contact widget address:"
+msgstr "Osoite"
+
+#: build/includes/customizer.php:104
+msgid "Address which is displayed in main contact widget"
+msgstr "Työkalupalkissa näytettävä osoite"
+
+#: build/includes/customizer.php:115
+msgid "Location services url:"
+msgstr "Paikkatietopalvelun url"
+
+#: build/includes/customizer.php:116
+msgid "Location services url which is used with main contact widget adress"
+msgstr "Esimerkikis google maps:n url, jotta osoitteesta on mahdollista saada lisätietoa"
+
+#: build/includes/customizer.php:127
+msgid "Contact page"
+msgstr "Yhteystietosivu"
+
+#: build/includes/customizer.php:128
+msgid "Select page which displays contact listing"
+msgstr "Valitse sivu, jossa on listattuna yhteystiedot"
+
+#: build/includes/customizer.php:140
+msgid "Social media links"
+msgstr "Sosiaalisen median linkit"
+
+#: build/includes/customizer.php:141
+msgid "Urls for links in social media"
+msgstr "Urlit sosiaaliselle medialle"
+
+#: build/includes/customizer.php:153
+msgid "Instagram account url"
+msgstr "Instagram"
+
+#: build/includes/customizer.php:154, build/includes/customizer.php:166, build/includes/customizer.php:178, build/includes/customizer.php:185
+msgstr ""
+
+#: build/includes/customizer.php:165
+msgid "Facebook account url"
+msgstr "Facebook"
+
+#: build/includes/customizer.php:177
+msgid "Twitter account url"
+msgstr "Twitter"
+
+#: build/includes/customizer.php:184
+msgid "Calendar settings"
+msgstr "Kalenteriasetukset"
+
+#: build/includes/customizer.php:197
+msgid "Calendar ICS link for subscribe button"
+msgstr "Kalenterin linkki liittymisnappia varten"
+
+#: build/includes/customizer.php:198
+msgid "CalDav ICS URL"
+msgstr "CalDav/WebDav URL"
+
+#: build/includes/customizer.php:209
+msgid "Calendar page"
+msgstr "Kalenterisivu"
+
+#: build/includes/customizer.php:210
+msgid "Select page which is used as calendar display page"
+msgstr "Valitse kalenterin sivuna käytettävä sivu"

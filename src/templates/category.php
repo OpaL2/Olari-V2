@@ -17,7 +17,7 @@ get_header();
 
 <header id="category-header" class="row my-2">
   <div class="col-12 mx-0 mx-lg-2 rounded">
-    <h3 class="display-4"><a href="<?php echo esc_url("/?cat=" . $term->term_id); ?>"><?php esc_html_e($term->name);?></a></h3>
+    <h3 class="display-4"><a href="<?php echo esc_url("/?cat=" . $term->term_id); ?>"><?php echo esc_html($term->name);?></a></h3>
     <hr class="mt-2 mb-0">
   </div>
 </header>
