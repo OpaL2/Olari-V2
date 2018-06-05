@@ -1,6 +1,7 @@
 #!/bin/bash
 
-tag=$(git describe --tag)
+tag=$(git describe --tags --abbrev=0)
+branch=$(git rev-parse --abbrev-ref HEAD)
 
 # Clean up old builds
 rm -rf olariv2*.zip
@@ -10,7 +11,7 @@ rm -rf olariv2*.zip
 
 # Create folders
 if [[ $tag =~ ^v.*$ ]]; then
-  now=$(tag)
+  now=$tag
   git checkout $tag
 else
   now=$(date +%y-%m-%d)
@@ -41,6 +42,7 @@ zip "$name2.zip" $name2/*
 rm -r $name1
 rm -r $name2
 
-if[[ $tag =~ ^v.*$ ]]; then
-  git checkout HEAD
-endiog
+if [[ $tag =~ ^v.*$ ]]; then
+  git checkout $branch
+fi
+
