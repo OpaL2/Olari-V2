@@ -13,7 +13,17 @@
 <!-- begin:body -->
   <header  class="bg-white border-bottom">
     <nav id="main-navigation" class="navbar navbar-expand ">
-      <h1 class=""><a href="<?php echo esc_url( home_url( '/' )); ?>" rel="home" class="navbar-brand"><?php bloginfo( 'name' ); ?></a></h1>
+      <a href="<?php echo esc_url( home_url( '/' )); ?>" rel="home" class="navbar-brand">
+      <?php 
+        $img_ID = get_theme_mod('front_page_img'); 
+        if($img_ID):
+          $media = wp_get_attachment_url($img_ID);
+      ?>
+        <img style="height:2.5rem" src="<?php echo esc_url($media) ?>" >
+      <?php else: ?>
+        <?php bloginfo( 'name' ); ?>
+      <?php endif; ?>
+      </a>
     </nav>
   </header>
 
