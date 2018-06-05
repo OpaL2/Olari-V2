@@ -1,5 +1,7 @@
 #!/bin/bash
 
+tag=$(git describe --tag)
+
 # Clean up old builds
 rm -rf olariv2*.zip
 
@@ -7,7 +9,12 @@ rm -rf olariv2*.zip
 ./node_modules/.bin/gulp build
 
 # Create folders
-now=$(date +%y-%m-%d)
+if [[ $tag =~ ^v.*$ ]]; then
+  now=$(tag)
+  git checkout $tag
+else
+  now=$(date +%y-%m-%d)
+fi
 name1="olariv2-$now"
 name2="olariv2-ai1ec-$now"
 mkdir $name1
@@ -33,3 +40,7 @@ zip "$name2.zip" $name2/*
 
 rm -r $name1
 rm -r $name2
+
+if[[ $tag =~ ^v.*$ ]]; then
+  git checkout HEAD
+endiog
