@@ -8,6 +8,7 @@ import DataActions from 'flux/actions/DataActions';
 
 import ReactSidebar from 'components/ReactSidebar';
 import ReactCalendar from 'components/ReactCalendar';
+import ReactPageSubmenu from 'components/ReactPageSubmenu';
 
 import 'moment/locale/fi.js';
 
@@ -24,7 +25,15 @@ class App {
     if(calendar) {
       ReactDOM.render(
         <ReactCalendar />
-        , document.getElementById('react-calendar')
+        , calendar
+      );
+    }
+
+    const pageSubmenu = document.getElementById('react-submenu');
+    if(pageSubmenu) {
+      ReactDOM.render(
+        <ReactPageSubmenu />
+        , pageSubmenu
       );
     }
   }
