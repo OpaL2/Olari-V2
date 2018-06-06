@@ -53,16 +53,13 @@ function ai1ec_wp_required() {
 }
 
 const sass = build_sass(['src/style/**/*.scss'], 'build/css/');
+const sass_production = build_sass_production(['src/style/**/*.scss'], 'build/css/');
 
 const ai1ec_sass = build_sass(['src-ai1ec/style/**/*.scss'], 'build-ai1ec/css/');
+const ai1ec_sass_production = build_sass_production(['src-ai1ec/style/**/*.scss'], 'build-ai1ec/css/');
 
 const js = build_js('./src/js/app.js', './build/js');
 const js_production = build_js_production('src/js/app.js', 'build/js/');
-
-function masonry() {
-  return gulp.src('node_modules/masonry-layout/dist/masonry.pkgd.min.js')
-    .pipe(gulp.dest('build/js/'));
-}
 
 function templates() {
   return gulp.src(['src/templates/**/*.php', '!src/templates/functions.php'])
@@ -146,7 +143,7 @@ const ai1ec_build_dev = gulp.series(
 
 const build = gulp.series(
   gulp.parallel(clean, ai1ec_clean),
-  gulp.parallel(js_production, sass, wp_required, includes, lang, templates, img,ai1ec_twig, ai1ec_templates, ai1ec_sass, ai1ec_img, ai1ec_wp_required),
+  gulp.parallel(js_production, sass_production, wp_required, includes, lang, templates, img,ai1ec_twig, ai1ec_templates, ai1ec_sass_production, ai1ec_img, ai1ec_wp_required),
   inject
 );
 
@@ -198,6 +195,15 @@ function build_sass(sourceDirectory, targetDirectory) {
       .pipe(gsass().on('error', (err) => {console.log(err); done();}))
       .pipe(gcs())
       .pipe(sourcemaps.write())
+      .pipe(gulp.dest(targetDirectory));
+  }
+}
+
+function build_sass_production(sourceDirectory, targetDirectory) {
+  return function build_sass_production(done) {
+    return gulp.src(sourceDirectory)
+      .pipe(gsass().on('error'), (err) => {console.log(err); done();})
+      .pipe(gcs())
       .pipe(gulp.dest(targetDirectory));
   }
 }
