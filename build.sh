@@ -6,8 +6,7 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 # Clean up old builds
 rm -rf olariv2*.zip
 
-# Build
-./node_modules/.bin/gulp build
+
 
 # Create folders
 if [[ $tag =~ ^v.*$ ]]; then
@@ -20,6 +19,9 @@ name1="olariv2-$now"
 name2="olariv2-ai1ec-$now"
 mkdir $name1
 mkdir $name2
+
+# Build
+./node_modules/.bin/gulp build
 
 #Copying required resources
 cp -R build/* $name1/

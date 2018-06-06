@@ -202,7 +202,7 @@ function build_sass(sourceDirectory, targetDirectory) {
 function build_sass_production(sourceDirectory, targetDirectory) {
   return function build_sass_production(done) {
     return gulp.src(sourceDirectory)
-      .pipe(gsass().on('error'), (err) => {console.log(err); done();})
+      .pipe(gsass().on('error', (err) => {console.log(err); done();}))
       .pipe(gcs())
       .pipe(gulp.dest(targetDirectory));
   }
