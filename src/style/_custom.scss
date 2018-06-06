@@ -57,3 +57,32 @@ blockquote {
     width: 33.333%;
   }
 }
+
+.wp-caption {
+  @extend .p-3;
+}
+
+.aligncenter {
+  @extend .ml-auto;
+  @extend .mr-auto;
+}
+
+.alignleft {
+  @extend .mr-auto;
+  @extend .float-left;
+}
+
+.alignright {
+  @extend .ml-auto;
+  @extend .float-right;
+}
+
+.wp-caption img {
+  @extend .p-1;
+}
+
+.wp-caption-text {
+  @extend p;
+  @extend .font-italic;
+  @extend .small;
+}
