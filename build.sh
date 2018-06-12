@@ -24,8 +24,8 @@ mkdir $name2
 ./node_modules/.bin/gulp build
 
 #Copying required resources
-cp -R build/**/* $name1/
-cp -R build-ai1ec/**/* $name2/
+cp -r build/ $name1/
+cp -r build-ai1ec/ $name2/
 
 cp LICENSE $name1/
 cp README.md $name1/
@@ -36,8 +36,8 @@ cp README.md $name2/
 
 #creating zipfiles
 
-zip "$name1.zip" $name1/*
-zip "$name2.zip" $name2/*
+zip -r "$name1.zip" $name1/*
+zip -r "$name2.zip" $name2/*
 
 #cleaning up
 

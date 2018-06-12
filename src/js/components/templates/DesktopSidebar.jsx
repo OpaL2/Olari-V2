@@ -90,6 +90,7 @@ const ContactInfoRender = (props) => {
 }
 
 const HandoutRender = (props) => {
+  const regex = /^<p>(.+?)(?=<\/p>)/;
   return props.posts ? (
     <div className="card mt-3 border-0">
       <div className="card-header bg-white border-0 mb-0 pb-0">
@@ -97,11 +98,19 @@ const HandoutRender = (props) => {
       </div>
       <div className="card-body">
       {props.posts.map((post) => {
+        const postContent = regex.exec(post.content.rendered);
+        var display = "";
+        if(postContent !== null) {
+           display = postContent[1];
+        }
+        else {
+          display = post.content.rendered;
+        }
         return(
           <div key={post.id} className="mb-4">
             <a className="card-title card-link" href={post.link}><h5>{post.title.rendered}</h5></a>
             <h6 className="card-subtitle small text-info">{moment(post.date).format('DD.MM.YYYY')}</h6>
-            <p className="card-text" dangerouslySetInnerHTML={{__html:post.content.rendered}} />
+            <p className="card-text" dangerouslySetInnerHTML={{__html:display}} />
           </div>
         );
       })}
