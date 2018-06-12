@@ -58,6 +58,37 @@ blockquote {
   }
 }
 
+img {
+  max-width: 100%
+}
+
+.size-small {
+  @include media-breakpoint-up(xs) {
+    max-width: 100%;
+  }
+  @include media-breakpoint-up(md) {
+    max-width: 80%;
+  }
+  @include media-breakpoint-up(lg) {
+    max-width:60%;
+  }
+}
+
+.size-medium {
+  @include media-breakpoint-up(xs) {
+    max-width: 100%;
+  }
+  @include media-breakpoint-up(md) {
+    max-width: 80%;
+  }
+}
+
+.size-large {
+  @include media-breakpoint-up(xs) {
+    max-width: 100%;
+  }
+}
+
 .wp-caption {
   @extend .p-3;
 }
@@ -79,10 +110,12 @@ blockquote {
 
 .wp-caption img {
   @extend .p-1;
+  height: auto !important;
 }
 
 .wp-caption-text {
   @extend p;
   @extend .font-italic;
   @extend .small;
+  max-width: 80%
 }
