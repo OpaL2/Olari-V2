@@ -24,8 +24,8 @@ mkdir $name2
 ./node_modules/.bin/gulp build
 
 #Copying required resources
-cp -R build/* $name1/
-cp -R build-ai1ec/* $name2/
+cp -R build/**/* $name1/
+cp -R build-ai1ec/**/* $name2/
 
 cp LICENSE $name1/
 cp README.md $name1/
