@@ -64,28 +64,28 @@ img {
 
 .size-small {
   @include media-breakpoint-up(xs) {
-    max-width: 100%;
+    width: 100% !important;
   }
   @include media-breakpoint-up(md) {
-    max-width: 80%;
+    width: 80% !important;
   }
   @include media-breakpoint-up(lg) {
-    max-width:60%;
+    width:60% !important;
   }
 }
 
 .size-medium {
   @include media-breakpoint-up(xs) {
-    max-width: 100%;
+    width: 100% !important;
   }
   @include media-breakpoint-up(md) {
-    max-width: 80%;
+    width: 80% !important;
   }
 }
 
 .size-large {
   @include media-breakpoint-up(xs) {
-    max-width: 100%;
+    width: 100% !important;
   }
 }
 
@@ -109,7 +109,7 @@ img {
 }
 
 .wp-caption img {
-  @extend .p-1;
+  @extend .m-1;
   height: auto !important;
 }
 
